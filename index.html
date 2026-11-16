@@ -65,7 +65,7 @@
                 <div>
                     <h1 class="font-extrabold text-xl tracking-tight text-white flex items-center gap-2">
                         Enggo <span class="text-yellow-400">ESP</span>
-                        <span class="bg-blue-600/30 text-sky-300 text-[10px] px-2 py-0.5 rounded-full border border-sky-400/30 font-mono font-bold">Multiplayer v3.0</span>
+                        <span class="bg-blue-600/30 text-sky-300 text-[10px] px-2 py-0.5 rounded-full border border-sky-400/30 font-mono font-bold">Multiplayer v3.1</span>
                     </h1>
                     <p class="text-[11px] text-sky-300 hidden sm:block">Real-time Engineering Battle Platform</p>
                 </div>
@@ -124,7 +124,7 @@
                     <span>Enter Lobby</span> <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
-            <p class="text-[11px] text-sky-300/70 font-mono">Politeknik Negeri Jakarta (PNJ) | Firebase Connected</p>
+            <p class="text-[11px] text-sky-300/70 font-mono">Politeknik Negeri Jakarta (PNJ) | Singapore Server Connected</p>
         </div>
 
         <!-- SCREEN 1: TOPIC & MULTIPLAYER LOBBY SELECTION -->
@@ -146,13 +146,13 @@
                     <h3 class="text-lg font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-users-rectangle text-yellow-400"></i> Live Multiplayer Battle Rooms
                     </h3>
-                    <span class="text-[10px] font-mono bg-yellow-400/20 text-yellow-300 px-2 py-0.5 rounded border border-yellow-400/40">Real-time Firebase</span>
+                    <span class="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/40">● Live Sync Ready</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="bg-slate-950 p-4 rounded-xl border border-blue-900 space-y-3">
                         <h4 class="text-sm font-bold text-sky-300">Create a Live Room (Host)</h4>
-                        <p class="text-xs text-slate-400">Generate a unique room code for your classmates to join your battle session.</p>
-                        <button onclick="createRoomModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all shadow">
+                        <p class="text-xs text-slate-400">Generate a unique 4-digit room code for your classmates to join your battle session.</p>
+                        <button onclick="createRoomModal()" id="createRoomBtn" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all shadow">
                             <i class="fa-solid fa-plus-circle"></i> Host New Room
                         </button>
                     </div>
@@ -160,8 +160,8 @@
                         <h4 class="text-sm font-bold text-yellow-300">Join Existing Room</h4>
                         <p class="text-xs text-slate-400">Enter a 4-digit room code provided by your host to compete live.</p>
                         <div class="flex gap-2">
-                            <input type="text" id="roomCodeInput" placeholder="Room Code (e.g. 4829)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400">
-                            <button onclick="joinRoom()" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow">
+                            <input type="text" id="roomCodeInput" maxlength="4" placeholder="Code (e.g. 4829)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400">
+                            <button onclick="joinRoom()" id="joinRoomBtn" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow">
                                 Join
                             </button>
                         </div>
@@ -172,7 +172,7 @@
             <!-- Solo Modules Section -->
             <div class="space-y-4">
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-book-open text-sky-400"></i> Solo Practice Modules (50 Qs Bank)
+                    <i class="fa-solid fa-book-open text-sky-400"></i> Solo Practice Modules
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     <div onclick="selectTopic('tenses')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
@@ -218,7 +218,7 @@
         <div id="roomLobbyScreen" class="hidden space-y-6 max-w-2xl mx-auto bg-slate-900 border-2 border-yellow-400 rounded-3xl p-8 shadow-2xl text-center">
             <span class="bg-yellow-400 text-slate-950 text-xs font-mono font-bold px-3 py-1 rounded-full uppercase">Live Room Lobby</span>
             <h2 class="text-3xl font-extrabold text-white">Room Code: <span id="displayRoomCode" class="text-yellow-400 font-mono tracking-widest">----</span></h2>
-            <p class="text-xs text-slate-300">Wait for participants to join. Once everyone is ready, the host can start the battle session!</p>
+            <p class="text-xs text-slate-300">Share this 4-digit code with your classmates. Once everyone appears below, the host can start the battle!</p>
             
             <div class="bg-slate-950 p-4 rounded-xl border border-blue-900 text-left">
                 <h4 class="text-xs font-mono text-yellow-300 uppercase font-bold mb-2">Connected Participants:</h4>
@@ -227,7 +227,7 @@
                 </ul>
             </div>
 
-            <div id="hostControls" class="hidden">
+            <div id="hostControls" class="hidden space-y-3">
                 <button onclick="startMultiplayerBattle()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-extrabold py-3.5 rounded-xl text-sm transition-all shadow-lg">
                     Start Live Battle Now! <i class="fa-solid fa-play"></i>
                 </button>
@@ -235,6 +235,9 @@
             <div id="guestWaitingMsg" class="text-xs text-slate-400 italic">
                 Waiting for host to start the game...
             </div>
+            <button onclick="showTopicMenu()" class="text-xs text-slate-400 hover:text-red-400 pt-2 block mx-auto">
+                Leave Room
+            </button>
         </div>
 
         <!-- SCREEN 2: QUIZ PRACTICE MODULE -->
@@ -254,7 +257,7 @@
                 <!-- Quiz Main Area -->
                 <div class="lg:col-span-2 bg-slate-900/90 border-2 border-blue-950 rounded-2xl p-6 shadow-xl">
                     <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
-                        <span id="questionTracker" class="text-xs font-mono text-yellow-400 font-bold">Question 1 of 10</span>
+                        <span id="questionTracker" class="text-xs font-mono text-yellow-400 font-bold">Question 1 of 5</span>
                         <span class="text-[11px] font-mono text-sky-300 bg-blue-950 px-2.5 py-1 rounded-lg border border-blue-800">Speed Bonus Active</span>
                     </div>
 
@@ -272,8 +275,17 @@
                     </div>
                 </div>
 
-                <!-- Guidance & Mascot Card -->
+                <!-- Live Room Standings & Mascot Card -->
                 <div class="space-y-6">
+                    <div id="liveRoomStandingsBox" class="hidden bg-slate-900/90 border border-yellow-400/50 rounded-2xl p-5 text-xs space-y-3 shadow-lg">
+                        <h4 class="font-bold text-yellow-400 flex items-center gap-2">
+                            <i class="fa-solid fa-ranking-star"></i> Live Room Standings
+                        </h4>
+                        <ul id="liveStandingsList" class="space-y-1.5 font-mono text-slate-200">
+                            <!-- Live updates from Firebase -->
+                        </ul>
+                    </div>
+
                     <div class="bg-slate-900/70 border border-blue-800 rounded-2xl p-5 text-xs text-slate-300 space-y-3 shadow-lg">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-yellow-400/10 border border-yellow-400/40 p-1 flex-shrink-0">
@@ -291,7 +303,7 @@
                             </div>
                         </div>
                         <p class="leading-relaxed text-slate-400">
-                            Answer quickly! Faster correct answers grant bonus multiplier points in multiplayer mode.
+                            Answer quickly! Faster correct answers grant bonus points in multiplayer mode.
                         </p>
                     </div>
                 </div>
@@ -302,6 +314,14 @@
         <div id="resultScreen" class="hidden space-y-8 max-w-4xl mx-auto">
             <div id="scoreSummaryBanner" class="bg-slate-900 border-2 border-yellow-400/60 rounded-3xl p-8 text-center space-y-4 shadow-2xl">
                 <!-- Dynamic Content via JS -->
+            </div>
+
+            <!-- Live Podium if Multiplayer -->
+            <div id="multiplayerPodiumBox" class="hidden bg-slate-900/90 border-2 border-yellow-400 rounded-2xl p-6 sm:p-8 shadow-xl space-y-4">
+                <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
+                    <i class="fa-solid fa-crown"></i> Live Room Podium (Top 3 & Final Rankings)
+                </h3>
+                <div id="finalRoomRankings" class="space-y-2 font-mono text-sm"></div>
             </div>
 
             <div class="bg-slate-900/90 border border-blue-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
@@ -368,9 +388,9 @@
                 <div class="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
                     <div>
                         <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-trophy text-yellow-400"></i> Engineering Class Leaderboard
+                            <i class="fa-solid fa-trophy text-yellow-400"></i> Local Practice Leaderboard
                         </h2>
-                        <p class="text-xs text-slate-400 mt-1">Top scores and podium podium finishers.</p>
+                        <p class="text-xs text-slate-400 mt-1">Top personal accuracy records saved on this device.</p>
                     </div>
                     <button onclick="clearLeaderboard()" class="text-xs text-slate-500 hover:text-red-400 transition-colors">
                         <i class="fa-solid fa-trash"></i> Reset Data
@@ -398,7 +418,7 @@
     <footer class="border-t border-blue-900 bg-slate-950 py-6 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center sm:text-left sm:flex items-center justify-between text-xs text-slate-400">
             <p>Enggo ESP Multiplayer Platform | PNJ</p>
-            <p class="mt-2 sm:mt-0 font-mono text-yellow-400">Firebase Realtime Connected</p>
+            <p class="mt-2 sm:mt-0 font-mono text-emerald-400">Firebase Asia-Southeast1 Connected</p>
         </div>
     </footer>
 
@@ -410,6 +430,7 @@
         const firebaseConfig = {
             apiKey: "AIzaSyAtHCw1sBkhzf6KLgB3r0kdUhmvWqgaFlo",
             authDomain: "enggo-esp-pnj.firebaseapp.com",
+            databaseURL: "https://enggo-esp-pnj-default-rtdb.asia-southeast1.firebasedatabase.app",
             projectId: "enggo-esp-pnj",
             storageBucket: "enggo-esp-pnj.firebasestorage.app",
             messagingSenderId: "43601756949",
@@ -420,7 +441,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Expose Firebase functions globally for our UI script
         window.fbDB = db;
         window.fbRef = ref;
         window.fbSet = set;
@@ -428,6 +448,7 @@
         window.fbChild = child;
         window.fbUpdate = update;
         window.fbOnValue = onValue;
+        window.firebaseReady = true;
     </script>
 
     <!-- App Logic Script -->
@@ -495,6 +516,12 @@
         let sessionAnswers = [];
         let currentRoomCode = null;
         let isHost = false;
+        let questionStartTime = 0;
+
+        // Sanitize username for Firebase keys (removes . # $ [ ] /)
+        function sanitizeKey(str) {
+            return str.replace(/[.#$\[\]\/]/g, "_");
+        }
 
         function startApp() {
             const name = document.getElementById('studentNameInput').value.trim();
@@ -510,6 +537,8 @@
         }
 
         function backToWelcome() {
+            currentRoomCode = null;
+            isHost = false;
             document.getElementById('welcomeScreen').classList.remove('hidden');
             document.getElementById('topicScreen').classList.add('hidden');
             document.getElementById('roomLobbyScreen').classList.add('hidden');
@@ -522,6 +551,8 @@
                 backToWelcome();
                 return;
             }
+            currentRoomCode = null;
+            isHost = false;
             document.getElementById('welcomeScreen').classList.add('hidden');
             document.getElementById('topicScreen').classList.remove('hidden');
             document.getElementById('roomLobbyScreen').classList.add('hidden');
@@ -536,36 +567,82 @@
 
         // MULTIPLAYER ROOM FUNCTIONS
         function createRoomModal() {
-            const roomCode = Math.floor(1000 + Math.random() * 9000).toString();
-            currentRoomCode = roomCode;
-            isHost = true;
+            if (!window.firebaseReady) {
+                alert("Connecting to server... Please wait 2 seconds and try again.");
+                return;
+            }
+            const btn = document.getElementById('createRoomBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating Room...';
 
+            const roomCode = Math.floor(1000 + Math.random() * 9000).toString();
+            const safeUser = sanitizeKey(currentUser);
             const roomRef = window.fbRef(window.fbDB, 'rooms/' + roomCode);
+
             window.fbSet(roomRef, {
                 host: currentUser,
                 status: 'waiting',
+                topic: 'tenses',
                 participants: {
-                    [currentUser]: { score: 0 }
+                    [safeUser]: { displayName: currentUser, score: 0 }
                 }
+            }).then(() => {
+                currentRoomCode = roomCode;
+                isHost = true;
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-plus-circle"></i> Host New Room';
+                enterRoomLobby(roomCode, true);
+            }).catch((error) => {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-plus-circle"></i> Host New Room';
+                alert("Database Error: " + error.message + "\nCheck Firebase Rules (.read: true, .write: true).");
             });
-
-            enterRoomLobby(roomCode, true);
         }
 
         function joinRoom() {
-            const code = document.getElementById('roomCodeInput').value.trim();
-            if(!code) {
-                alert("Please enter a valid room code!");
+            if (!window.firebaseReady) {
+                alert("Connecting to server... Please wait 2 seconds and try again.");
                 return;
             }
-            currentRoomCode = code;
-            isHost = false;
+            const code = document.getElementById('roomCodeInput').value.trim();
+            if(!code || code.length < 4) {
+                alert("Please enter a valid 4-digit room code!");
+                return;
+            }
 
-            const partRef = window.fbRef(window.fbDB, `rooms/${code}/participants/${currentUser}`);
-            window.fbSet(partRef, { score: 0 }).then(() => {
-                enterRoomLobby(code, false);
-            }).catch(err => {
-                alert("Room not found or error joining!");
+            const btn = document.getElementById('joinRoomBtn');
+            btn.disabled = true;
+            btn.innerText = '...';
+
+            const dbRef = window.fbRef(window.fbDB);
+            window.fbGet(window.fbChild(dbRef, `rooms/${code}`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const roomData = snapshot.val();
+                    if (roomData.status === 'started') {
+                        alert("This room battle has already started! Ask the host for a new room.");
+                        btn.disabled = false;
+                        btn.innerText = 'Join';
+                        return;
+                    }
+
+                    const safeUser = sanitizeKey(currentUser);
+                    const partRef = window.fbRef(window.fbDB, `rooms/${code}/participants/${safeUser}`);
+                    window.fbSet(partRef, { displayName: currentUser, score: 0 }).then(() => {
+                        currentRoomCode = code;
+                        isHost = false;
+                        btn.disabled = false;
+                        btn.innerText = 'Join';
+                        enterRoomLobby(code, false);
+                    });
+                } else {
+                    alert("Room code '" + code + "' not found! Double check the number with your host.");
+                    btn.disabled = false;
+                    btn.innerText = 'Join';
+                }
+            }).catch((error) => {
+                btn.disabled = false;
+                btn.innerText = 'Join';
+                alert("Connection error: " + error.message);
             });
         }
 
@@ -582,18 +659,47 @@
                 document.getElementById('guestWaitingMsg').classList.remove('hidden');
             }
 
-            // Listen to room participants & status in real-time
             const roomRef = window.fbRef(window.fbDB, 'rooms/' + code);
             window.fbOnValue(roomRef, (snapshot) => {
                 const data = snapshot.val();
                 if(data) {
                     const parts = data.participants || {};
-                    const listEl = document.getElementById('participantsList');
-                    listEl.innerHTML = Object.keys(parts).map(p => `<li><i class="fa-solid fa-user-check text-yellow-400"></i> ${p} (${parts[p].score} pts)</li>`).join('');
+                    const sortedParts = Object.values(parts).sort((a, b) => b.score - a.score);
 
-                    if(data.status === 'started' && !isHost) {
-                        // Guest auto-start quiz
-                        selectTopic('tenses');
+                    // Update waiting lobby list
+                    const listEl = document.getElementById('participantsList');
+                    if (listEl) {
+                        listEl.innerHTML = sortedParts.map(p => `<li><i class="fa-solid fa-user-check text-yellow-400"></i> ${p.displayName}</li>`).join('');
+                    }
+
+                    // Update live standings during quiz
+                    const liveList = document.getElementById('liveStandingsList');
+                    if (liveList) {
+                        liveList.innerHTML = sortedParts.map((p, idx) => `
+                            <li class="flex justify-between ${p.displayName === currentUser ? 'text-yellow-400 font-bold' : ''}">
+                                <span>#${idx + 1} ${p.displayName}</span>
+                                <span>${p.score} pts</span>
+                            </li>
+                        `).join('');
+                    }
+
+                    // Update final podium if on result screen
+                    const podiumList = document.getElementById('finalRoomRankings');
+                    if (podiumList) {
+                        podiumList.innerHTML = sortedParts.map((p, idx) => {
+                            let medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`;
+                            return `
+                                <div class="flex justify-between items-center p-3 rounded-xl bg-slate-950 border ${idx === 0 ? 'border-yellow-400 text-yellow-300' : 'border-slate-800 text-slate-200'}">
+                                    <span>${medal} <b>${p.displayName}</b></span>
+                                    <span class="font-bold">${p.score} pts</span>
+                                </div>
+                            `;
+                        }).join('');
+                    }
+
+                    // Guest auto-start when host triggers start
+                    if(data.status === 'started' && !isHost && document.getElementById('roomLobbyScreen').classList.contains('hidden') === false) {
+                        startQuizSession(data.topic || 'tenses', true);
                     }
                 }
             });
@@ -602,13 +708,19 @@
         function startMultiplayerBattle() {
             const roomRef = window.fbRef(window.fbDB, 'rooms/' + currentRoomCode);
             window.fbUpdate(roomRef, { status: 'started' });
-            selectTopic('tenses');
+            startQuizSession('tenses', true);
         }
 
         function selectTopic(topicKey) {
+            currentRoomCode = null;
+            isHost = false;
+            startQuizSession(topicKey, false);
+        }
+
+        function startQuizSession(topicKey, isMultiplayer) {
             currentTopic = topicKey;
             const fullBank = questionBank[topicKey] || questionBank.tenses;
-            const shuffled = [...fullBank].sort(() => 0.5 - Math.random());
+            const shuffled = isMultiplayer ? [...fullBank] : [...fullBank].sort(() => 0.5 - Math.random());
             currentQuestions = shuffled.slice(0, 5);
 
             currentIndex = 0;
@@ -619,9 +731,15 @@
             document.getElementById('roomLobbyScreen').classList.add('hidden');
             document.getElementById('resultScreen').classList.add('hidden');
             document.getElementById('content-quiz').classList.remove('hidden');
-            document.getElementById('activeTopicBadge').innerText = `Module: ${topicNames[topicKey]}`;
+            document.getElementById('activeTopicBadge').innerText = isMultiplayer ? `Live Room #${currentRoomCode}` : `Module: ${topicNames[topicKey]}`;
             document.getElementById('liveScore').innerText = '0';
             document.getElementById('nextBtn').classList.remove('hidden');
+
+            if (isMultiplayer) {
+                document.getElementById('liveRoomStandingsBox').classList.remove('hidden');
+            } else {
+                document.getElementById('liveRoomStandingsBox').classList.add('hidden');
+            }
 
             renderQuestion();
         }
@@ -629,6 +747,7 @@
         function renderQuestion() {
             const q = currentQuestions[currentIndex];
             document.getElementById('questionTracker').innerText = `Question ${currentIndex + 1} of ${currentQuestions.length}`;
+            questionStartTime = Date.now();
 
             const container = document.getElementById('quizContainer');
             container.innerHTML = `
@@ -652,6 +771,7 @@
             if (selectedOption !== null) return;
             selectedOption = index;
 
+            const timeTakenSec = (Date.now() - questionStartTime) / 1000;
             const q = currentQuestions[currentIndex];
             const isCorrect = index === q.correct;
 
@@ -673,13 +793,22 @@
                 }
             });
 
+            let pointsEarned = 0;
             if (isCorrect) {
-                currentScore += 20;
+                // Base 100 pts + up to 50 speed bonus in multiplayer, or flat 20 pts in solo
+                if (currentRoomCode) {
+                    const speedBonus = Math.max(0, Math.round(50 - (timeTakenSec * 5)));
+                    pointsEarned = 100 + speedBonus;
+                } else {
+                    pointsEarned = 20;
+                }
+
+                currentScore += pointsEarned;
                 document.getElementById('liveScore').innerText = currentScore;
                 
-                // Update live room score if in multiplayer
                 if(currentRoomCode) {
-                    const scoreRef = window.fbRef(window.fbDB, `rooms/${currentRoomCode}/participants/${currentUser}`);
+                    const safeUser = sanitizeKey(currentUser);
+                    const scoreRef = window.fbRef(window.fbDB, `rooms/${currentRoomCode}/participants/${safeUser}`);
                     window.fbUpdate(scoreRef, { score: currentScore });
                 }
             }
@@ -688,7 +817,7 @@
             expBox.classList.remove('hidden');
             if (isCorrect) {
                 expBox.className = 'mt-6 p-4 rounded-xl border border-emerald-500/50 bg-emerald-950/30 text-emerald-300 text-xs font-mono';
-                expBox.innerHTML = `<strong><i class="fa-solid fa-circle-check"></i> Correct! (+20 Pts)</strong><br>${q.exp}`;
+                expBox.innerHTML = `<strong><i class="fa-solid fa-circle-check"></i> Correct! (+${pointsEarned} Pts)</strong><br>${q.exp}`;
             } else {
                 expBox.className = 'mt-6 p-4 rounded-xl border border-red-500/50 bg-red-950/30 text-red-300 text-xs font-mono';
                 expBox.innerHTML = `<strong><i class="fa-solid fa-circle-xmark"></i> Incorrect.</strong><br>${q.exp}`;
@@ -702,7 +831,7 @@
                 currentIndex++;
                 renderQuestion();
             } else {
-                saveToLeaderboard();
+                if (!currentRoomCode) saveToLeaderboard();
                 showResultAndEvaluation();
             }
         }
@@ -711,35 +840,46 @@
             document.getElementById('content-quiz').classList.add('hidden');
             document.getElementById('resultScreen').classList.remove('hidden');
 
+            if (currentRoomCode) {
+                document.getElementById('multiplayerPodiumBox').classList.remove('hidden');
+            } else {
+                document.getElementById('multiplayerPodiumBox').classList.add('hidden');
+            }
+
             const summaryBanner = document.getElementById('scoreSummaryBanner');
+            const correctCount = sessionAnswers.filter(a => a.isCorrect).length;
             let tierTitle = "";
             let tierMsg = "";
             let tierColor = "";
 
-            if (currentScore === 100) {
-                tierTitle = "Einstein Level! Podium #1!";
-                tierMsg = "Phenomenal engineering accuracy. You secured top rank!";
+            if (correctCount === currentQuestions.length) {
+                tierTitle = "Einstein Level! Excellent!";
+                tierMsg = "Phenomenal engineering accuracy. You mastered every question!";
                 tierColor = "text-yellow-400 border-yellow-400";
-            } else if (currentScore >= 80) {
-                tierTitle = "Great Job! Podium Finisher!";
+            } else if (correctCount >= 4) {
+                tierTitle = "Great Job! Good Performance!";
                 tierMsg = "Great! You are really good. Keep up the consistency!";
                 tierColor = "text-emerald-400 border-emerald-500";
-            } else {
-                tierTitle = "Good Battle Effort!";
-                tierMsg = "Review your mistakes below and try a new match!";
+            } else if (correctCount >= 3) {
+                tierTitle = "Average Performance";
+                tierMsg = "Good effort! Check the evaluation panel below to review your mistakes.";
                 tierColor = "text-sky-400 border-sky-500";
+            } else {
+                tierTitle = "Needs Improvement";
+                tierMsg = "Don't forget to learn again. Try a new question set or check the evaluation below!";
+                tierColor = "text-amber-400 border-amber-500";
             }
 
             summaryBanner.innerHTML = `
                 <div class="w-16 h-16 rounded-full bg-slate-950 flex items-center justify-center mx-auto border-2 ${tierColor} shadow-lg">
                     <i class="fa-solid fa-award text-2xl"></i>
                 </div>
-                <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">BATTLE FINISHED</span>
+                <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">SESSION COMPLETED</span>
                 <h3 class="text-2xl sm:text-3xl font-extrabold ${tierColor}">${tierTitle}</h3>
                 <p class="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto leading-relaxed">${tierMsg}</p>
                 <div class="inline-block bg-slate-950 px-8 py-3.5 rounded-2xl border border-slate-800">
-                    <span class="text-xs text-slate-400 font-mono uppercase block">Final Score</span>
-                    <span class="text-4xl font-extrabold text-yellow-400 font-mono">${currentScore} / 100</span>
+                    <span class="text-xs text-slate-400 font-mono uppercase block">Total Score</span>
+                    <span class="text-4xl font-extrabold text-yellow-400 font-mono">${currentScore} pts</span>
                 </div>
                 <div class="pt-4 flex justify-center gap-3">
                     <button onclick="showTopicMenu()" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 text-xs font-bold px-5 py-3 rounded-xl transition-all shadow-lg">
@@ -751,7 +891,7 @@
             const wrongAnswers = sessionAnswers.filter(a => !a.isCorrect);
             document.getElementById('wrongCountBadge').innerText = `${wrongAnswers.length} Mistakes to Review`;
             const evalList = document.getElementById('evaluationList');
-            evalList.innerHTML = wrongAnswers.length === 0 ? `<div class="p-4 bg-emerald-950/20 border border-emerald-500/30 rounded-xl text-center text-emerald-300 text-xs">Perfect Score! No mistakes.</div>` :
+            evalList.innerHTML = wrongAnswers.length === 0 ? `<div class="p-4 bg-emerald-950/20 border border-emerald-500/30 rounded-xl text-center text-emerald-300 text-xs">Perfect Score! No mistakes to review.</div>` :
                 wrongAnswers.map((item, idx) => `
                     <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl space-y-2 text-xs font-mono">
                         <p class="text-white font-sans text-sm font-semibold">${item.question}</p>
@@ -784,6 +924,7 @@
             container.innerHTML = modules.map(m => {
                 const modRecords = userRecords.filter(r => r.topicKey === m.key);
                 let avgScore = modRecords.length > 0 ? Math.round((modRecords.reduce((acc, curr) => acc + curr.score, 0) / modRecords.length) / 10) : 5;
+                avgScore = Math.min(10, Math.max(1, avgScore));
                 return `
                     <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-2">
                         <div class="flex justify-between items-center text-xs">
@@ -801,7 +942,7 @@
         function renderLeaderboard() {
             let lb = JSON.parse(localStorage.getItem('enggoLeaderboard')) || [];
             const tbody = document.getElementById('leaderboardTableBody');
-            tbody.innerHTML = lb.length === 0 ? `<tr><td colspan="4" class="p-6 text-center text-slate-500 italic">No records saved yet.</td></tr>` :
+            tbody.innerHTML = lb.length === 0 ? `<tr><td colspan="4" class="p-6 text-center text-slate-500 italic">No solo practice records saved yet.</td></tr>` :
                 lb.map((item, index) => `
                     <tr class="hover:bg-slate-900/60 transition-colors">
                         <td class="p-3.5 text-center font-bold ${index === 0 ? 'text-yellow-400 text-base' : 'text-slate-400'}">#${index + 1}</td>
@@ -813,7 +954,7 @@
         }
 
         function clearLeaderboard() {
-            if(confirm("Clear leaderboard records?")) {
+            if(confirm("Clear local practice records?")) {
                 localStorage.removeItem('enggoLeaderboard');
                 renderLeaderboard();
                 calculateSkillMetrics();
@@ -858,4 +999,5 @@
         renderVocab(vocabData);
     </script>
 </body>
-  </html>
+</html>
+
