@@ -65,7 +65,7 @@
                 <div>
                     <h1 class="font-extrabold text-xl tracking-tight text-white flex items-center gap-2">
                         Enggo <span class="text-yellow-400">ESP</span>
-                        <span class="bg-blue-600/30 text-sky-300 text-[10px] px-2 py-0.5 rounded-full border border-sky-400/30 font-mono font-bold">Multiplayer v3.1</span>
+                        <span class="bg-blue-600/30 text-sky-300 text-[10px] px-2 py-0.5 rounded-full border border-sky-400/30 font-mono font-bold">Multiplayer v3.2 (50 Qs Bank)</span>
                     </h1>
                     <p class="text-[11px] text-sky-300 hidden sm:block">Real-time Engineering Battle Platform</p>
                 </div>
@@ -133,7 +133,7 @@
                 <div>
                     <span class="text-xs font-mono text-yellow-400 font-bold uppercase tracking-wider">Active Competitor</span>
                     <h2 class="text-xl font-bold text-white" id="greetingUser">Welcome!</h2>
-                    <p class="text-xs text-sky-200 mt-1">Choose solo practice or host/join a live multi-user battle room.</p>
+                    <p class="text-xs text-sky-200 mt-1">Choose solo practice (50 Qs Bank) or host/join a live 10-question battle room.</p>
                 </div>
                 <button onclick="backToWelcome()" class="text-xs text-sky-300 hover:text-white bg-blue-950 px-3.5 py-2 rounded-xl border border-blue-700">
                     <i class="fa-solid fa-user-pen"></i> Switch User
@@ -151,15 +151,30 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="bg-slate-950 p-4 rounded-xl border border-blue-900 space-y-3">
                         <h4 class="text-sm font-bold text-sky-300">Create a Live Room (Host)</h4>
-                        <p class="text-xs text-slate-400">Generate a unique 4-digit room code for your classmates to join your battle session.</p>
+                        <p class="text-xs text-slate-400">Pilih topik materi (10 soal) dan buat kode ruangan untuk kelas.</p>
+                        
+                        <!-- Host Topic Selector -->
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-mono text-yellow-300 uppercase font-bold">Select Battle Topic:</label>
+                            <select id="hostTopicSelect" class="w-full bg-slate-900 border border-blue-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-yellow-400 font-mono">
+                                <option value="tenses">1. Tenses & Passive Voice</option>
+                                <option value="shapes">2. Shapes & Angles</option>
+                                <option value="numbers">3. Numbers & Metrics</option>
+                                <option value="comm">4. Communication Skills</option>
+                                <option value="tools">5. Tools & Instruments</option>
+                            </select>
+                        </div>
+
                         <button onclick="createRoomModal()" id="createRoomBtn" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all shadow">
                             <i class="fa-solid fa-plus-circle"></i> Host New Room
                         </button>
                     </div>
-                    <div class="bg-slate-950 p-4 rounded-xl border border-blue-900 space-y-3">
-                        <h4 class="text-sm font-bold text-yellow-300">Join Existing Room</h4>
-                        <p class="text-xs text-slate-400">Enter a 4-digit room code provided by your host to compete live.</p>
-                        <div class="flex gap-2">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-blue-900 space-y-3 flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-sm font-bold text-yellow-300">Join Existing Room</h4>
+                            <p class="text-xs text-slate-400 mt-1">Masukkan 4 digit kode ruangan dari host untuk bertempur secara live.</p>
+                        </div>
+                        <div class="flex gap-2 pt-2">
                             <input type="text" id="roomCodeInput" maxlength="4" placeholder="Code (e.g. 4829)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400">
                             <button onclick="joinRoom()" id="joinRoomBtn" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow">
                                 Join
@@ -169,10 +184,10 @@
                 </div>
             </div>
 
-            <!-- Solo Modules Section -->
+            <!-- Solo Modules Section (50 Questions Bank) -->
             <div class="space-y-4">
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-book-open text-sky-400"></i> Solo Practice Modules
+                    <i class="fa-solid fa-book-open text-sky-400"></i> Solo Practice Modules (Full 10 Questions per Chapter)
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     <div onclick="selectTopic('tenses')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
@@ -180,35 +195,35 @@
                             <i class="fa-solid fa-clock-rotate-left"></i>
                         </div>
                         <h4 class="text-base font-bold text-white group-hover:text-yellow-400">1. Tenses & Passive</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Grammar patterns for reports.</p>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">10 Questions | Grammar patterns for reports.</p>
                     </div>
                     <div onclick="selectTopic('shapes')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
                         <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-950 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-shapes"></i>
                         </div>
                         <h4 class="text-base font-bold text-white group-hover:text-yellow-400">2. Shapes & Angles</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Geometry & dimensions.</p>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">10 Questions | Geometry & dimensions.</p>
                     </div>
                     <div onclick="selectTopic('numbers')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
                         <div class="w-10 h-10 rounded-xl bg-blue-600 text-yellow-400 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-arrow-down-1-9"></i>
                         </div>
                         <h4 class="text-base font-bold text-white group-hover:text-yellow-400">3. Numbers & Metrics</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Cardinal & ordinal values.</p>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">10 Questions | Cardinal & ordinal values.</p>
                     </div>
                     <div onclick="selectTopic('comm')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
                         <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-950 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-comments"></i>
                         </div>
                         <h4 class="text-base font-bold text-white group-hover:text-yellow-400">4. Communication Skills</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Presentation discourse.</p>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">10 Questions | Presentation discourse.</p>
                     </div>
                     <div onclick="selectTopic('tools')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
                         <div class="w-10 h-10 rounded-xl bg-blue-600 text-yellow-400 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-screwdriver-wrench"></i>
                         </div>
                         <h4 class="text-base font-bold text-white group-hover:text-yellow-400">5. Tools & Instruments</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Precision measurement gear.</p>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">10 Questions | Precision measurement gear.</p>
                     </div>
                 </div>
             </div>
@@ -218,6 +233,7 @@
         <div id="roomLobbyScreen" class="hidden space-y-6 max-w-2xl mx-auto bg-slate-900 border-2 border-yellow-400 rounded-3xl p-8 shadow-2xl text-center">
             <span class="bg-yellow-400 text-slate-950 text-xs font-mono font-bold px-3 py-1 rounded-full uppercase">Live Room Lobby</span>
             <h2 class="text-3xl font-extrabold text-white">Room Code: <span id="displayRoomCode" class="text-yellow-400 font-mono tracking-widest">----</span></h2>
+            <div id="displayLobbyTopic" class="text-xs text-sky-300 font-mono font-bold">Topic: Tenses & Passive Voice</div>
             <p class="text-xs text-slate-300">Share this 4-digit code with your classmates. Once everyone appears below, the host can start the battle!</p>
             
             <div class="bg-slate-950 p-4 rounded-xl border border-blue-900 text-left">
@@ -257,7 +273,7 @@
                 <!-- Quiz Main Area -->
                 <div class="lg:col-span-2 bg-slate-900/90 border-2 border-blue-950 rounded-2xl p-6 shadow-xl">
                     <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
-                        <span id="questionTracker" class="text-xs font-mono text-yellow-400 font-bold">Question 1 of 5</span>
+                        <span id="questionTracker" class="text-xs font-mono text-yellow-400 font-bold">Question 1 of 10</span>
                         <span class="text-[11px] font-mono text-sky-300 bg-blue-950 px-2.5 py-1 rounded-lg border border-blue-800">Speed Bonus Active</span>
                     </div>
 
@@ -459,35 +475,60 @@
                 { q: "'I ... a book every day.' Choose the correct verb:", options: ["wrote", "write", "writing", "written"], correct: 1, exp: "Subject 'I' takes base verb 'write' in simple present." },
                 { q: "'She ... a book every day.' Choose the correct verb:", options: ["write", "writing", "writes", "wrote"], correct: 2, exp: "Third-person singular 'She' takes 'writes'." },
                 { q: "What is the negative form of 'I write a book'?", options: ["I am not write a book", "I do not write a book", "I did not write a book", "I will not write a book"], correct: 1, exp: "Negative simple present uses 'do not' for 'I'." },
-                { q: "Which of the following Simple Present sentences is incorrect?", options: ["He goes to school every day.", "They plays football on Sundays.", "We study English together.", "She likes ice cream."], correct: 1, exp: "Plural subject 'They' should be followed by 'play'." }
+                { q: "Which of the following Simple Present sentences is incorrect?", options: ["He goes to school every day.", "They plays football on Sundays.", "We study English together.", "She likes ice cream."], correct: 1, exp: "Plural subject 'They' should be followed by 'play'." },
+                { q: "What is the passive voice form of 'The technician repairs the machine'?", options: ["The machine is repaired by the technician", "The machine was repaired by the technician", "The machine has been repaired by the technician", "The machine is being repaired by the technician"], correct: 0, exp: "Simple present passive uses 'is/am/are + V3'." },
+                { q: "Which sentence uses the Present Continuous Tense correctly?", options: ["The engine runs smoothly right now.", "The engineers are testing the turbine at the moment.", "We tested the generator yesterday.", "They will assemble the chassis tomorrow."], correct: 1, exp: "Present continuous uses 'is/am/are + V-ing' for ongoing actions." },
+                { q: "What auxiliary verb is used for Past Simple in negative sentences?", options: ["Do", "Does", "Did", "Done"], correct: 2, exp: "Past simple negative and interrogative structures use 'did'." },
+                { q: "Choose the correct Passive Voice for past simple: 'They installed the pipes.'", options: ["The pipes are installed by them.", "The pipes were installed by them.", "The pipes will be installed by them.", "The pipes have installed by them."], correct: 1, exp: "Past simple passive uses 'was/were + V3'." },
+                { q: "Which sentence correctly expresses a future plan in engineering?", options: ["We assemble the prototype yesterday.", "The team is going to test the bridge load tomorrow.", "She repair the valve right now.", "They installs the bolts every Monday."], correct: 1, exp: "'Is/am/are going to' expresses future intentions and plans." }
             ],
             shapes: [
                 { q: "How many kinds of dimensional shapes are mentioned in technical geometry?", options: ["2", "3", "4", "5"], correct: 1, exp: "Three dimensional types exist: 1D, 2D, and 3D." },
                 { q: "One-dimensional shapes have how many measurements?", options: ["One (length/width)", "Two (length and width)", "Three (length, width, and height)", "Four"], correct: 0, exp: "1D shapes possess only a single measurement." },
                 { q: "Two-dimensional shapes are also called:", options: ["Solid shapes", "Plane shapes", "Line shapes", "Volume shapes"], correct: 1, exp: "2D shapes are structurally categorized as plane shapes." },
                 { q: "Three-dimensional shapes have which measurements?", options: ["Length only", "Length and width", "Length, width, and height", "Area only"], correct: 2, exp: "3D solids involve length, width, and height." },
-                { q: "Three-dimensional shapes produce:", options: ["Area only", "Circumference only", "Volume", "Length only"], correct: 2, exp: "3D dimensions yield structural volume." }
+                { q: "Three-dimensional shapes produce:", options: ["Area only", "Circumference only", "Volume", "Length only"], correct: 2, exp: "3D dimensions yield structural volume." },
+                { q: "Which geometric shape has four equal sides and four 90-degree angles?", options: ["Rectangle", "Square", "Trapezoid", "Parallelogram"], correct: 1, exp: "A square features four equal sides and right angles." },
+                { q: "What do you call a 3D geometric shape with a circular base and a pointed top vertex?", options: ["Cylinder", "Sphere", "Cone", "Cube"], correct: 2, exp: "A cone tapers smoothly from a flat circular base to a point." },
+                { q: "An angle measuring exactly 90 degrees is known as what angle?", options: ["Acute angle", "Obtuse angle", "Right angle", "Straight angle"], correct: 2, exp: "A 90-degree angle is strictly defined as a right angle." },
+                { q: "What is the term for a polygon with six sides?", options: ["Pentagon", "Hexagon", "Heptagon", "Octagon"], correct: 1, exp: "A six-sided geometric figure is a hexagon." },
+                { q: "Which 3D engineering shape has two parallel circular bases connected by a curved surface?", options: ["Sphere", "Cylinder", "Pyramid", "Cone"], correct: 1, exp: "A cylinder consists of two parallel circular disks and a curved tube." }
             ],
             numbers: [
                 { q: "The word form of 15th is...", options: ["Fiftieth", "Fifteenth", "Five-tenth", "Fiveth"], correct: 1, exp: "15th in ordinal form is 'fifteenth'." },
                 { q: "The cardinal number for 'ninety-eight' is written as...", options: ["89", "98", "908", "980"], correct: 1, exp: "Ninety-eight translates to numeric 98." },
                 { q: "The date October 21st is read as...", options: ["Twenty-one October", "Twenty-first October", "Twoth-first October", "Two-first October"], correct: 1, exp: "Dates use ordinal expressions ('Twenty-first')." },
                 { q: "Which ordinal number is written incorrectly?", options: ["1st", "2nd", "3rd", "4st"], correct: 3, exp: "4th is correct; '4st' is grammatically invalid." },
-                { q: "The result of 'twenty-five plus fifteen' in cardinal numbers is...", options: ["30", "40", "50", "45"], correct: 1, exp: "25 + 15 = 40." }
+                { q: "The result of 'twenty-five plus fifteen' in cardinal numbers is...", options: ["30", "40", "50", "45"], correct: 1, exp: "25 + 15 = 40." },
+                { q: "How is the decimal number 3.14 correctly read in engineering presentations?", options: ["Three point fourteen", "Three dot one four", "Three comma one four", "Third point one four"], correct: 0, exp: "Decimals are read digit-by-digit after the word 'point'." },
+                { q: "What is the fraction 1/2 expressed in words?", options: ["One-quarter", "One-third", "One-half", "Two-half"], correct: 2, exp: "1/2 is standardly spoken as 'one-half'." },
+                { q: "How do you read the large dimension 1,500 mm?", options: ["One thousand and five hundred millimeters", "Fifteen hundred millimeters", "Both A and B are correct", "One point five thousand millimeters"], correct: 2, exp: "Engineering metrics accept both formal thousands and colloquial hundreds." },
+                { q: "What ordinal number corresponds to 31st?", options: ["Thirty-first", "Thirty-one-th", "Three-first", "Thirtieth-first"], correct: 0, exp: "31st translates to 'thirty-first'." },
+                { q: "What is the result of multiplying twelve by five (12 x 5)?", options: ["Fifty", "Sixty", "Seventy", "Eighty"], correct: 1, exp: "12 multiplied by 5 equals 60." }
             ],
             comm: [
                 { q: "What is the definition of a 'text' in technical discourse?", options: ["Any collection of images without written meaning", "Any written account of a communicative event", "Merely a line of words without sentence structure", "A collection of sounds without spoken language meaning"], correct: 1, exp: "A text is a written record of a communicative event." },
                 { q: "According to Mario Klarer, a text is likened to what?", options: ["A fabric made up of individual threads", "A collection of bricks arranged without cement", "An abstract painting without a pattern", "Street noise"], correct: 0, exp: "Klarer compares text to fabric woven from individual sentence threads." },
                 { q: "Based on genre diagrams, the two basic types of texts are...", options: ["Fiction and Non-fiction", "Literary and Factual", "Formal and Informal", "Classical and Modern"], correct: 1, exp: "Text types fall broadly into Literary and Factual categories." },
                 { q: "Poor presentation practices are characterized by the following, EXCEPT...", options: ["Using too many unnecessary PowerPoint animations", "Reading rote without eye-contact with the audience", "Interacting actively and maintaining eye contact with the audience", "Being monotonous and rigid"], correct: 2, exp: "Maintaining active eye contact is a signature of EFFECTIVE presentations." },
-                { q: "What are the characteristics of an informative presentation?", options: ["Long and winding", "Brief and to the point", "Containing only entertainment and jokes", "Discussing fiction and fantasy stories"], correct: 1, exp: "Informative presentations are concise and direct." }
+                { q: "What are the characteristics of an informative presentation?", options: ["Long and winding", "Brief and to the point", "Containing only entertainment and jokes", "Discussing fiction and fantasy stories"], correct: 1, exp: "Informative presentations are concise and direct." },
+                { q: "What is the primary objective of an engineering technical report?", options: ["To entertain readers with fiction", "To communicate complex technical data and findings clearly and concisely", "To test the reader's vocabulary limits", "To provide personal poetry"], correct: 1, exp: "Technical reports prioritize clarity and objective communication." },
+                { q: "When delivering a presentation, why is body language crucial?", options: ["It distracts the audience from slides", "It reinforces verbal messaging and conveys professional confidence", "It replaces the need for spoken words", "It is legally required"], correct: 1, exp: "Non-verbal gestures reinforce professional authority and engagement." },
+                { q: "What is a key rule when designing technical presentation slides?", options: ["Fill every space with dense paragraphs", "Use minimal bullet points, clear charts, and high contrast", "Use flashing neon colors for attention", "Write in cursive fonts"], correct: 1, exp: "Effective slides rely on minimal text and high visual contrast." },
+                { q: "How should technical questions from an audience be handled during a Q&A?", options: ["Ignore difficult questions", "Listen actively, remain calm, and give concise, evidence-based answers", "Argue with the questioner", "Rely entirely on humor"], correct: 1, exp: "Professional Q&A sessions require calm, evidence-based responses." },
+                { q: "What constitutes effective opening in an engineering briefing?", options: ["Apologizing for poor preparation", "Stating the core objective, agenda, and relevance immediately", "Telling a 20-minute personal story", "Remaining completely silent"], correct: 1, exp: "Briefings should immediately establish purpose and value." }
             ],
             tools: [
                 { q: "What is the primary function of a caliper in mechanical engineering?", options: ["To tighten hexagonal bolts and nuts", "To measure internal and external diameters with high precision", "To cut metal sheets into specific shapes", "To smooth out rough metal surfaces"], correct: 1, exp: "Calipers measure internal/external dimensions with high precision." },
                 { q: "Which tool is commonly used to drive slotted screws by applying rotational force?", options: ["Pliers", "Chisel", "Screwdriver", "Hammer"], correct: 2, exp: "Screwdrivers apply rotational force to turn slotted screws." },
                 { q: "When you need to cut internal threads inside a hole, which tool should you use?", options: ["Die", "Tap", "Reamer", "Broach"], correct: 1, exp: "A tap cuts internal threads inside a drilled hole." },
                 { q: "What is a micrometer used for?", options: ["Measuring very small distances or thicknesses with high accuracy", "Checking the temperature of engine oil", "Measuring electrical current in a circuit", "Testing the hardness of a steel alloy"], correct: 0, exp: "Micrometers yield ultra-precise thickness measurements." },
-                { q: "Which instrument is used to check if a surface is completely horizontal (level)?", options: ["Steel rule", "Spirit level", "Feeler gauge", "Torque wrench"], correct: 1, exp: "Spirit levels verify horizontal/vertical surface alignment." }
+                { q: "Which instrument is used to check if a surface is completely horizontal (level)?", options: ["Steel rule", "Spirit level", "Feeler gauge", "Torque wrench"], correct: 1, exp: "Spirit levels verify horizontal/vertical surface alignment." },
+                { q: "What is the purpose of a torque wrench in assembly work?", options: ["To measure precise tightening force on fasteners", "To cut wire cables cleanly", "To hammer heavy rivets", "To measure electrical voltage"], correct: 0, exp: "Torque wrenches ensure bolts are tightened to precise specifications." },
+                { q: "Which workshop tool is utilized for holding metal workpieces securely during filing or sawing?", options: ["Bench vise", "Caliper", "Pincers", "Center punch"], correct: 0, exp: "A bench vise clamps workpieces securely to the workbench." },
+                { q: "What tool is used to cut external threads on a steel rod or bolt?", options: ["Tap", "Die", "Reamer", "File"], correct: 1, exp: "A threading die cuts external threads onto cylindrical rods." },
+                { q: "What is the function of a feeler gauge?", options: ["Measuring electrical resistance", "Checking small gaps or clearances between machine components", "Testing surface hardness", "Measuring fluid pressure"], correct: 1, exp: "Feeler gauges consist of calibrated steel blades for measuring tight gaps." },
+                { q: "Which hand tool is designed primarily for gripping, bending, and cutting wire?", options: ["Pliers", "Wrench", "Mallet", "Scraper"], correct: 0, exp: "Pliers are standard multi-purpose gripping and cutting tools." }
             ]
         };
 
@@ -518,7 +559,6 @@
         let isHost = false;
         let questionStartTime = 0;
 
-        // Sanitize username for Firebase keys (removes . # $ [ ] /)
         function sanitizeKey(str) {
             return str.replace(/[.#$\[\]\/]/g, "_");
         }
@@ -565,13 +605,14 @@
             document.getElementById('nav-topics').classList.add('text-yellow-400', 'bg-blue-950', 'border');
         }
 
-        // MULTIPLAYER ROOM FUNCTIONS
+        // MULTIPLAYER ROOM FUNCTIONS WITH HOST TOPIC SELECTION
         function createRoomModal() {
             if (!window.firebaseReady) {
                 alert("Connecting to server... Please wait 2 seconds and try again.");
                 return;
             }
             const btn = document.getElementById('createRoomBtn');
+            const selectedTopic = document.getElementById('hostTopicSelect').value;
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating Room...';
 
@@ -582,7 +623,7 @@
             window.fbSet(roomRef, {
                 host: currentUser,
                 status: 'waiting',
-                topic: 'tenses',
+                topic: selectedTopic,
                 participants: {
                     [safeUser]: { displayName: currentUser, score: 0 }
                 }
@@ -591,11 +632,11 @@
                 isHost = true;
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fa-solid fa-plus-circle"></i> Host New Room';
-                enterRoomLobby(roomCode, true);
+                enterRoomLobby(roomCode, true, selectedTopic);
             }).catch((error) => {
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fa-solid fa-plus-circle"></i> Host New Room';
-                alert("Database Error: " + error.message + "\nCheck Firebase Rules (.read: true, .write: true).");
+                alert("Database Error: " + error.message);
             });
         }
 
@@ -619,7 +660,7 @@
                 if (snapshot.exists()) {
                     const roomData = snapshot.val();
                     if (roomData.status === 'started') {
-                        alert("This room battle has already started! Ask the host for a new room.");
+                        alert("This room battle has already started!");
                         btn.disabled = false;
                         btn.innerText = 'Join';
                         return;
@@ -632,10 +673,10 @@
                         isHost = false;
                         btn.disabled = false;
                         btn.innerText = 'Join';
-                        enterRoomLobby(code, false);
+                        enterRoomLobby(code, false, roomData.topic || 'tenses');
                     });
                 } else {
-                    alert("Room code '" + code + "' not found! Double check the number with your host.");
+                    alert("Room code '" + code + "' not found!");
                     btn.disabled = false;
                     btn.innerText = 'Join';
                 }
@@ -646,10 +687,11 @@
             });
         }
 
-        function enterRoomLobby(code, hosting) {
+        function enterRoomLobby(code, hosting, topicKey) {
             document.getElementById('topicScreen').classList.add('hidden');
             document.getElementById('roomLobbyScreen').classList.remove('hidden');
             document.getElementById('displayRoomCode').innerText = code;
+            document.getElementById('displayLobbyTopic').innerText = `Selected Topic: ${topicNames[topicKey]}`;
 
             if(hosting) {
                 document.getElementById('hostControls').classList.remove('hidden');
@@ -666,13 +708,11 @@
                     const parts = data.participants || {};
                     const sortedParts = Object.values(parts).sort((a, b) => b.score - a.score);
 
-                    // Update waiting lobby list
                     const listEl = document.getElementById('participantsList');
                     if (listEl) {
                         listEl.innerHTML = sortedParts.map(p => `<li><i class="fa-solid fa-user-check text-yellow-400"></i> ${p.displayName}</li>`).join('');
                     }
 
-                    // Update live standings during quiz
                     const liveList = document.getElementById('liveStandingsList');
                     if (liveList) {
                         liveList.innerHTML = sortedParts.map((p, idx) => `
@@ -683,7 +723,6 @@
                         `).join('');
                     }
 
-                    // Update final podium if on result screen
                     const podiumList = document.getElementById('finalRoomRankings');
                     if (podiumList) {
                         podiumList.innerHTML = sortedParts.map((p, idx) => {
@@ -697,7 +736,6 @@
                         }).join('');
                     }
 
-                    // Guest auto-start when host triggers start
                     if(data.status === 'started' && !isHost && document.getElementById('roomLobbyScreen').classList.contains('hidden') === false) {
                         startQuizSession(data.topic || 'tenses', true);
                     }
@@ -707,8 +745,11 @@
 
         function startMultiplayerBattle() {
             const roomRef = window.fbRef(window.fbDB, 'rooms/' + currentRoomCode);
-            window.fbUpdate(roomRef, { status: 'started' });
-            startQuizSession('tenses', true);
+            window.fbGet(window.fbChild(window.fbRef(window.fbDB), `rooms/${currentRoomCode}/topic`)).then((snap) => {
+                const topic = snap.exists() ? snap.val() : 'tenses';
+                window.fbUpdate(roomRef, { status: 'started' });
+                startQuizSession(topic, true);
+            });
         }
 
         function selectTopic(topicKey) {
@@ -720,8 +761,8 @@
         function startQuizSession(topicKey, isMultiplayer) {
             currentTopic = topicKey;
             const fullBank = questionBank[topicKey] || questionBank.tenses;
-            const shuffled = isMultiplayer ? [...fullBank] : [...fullBank].sort(() => 0.5 - Math.random());
-            currentQuestions = shuffled.slice(0, 5);
+            // Solo gives all 10 questions shuffled, Multiplayer gives all 10 in exact matching order
+            currentQuestions = isMultiplayer ? [...fullBank] : [...fullBank].sort(() => 0.5 - Math.random());
 
             currentIndex = 0;
             currentScore = 0;
@@ -731,7 +772,7 @@
             document.getElementById('roomLobbyScreen').classList.add('hidden');
             document.getElementById('resultScreen').classList.add('hidden');
             document.getElementById('content-quiz').classList.remove('hidden');
-            document.getElementById('activeTopicBadge').innerText = isMultiplayer ? `Live Room #${currentRoomCode}` : `Module: ${topicNames[topicKey]}`;
+            document.getElementById('activeTopicBadge').innerText = isMultiplayer ? `Live Room #${currentRoomCode} (${topicNames[topicKey]})` : `Module: ${topicNames[topicKey]}`;
             document.getElementById('liveScore').innerText = '0';
             document.getElementById('nextBtn').classList.remove('hidden');
 
@@ -795,7 +836,6 @@
 
             let pointsEarned = 0;
             if (isCorrect) {
-                // Base 100 pts + up to 50 speed bonus in multiplayer, or flat 20 pts in solo
                 if (currentRoomCode) {
                     const speedBonus = Math.max(0, Math.round(50 - (timeTakenSec * 5)));
                     pointsEarned = 100 + speedBonus;
@@ -856,18 +896,14 @@
                 tierTitle = "Einstein Level! Excellent!";
                 tierMsg = "Phenomenal engineering accuracy. You mastered every question!";
                 tierColor = "text-yellow-400 border-yellow-400";
-            } else if (correctCount >= 4) {
+            } else if (correctCount >= 7) {
                 tierTitle = "Great Job! Good Performance!";
                 tierMsg = "Great! You are really good. Keep up the consistency!";
                 tierColor = "text-emerald-400 border-emerald-500";
-            } else if (correctCount >= 3) {
-                tierTitle = "Average Performance";
-                tierMsg = "Good effort! Check the evaluation panel below to review your mistakes.";
-                tierColor = "text-sky-400 border-sky-500";
             } else {
-                tierTitle = "Needs Improvement";
-                tierMsg = "Don't forget to learn again. Try a new question set or check the evaluation below!";
-                tierColor = "text-amber-400 border-amber-500";
+                tierTitle = "Good Effort";
+                tierMsg = "Check the evaluation panel below to review your mistakes.";
+                tierColor = "text-sky-400 border-sky-500";
             }
 
             summaryBanner.innerHTML = `
@@ -923,7 +959,7 @@
             const container = document.getElementById('skillsContainer');
             container.innerHTML = modules.map(m => {
                 const modRecords = userRecords.filter(r => r.topicKey === m.key);
-                let avgScore = modRecords.length > 0 ? Math.round((modRecords.reduce((acc, curr) => acc + curr.score, 0) / modRecords.length) / 10) : 5;
+                let avgScore = modRecords.length > 0 ? Math.round((modRecords.reduce((acc, curr) => acc + curr.score, 0) / modRecords.length) / 100) : 5;
                 avgScore = Math.min(10, Math.max(1, avgScore));
                 return `
                     <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-2">
@@ -1000,4 +1036,3 @@
     </script>
 </body>
 </html>
-
