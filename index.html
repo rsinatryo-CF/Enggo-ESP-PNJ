@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MechEng Lingo-Trainer | PNJ Mechanical Engineering ESP</title>
+    <title>Enggo | English for Specific Purposes (ESP) - Mechanical Engineering</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -17,20 +17,6 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        pnjblue: {
-                            400: '#38bdf8',
-                            500: '#0284c7',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#0f172a',
-                        },
-                        pnjyellow: {
-                            300: '#fde047',
-                            400: '#facc15',
-                            500: '#eab308',
-                        }
                     }
                 }
             }
@@ -48,22 +34,26 @@
                 </div>
                 <div>
                     <h1 class="font-extrabold text-lg tracking-tight text-white flex items-center gap-2">
-                        MechEng <span class="text-yellow-400">Lingo-Trainer</span>
-                        <span class="bg-blue-600/30 text-sky-300 text-[10px] px-2.5 py-0.5 rounded-full border border-sky-400/30 font-mono font-bold">Multiplayer v3.3</span>
+                        Enggo <span class="text-yellow-400">ESP</span>
+                        <span class="bg-blue-600/30 text-sky-300 text-[10px] px-2.5 py-0.5 rounded-full border border-sky-400/30 font-mono font-bold">v4.0 Full Suite</span>
                     </h1>
-                    <p class="text-xs text-sky-200 hidden sm:block">D3 Teknik Mesin PNJ | Formosa A - Kelompok 3</p>
+                    <p class="text-xs text-sky-200 hidden sm:block">English for Specific Purposes | D3 Mechanical Engineering PNJ</p>
                 </div>
             </div>
 
             <!-- Navigation Tabs -->
             <nav class="flex items-center gap-1 sm:gap-2">
                 <button onclick="showTopicMenu()" id="nav-topics" class="nav-btn active px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 text-yellow-400 bg-blue-900 border border-yellow-400/50">
-                    <i class="fa-solid fa-list-check"></i>
-                    <span>Subbab Materi / Rooms</span>
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Modules & Rooms</span>
                 </button>
                 <button onclick="switchTab('vocab')" id="nav-vocab" class="nav-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition-all flex items-center gap-2">
                     <i class="fa-solid fa-book-open text-sky-400"></i>
-                    <span>Glossary</span>
+                    <span>ESP Glossary (25)</span>
+                </button>
+                <button onclick="switchTab('review')" id="nav-review" class="nav-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-circle-exclamation text-rose-400"></i>
+                    <span>Error Review</span>
                 </button>
                 <button onclick="switchTab('leaderboard')" id="nav-leaderboard" class="nav-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:text-white transition-all flex items-center gap-2">
                     <i class="fa-solid fa-trophy text-yellow-400"></i>
@@ -79,60 +69,68 @@
         <!-- SCREEN 0: WELCOME & STUDENT NAME INPUT -->
         <div id="welcomeScreen" class="bg-gradient-to-br from-blue-950 via-slate-900 to-blue-900 border-2 border-yellow-400/60 rounded-3xl p-8 sm:p-12 shadow-2xl max-w-2xl mx-auto my-4 text-center space-y-6">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/20 border border-yellow-400/50 text-yellow-300 text-xs font-mono font-bold uppercase tracking-wider">
-                <i class="fa-solid fa-graduation-cap"></i> D3 Teknik Mesin PNJ - Formosa A
+                <i class="fa-solid fa-graduation-cap"></i> Mechanical Engineering ESP Platform
             </div>
             <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Selamat Datang di <br><span class="text-yellow-400 drop-shadow-md">MechEng Lingo-Trainer</span>
+                Welcome to <span class="text-yellow-400 drop-shadow-md">Enggo</span><br>
+                <span class="text-xl sm:text-2xl font-bold text-sky-200">English for Specific Purposes</span>
             </h2>
             <p class="text-sky-100 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
-                Platform latihan dan pertempuran kuis *Real-time Multiplayer* 250 Bank Soal ESP Teknik Mesin[cite: 11].
+                Master technical English with a 250-question bank, real-time multiplayer battle rooms, topic mastery tracking, and an engineering vocabulary reference.
             </p>
 
             <div class="bg-slate-950/90 border border-sky-500/40 rounded-2xl p-6 max-w-md mx-auto text-left space-y-4 shadow-xl">
-                <label class="block text-xs font-mono text-yellow-300 uppercase font-bold">Masukkan Nama Mahasiswa / Praktikan:</label>
-                <input type="text" id="studentNameInput" placeholder="Contoh: Ramadhan Sinatryo" class="w-full bg-slate-900 border-2 border-blue-500/50 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400 transition-colors">
+                <label class="block text-xs font-mono text-yellow-300 uppercase font-bold">Enter Student / Practitioner Name:</label>
+                <input type="text" id="studentNameInput" placeholder="e.g., Ramadhan Sinatryo" class="w-full bg-slate-900 border-2 border-blue-500/50 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400 transition-colors">
                 <button onclick="startApp()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-extrabold py-3.5 px-6 rounded-xl transition-all shadow-lg shadow-yellow-400/30 text-sm flex items-center justify-center gap-2 tracking-wide">
-                    <span>Masuk ke Menu Utama</span> <i class="fa-solid fa-arrow-right"></i>
+                    <span>Enter Learning Dashboard</span> <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
-            <p class="text-[11px] text-sky-300/70 font-mono">PBL ESP Group 3 | Firebase Real-time Connected</p>
+            <p class="text-[11px] text-sky-300/70 font-mono">PBL ESP Group 3 | D3 Mechanical Engineering PNJ</p>
         </div>
 
-        <!-- SCREEN 1: TOPIC SELECTION & MULTIPLAYER LOBBY -->
-        <div id="topicScreen" class="hidden space-y-8 max-w-4xl mx-auto">
-            <div class="bg-gradient-to-r from-blue-900 via-slate-900 to-blue-950 border border-blue-500/40 p-6 rounded-2xl shadow-xl flex items-center justify-between">
+        <!-- SCREEN 1: TOPIC SELECTION, SKILL PROFICIENCY & MULTIPLAYER LOBBY -->
+        <div id="topicScreen" class="hidden space-y-8 max-w-5xl mx-auto">
+            <!-- User Profile & Overall Proficiency Bar -->
+            <div class="bg-gradient-to-r from-blue-900 via-slate-900 to-blue-950 border border-blue-500/40 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <span class="text-xs font-mono text-yellow-400 font-bold uppercase tracking-wider">Praktikan Aktif</span>
-                    <h2 class="text-xl font-bold text-white" id="greetingUser">Halo, Praktikan!</h2>
-                    <p class="text-xs text-sky-200 mt-1">Buat ruangan tanding kelas (Host) dengan pilihan subbab materi, atau latihan mandiri.</p>
+                    <span class="text-xs font-mono text-yellow-400 font-bold uppercase tracking-wider">Active Student Profile</span>
+                    <h2 class="text-xl font-bold text-white" id="greetingUser">Hello, Student!</h2>
+                    <p class="text-xs text-sky-200 mt-1">Track your topic mastery percentage, host a live classroom battle, or practice solo.</p>
                 </div>
-                <button onclick="backToWelcome()" class="text-xs text-sky-300 hover:text-white bg-blue-950 px-3.5 py-2 rounded-xl border border-blue-700">
-                    <i class="fa-solid fa-user-pen"></i> Ganti Nama
-                </button>
+                <div class="flex items-center gap-4">
+                    <div class="bg-slate-950/90 border border-sky-400/40 px-4 py-2.5 rounded-xl text-right">
+                        <span class="text-[10px] font-mono text-sky-300 uppercase block">Overall ESP Rating</span>
+                        <span id="overallProficiencyRating" class="text-lg font-extrabold text-yellow-400 font-mono">0.0 / 10</span>
+                    </div>
+                    <button onclick="backToWelcome()" class="text-xs text-sky-300 hover:text-white bg-blue-950 px-3.5 py-2.5 rounded-xl border border-blue-700">
+                        <i class="fa-solid fa-user-pen"></i> Switch User
+                    </button>
+                </div>
             </div>
 
-            <!-- Multiplayer Room Section (Host & Join with Custom Topic) -->
+            <!-- Multiplayer Room Section (Host & Join with Topic Selector) -->
             <div class="bg-slate-900 border-2 border-yellow-400/50 rounded-2xl p-6 shadow-xl space-y-4">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                     <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-users-rectangle text-yellow-400"></i> Live Multiplayer Battle Rooms (Quizizz-Style)
+                        <i class="fa-solid fa-users-rectangle text-yellow-400"></i> Live Multiplayer Battle Rooms
                     </h3>
-                    <span class="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/40">● Firebase Live Sync</span>
+                    <span class="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded border border-emerald-500/40">● Firebase Real-Time Sync</span>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <!-- Host Room Box -->
                     <div class="bg-slate-950 p-5 rounded-xl border border-blue-900 space-y-3">
-                        <h4 class="text-sm font-bold text-sky-300 flex items-center gap-2"><i class="fa-solid fa-chalkboard-user"></i> Buat Ruangan (Host)</h4>
-                        <p class="text-xs text-slate-400">Pilih subbab materi yang ingin diujikan secara serentak ke teman sekelas.</p>
+                        <h4 class="text-sm font-bold text-sky-300 flex items-center gap-2"><i class="fa-solid fa-chalkboard-user"></i> Create a Room (Host)</h4>
+                        <p class="text-xs text-slate-400">Select the specific chapter/subtopic you want to test with your classmates.</p>
                         
                         <div class="space-y-1">
-                            <label class="text-[10px] font-mono text-yellow-300 uppercase font-bold">Pilih Subbab Materi Host:</label>
-                            <select id="hostTopicSelect" class="w-full bg-slate-900 border border-blue-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-yellow-400 font-mono">
-                                <option value="tenses">1. Tenses (Simple, Continuous, Perfect, Future)</option>
-                                <option value="shapes">2. Shapes and Angles in Engineering</option>
-                                <option value="numbers">3. Cardinal & Ordinal Numbers</option>
-                                <option value="comm">4. Communication Skills & Presentation</option>
-                                <option value="tools">5. Tools & Instruments in Workshop</option>
+                            <label class="text-[10px] font-mono text-yellow-300 uppercase font-bold">Select Chapter / Subtopic:</label>
+                            <select id="hostTopicSelect" class="w-full bg-slate-900 border border-blue-800 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-yellow-400 font-mono">
+                                <option value="tenses">Chapter 1: Technical Tenses (50 Qs)</option>
+                                <option value="shapes">Chapter 2: Shapes & Angles in Engineering (50 Qs)</option>
+                                <option value="numbers">Chapter 3: Cardinal & Ordinal Numbers (50 Qs)</option>
+                                <option value="comm">Chapter 4: Communication Skills & Presentations (50 Qs)</option>
+                                <option value="tools">Chapter 5: Workshop Tools & Instruments (50 Qs)</option>
                             </select>
                         </div>
 
@@ -144,12 +142,12 @@
                     <!-- Join Room Box -->
                     <div class="bg-slate-950 p-5 rounded-xl border border-blue-900 space-y-3 flex flex-col justify-between">
                         <div>
-                            <h4 class="text-sm font-bold text-yellow-300 flex items-center gap-2"><i class="fa-solid fa-right-to-bracket"></i> Gabung Ruangan (Join)</h4>
-                            <p class="text-xs text-slate-400 mt-1">Masukkan kode 4 digit yang dibagikan oleh host kelas untuk mulai bertempur.</p>
+                            <h4 class="text-sm font-bold text-yellow-300 flex items-center gap-2"><i class="fa-solid fa-right-to-bracket"></i> Join a Room (Participant)</h4>
+                            <p class="text-xs text-slate-400 mt-1">Enter the 4-digit room PIN shared by your host to join the selected chapter quiz.</p>
                         </div>
                         <div class="flex gap-2 pt-2">
-                            <input type="text" id="roomCodeInput" maxlength="4" placeholder="Kode (cth: 4829)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400">
-                            <button onclick="joinRoom()" id="joinRoomBtn" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all shadow">
+                            <input type="text" id="roomCodeInput" maxlength="4" placeholder="PIN (e.g., 4829)" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2.5 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-yellow-400">
+                            <button onclick="joinRoom()" id="joinRoomBtn" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow">
                                 Join
                             </button>
                         </div>
@@ -157,57 +155,16 @@
                 </div>
             </div>
 
-            <!-- Solo Practice Modules (50 Qs Bank per Bab) -->
+            <!-- Solo Practice Modules with Mastery Capacity Progress Bars -->
             <div class="space-y-4">
-                <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-book-open text-sky-400"></i> Latihan Mandiri (Bank 50 Soal per Subbab)
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    <!-- Subbab 1 -->
-                    <div onclick="selectTopic('tenses')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
-                        <div class="w-10 h-10 rounded-xl bg-blue-600 text-yellow-400 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                        </div>
-                        <span class="text-[10px] font-mono bg-blue-500/20 text-sky-300 px-2 py-0.5 rounded border border-blue-400/30">50 Soal Bank</span>
-                        <h4 class="text-base font-bold text-white mt-1 group-hover:text-yellow-400">1. Tenses</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Simple, Continuous, Past, Perfect, & Future.</p>
-                    </div>
-                    <!-- Subbab 2 -->
-                    <div onclick="selectTopic('shapes')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
-                        <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-950 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-shapes"></i>
-                        </div>
-                        <span class="text-[10px] font-mono bg-blue-500/20 text-sky-300 px-2 py-0.5 rounded border border-blue-400/30">50 Soal Bank</span>
-                        <h4 class="text-base font-bold text-white mt-1 group-hover:text-yellow-400">2. Shapes & Angles</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Geometri 1D/2D/3D & sudut teknik.</p>
-                    </div>
-                    <!-- Subbab 3 -->
-                    <div onclick="selectTopic('numbers')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
-                        <div class="w-10 h-10 rounded-xl bg-blue-600 text-yellow-400 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-arrow-down-1-9"></i>
-                        </div>
-                        <span class="text-[10px] font-mono bg-blue-500/20 text-sky-300 px-2 py-0.5 rounded border border-blue-400/30">50 Soal Bank</span>
-                        <h4 class="text-base font-bold text-white mt-1 group-hover:text-yellow-400">3. Numbers</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Cardinal & Ordinal numbers laporan.</p>
-                    </div>
-                    <!-- Subbab 4 -->
-                    <div onclick="selectTopic('comm')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
-                        <div class="w-10 h-10 rounded-xl bg-yellow-400 text-slate-950 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-comments"></i>
-                        </div>
-                        <span class="text-[10px] font-mono bg-blue-500/20 text-sky-300 px-2 py-0.5 rounded border border-blue-400/30">50 Soal Bank</span>
-                        <h4 class="text-base font-bold text-white mt-1 group-hover:text-yellow-400">4. Communication Skills</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Text genre & presentation structure.</p>
-                    </div>
-                    <!-- Subbab 5 -->
-                    <div onclick="selectTopic('tools')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group">
-                        <div class="w-10 h-10 rounded-xl bg-blue-600 text-yellow-400 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-screwdriver-wrench"></i>
-                        </div>
-                        <span class="text-[10px] font-mono bg-blue-500/20 text-sky-300 px-2 py-0.5 rounded border border-blue-400/30">50 Soal Bank</span>
-                        <h4 class="text-base font-bold text-white mt-1 group-hover:text-yellow-400">5. Tools & Instruments</h4>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Alat ukur presisi & peralatan bengkel.</p>
-                    </div>
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-sky-400"></i> Chapter Mastery & Solo Practice (50 Questions / Chapter)
+                    </h3>
+                    <span class="text-xs font-mono text-slate-400">10 Randomized Questions per Session</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="topicCardsContainer">
+                    <!-- Cards rendered dynamically with Mastery % and 1-10 Rating -->
                 </div>
             </div>
         </div>
@@ -215,12 +172,12 @@
         <!-- SCREEN 1.5: MULTIPLAYER WAITING LOBBY -->
         <div id="roomLobbyScreen" class="hidden space-y-6 max-w-2xl mx-auto bg-slate-900 border-2 border-yellow-400 rounded-3xl p-8 shadow-2xl text-center">
             <span class="bg-yellow-400 text-slate-950 text-xs font-mono font-bold px-3 py-1 rounded-full uppercase">Live Room Lobby</span>
-            <h2 class="text-3xl font-extrabold text-white">Kode Ruangan: <span id="displayRoomCode" class="text-yellow-400 font-mono tracking-widest">----</span></h2>
-            <div id="displayLobbyTopic" class="text-xs text-sky-300 font-mono font-bold">Topik Dipilih: -</div>
-            <p class="text-xs text-slate-300">Bagikan kode di atas ke teman sekelas. Begitu nama mereka muncul di bawah, host dapat memulai pertempuran!</p>
+            <h2 class="text-3xl font-extrabold text-white">Room PIN: <span id="displayRoomCode" class="text-yellow-400 font-mono tracking-widest">----</span></h2>
+            <div id="displayLobbyTopic" class="text-xs text-sky-300 font-mono font-bold bg-blue-950/70 inline-block px-4 py-1.5 rounded-lg border border-blue-800">Selected Chapter: -</div>
+            <p class="text-xs text-slate-300">Share this 4-digit PIN with your classmates. Once participants appear below, the host can launch the quiz!</p>
             
             <div class="bg-slate-950 p-4 rounded-xl border border-blue-900 text-left">
-                <h4 class="text-xs font-mono text-yellow-300 uppercase font-bold mb-2">Peserta Terhubung:</h4>
+                <h4 class="text-xs font-mono text-yellow-300 uppercase font-bold mb-2">Connected Participants:</h4>
                 <ul id="participantsList" class="space-y-1.5 text-xs font-mono text-sky-200">
                     <!-- Firebase synced -->
                 </ul>
@@ -228,14 +185,14 @@
 
             <div id="hostControls" class="hidden space-y-3">
                 <button onclick="startMultiplayerBattle()" class="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-extrabold py-3.5 rounded-xl text-sm transition-all shadow-lg">
-                    Mulai Pertempuran Sekarang! <i class="fa-solid fa-play"></i>
+                    Start Live Quiz Battle! <i class="fa-solid fa-play"></i>
                 </button>
             </div>
             <div id="guestWaitingMsg" class="text-xs text-slate-400 italic">
-                Menunggu host memulai permainan...
+                Waiting for the host to start the session...
             </div>
             <button onclick="showTopicMenu()" class="text-xs text-slate-400 hover:text-red-400 pt-2 block mx-auto">
-                Keluar Ruangan
+                Leave Room
             </button>
         </div>
 
@@ -243,11 +200,11 @@
         <section id="content-quiz" class="tab-content hidden space-y-6">
             <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 border-2 border-blue-500/50 p-6 rounded-2xl shadow-xl flex items-center justify-between">
                 <div>
-                    <span id="activeTopicBadge" class="px-2.5 py-1 rounded-md bg-yellow-400 text-slate-950 text-xs font-mono font-bold uppercase tracking-wider">Subbab: Tenses</span>
-                    <h2 class="text-lg font-bold text-white mt-2" id="quizUserTitle">Praktikan: -</h2>
+                    <span id="activeTopicBadge" class="px-2.5 py-1 rounded-md bg-yellow-400 text-slate-950 text-xs font-mono font-bold uppercase tracking-wider">Chapter: Tenses</span>
+                    <h2 class="text-lg font-bold text-white mt-2" id="quizUserTitle">Student: -</h2>
                 </div>
                 <div class="bg-slate-950 px-4 py-2 rounded-xl border border-yellow-400 text-right">
-                    <span class="text-[10px] text-sky-300 block font-mono">Skor Sesi Ini</span>
+                    <span class="text-[10px] text-sky-300 block font-mono">Session Score</span>
                     <span id="liveScore" class="text-2xl font-extrabold text-yellow-400 font-mono">0</span>
                 </div>
             </div>
@@ -256,8 +213,8 @@
                 <!-- Quiz Area -->
                 <div class="lg:col-span-2 bg-slate-900/90 border-2 border-blue-950 rounded-2xl p-6 shadow-xl">
                     <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
-                        <span id="questionTracker" class="text-xs font-mono text-yellow-400 font-bold">Soal 1 dari 10</span>
-                        <span class="text-[11px] font-mono text-sky-300 bg-blue-950 px-2.5 py-1 rounded-lg border border-blue-800">Speed Bonus Aktif</span>
+                        <span id="questionTracker" class="text-xs font-mono text-yellow-400 font-bold">Question 1 of 10</span>
+                        <span id="modeIndicator" class="text-[11px] font-mono text-sky-300 bg-blue-950 px-2.5 py-1 rounded-lg border border-blue-800">10 Pts / Question</span>
                     </div>
 
                     <div id="quizContainer">
@@ -266,10 +223,10 @@
 
                     <div class="mt-8 pt-4 border-t border-slate-800 flex items-center justify-between">
                         <button onclick="showTopicMenu()" class="text-xs text-slate-400 hover:text-yellow-400 flex items-center gap-1.5 transition-colors">
-                            <i class="fa-solid fa-arrow-left"></i> Keluar Modul
+                            <i class="fa-solid fa-arrow-left"></i> Exit Module
                         </button>
                         <button onclick="nextQuestion()" id="nextBtn" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-2.5 rounded-xl text-xs sm:text-sm transition-all flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed shadow-md shadow-blue-600/30">
-                            Soal Berikutnya <i class="fa-solid fa-chevron-right"></i>
+                            Next Question <i class="fa-solid fa-chevron-right"></i>
                         </button>
                     </div>
                 </div>
@@ -278,7 +235,7 @@
                 <div class="space-y-6">
                     <div id="liveRoomStandingsBox" class="hidden bg-slate-900/90 border border-yellow-400/50 rounded-2xl p-5 text-xs space-y-3 shadow-lg">
                         <h4 class="font-bold text-yellow-400 flex items-center gap-2">
-                            <i class="fa-solid fa-ranking-star"></i> Klasemen Live Kelas
+                            <i class="fa-solid fa-ranking-star"></i> Live Room Standings
                         </h4>
                         <ul id="liveStandingsList" class="space-y-1.5 font-mono text-slate-200">
                             <!-- Real-time updates -->
@@ -287,10 +244,13 @@
 
                     <div class="bg-slate-900/70 border border-blue-800 rounded-2xl p-5 text-xs text-slate-300 space-y-3 shadow-lg">
                         <strong class="text-yellow-400 font-bold block text-sm flex items-center gap-2">
-                            <i class="fa-solid fa-lightbulb"></i> Panduan Kuis:
+                            <i class="fa-solid fa-lightbulb"></i> Assessment Guidelines:
                         </strong>
                         <p class="leading-relaxed">
-                            Jawab dengan cepat dan tepat! Semakin cepat menjawab di mode *multiplayer*, semakin tinggi poin bonus kecepatan yang didapat.
+                            Each session draws <strong>10 randomized questions</strong> from the 50-question chapter bank. Your accuracy updates your <strong>Chapter Mastery %</strong> and <strong>Proficiency Rating (1–10)</strong>.
+                        </p>
+                        <p class="leading-relaxed text-sky-300">
+                            Incorrect answers are automatically logged in the <strong>Error Review</strong> tab for targeted study.
                         </p>
                     </div>
                 </div>
@@ -306,25 +266,34 @@
             <!-- Multiplayer Podium if Room Active -->
             <div id="multiplayerPodiumBox" class="hidden bg-slate-900/90 border-2 border-yellow-400 rounded-2xl p-6 sm:p-8 shadow-xl space-y-4">
                 <h3 class="text-xl font-bold text-yellow-400 flex items-center gap-2">
-                    <i class="fa-solid fa-crown"></i> Podium Juara Ruangan (Top Rankings)
+                    <i class="fa-solid fa-crown"></i> Room Podium Rankings
                 </h3>
                 <div id="finalRoomRankings" class="space-y-2 font-mono text-sm"></div>
             </div>
         </div>
 
-        <!-- TAB 3: TECHNICAL GLOSSARY -->
+        <!-- TAB 3: TECHNICAL GLOSSARY (25 ITEMS WITH PART OF SPEECH & EXAMPLE SENTENCES) -->
         <section id="content-vocab" class="tab-content hidden space-y-6">
             <div class="bg-slate-900/90 border border-blue-900 rounded-2xl p-6 shadow-xl">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
                     <div>
                         <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-book-open text-yellow-400"></i> Technical Glossary ESP
+                            <i class="fa-solid fa-book-open text-yellow-400"></i> Mechanical Engineering ESP Glossary (25 Core Terms)
                         </h2>
-                        <p class="text-xs text-slate-400 mt-1">Glosarium istilah teknik mesin untuk penulisan laporan ilmiah.</p>
+                        <p class="text-xs text-slate-400 mt-1">Academic & workshop vocabulary categorized by Part of Speech (Noun, Verb, Adjective, Adverb) with practical sentence examples.</p>
                     </div>
-                    <div class="relative w-full sm:w-64">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
-                        <input type="text" id="vocabSearch" oninput="filterVocab()" placeholder="Cari kata..." class="w-full bg-slate-950 border border-blue-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                    <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+                        <select id="posFilter" onchange="filterVocab()" class="bg-slate-950 border border-blue-800 rounded-xl px-3 py-2 text-xs text-sky-300 font-mono focus:outline-none focus:border-yellow-400">
+                            <option value="ALL">All Parts of Speech</option>
+                            <option value="Noun">Noun</option>
+                            <option value="Verb">Verb</option>
+                            <option value="Adjective">Adjective</option>
+                            <option value="Adverb">Adverb</option>
+                        </select>
+                        <div class="relative w-full sm:w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                            <input type="text" id="vocabSearch" oninput="filterVocab()" placeholder="Search term or context..." class="w-full bg-slate-950 border border-blue-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-200 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                        </div>
                     </div>
                 </div>
 
@@ -332,12 +301,13 @@
                     <table class="w-full text-left text-xs text-slate-300">
                         <thead class="bg-slate-950 text-yellow-400 font-mono uppercase text-[10px] border-b border-blue-900">
                             <tr>
-                                <th class="p-3.5">General English (Hindari)</th>
-                                <th class="p-3.5">ESP Teknik Mesin (Gunakan)</th>
-                                <th class="p-3.5">Konteks Laporan Teknik</th>
+                                <th class="p-3.5">General English</th>
+                                <th class="p-3.5">ESP Technical Term</th>
+                                <th class="p-3.5">Part of Speech</th>
+                                <th class="p-3.5">Example Sentence in Engineering Context</th>
                             </tr>
                         </thead>
-                        <tbody id="vocabTableBody" class="divide-y divide-slate-800/60 font-mono">
+                        <tbody id="vocabTableBody" class="divide-y divide-slate-800/60">
                             <!-- Populated via JS -->
                         </tbody>
                     </table>
@@ -345,15 +315,35 @@
             </div>
         </section>
 
-        <!-- TAB 4: LEADERBOARD -->
-        <section id="content-leaderboard" class="tab-content hidden space-y-6">
-            <div class="bg-slate-900/90 border-2 border-yellow-400/40 rounded-2xl p-6 sm:p-8 shadow-xl max-w-3xl mx-auto">
+        <!-- TAB 4: ERROR REVIEW LOG -->
+        <section id="content-review" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900/90 border border-rose-500/40 rounded-2xl p-6 sm:p-8 shadow-xl max-w-4xl mx-auto">
                 <div class="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
                     <div>
                         <h2 class="text-xl font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-trophy text-yellow-400"></i> Leaderboard Praktikan (Lokal)
+                            <i class="fa-solid fa-circle-exclamation text-rose-400"></i> Mistake & Error Review Log
                         </h2>
-                        <p class="text-xs text-slate-400 mt-1">Daftar mahasiswa dengan perolehan skor latihan mandiri tertinggi.</p>
+                        <p class="text-xs text-slate-400 mt-1">Review questions you answered incorrectly across sessions to close knowledge gaps.</p>
+                    </div>
+                    <button onclick="clearErrorLog()" class="text-xs text-slate-400 hover:text-rose-400 transition-colors">
+                        <i class="fa-solid fa-trash"></i> Clear Log
+                    </button>
+                </div>
+                <div id="errorReviewList" class="space-y-4">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: LEADERBOARD -->
+        <section id="content-leaderboard" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900/90 border-2 border-yellow-400/40 rounded-2xl p-6 sm:p-8 shadow-xl max-w-4xl mx-auto">
+                <div class="flex items-center justify-between pb-6 border-b border-slate-800 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-trophy text-yellow-400"></i> Student Proficiency Leaderboard
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-1">Top recorded accuracy and proficiency scores across ESP modules.</p>
                     </div>
                     <button onclick="clearLeaderboard()" class="text-xs text-slate-500 hover:text-red-400 transition-colors">
                         <i class="fa-solid fa-trash"></i> Reset
@@ -365,9 +355,10 @@
                         <thead class="bg-slate-950 text-yellow-400 font-mono uppercase text-[10px] border-b border-blue-900">
                             <tr>
                                 <th class="p-3.5 text-center w-16">Rank</th>
-                                <th class="p-3.5">Nama Mahasiswa</th>
-                                <th class="p-3.5">Subbab Materi</th>
-                                <th class="p-3.5 text-right">Skor Akhir</th>
+                                <th class="p-3.5">Student Name</th>
+                                <th class="p-3.5">Chapter / Module</th>
+                                <th class="p-3.5 text-center">Rating (1-10)</th>
+                                <th class="p-3.5 text-right">Score</th>
                             </tr>
                         </thead>
                         <tbody id="leaderboardTableBody" class="divide-y divide-slate-800/60 font-mono">
@@ -383,8 +374,8 @@
     <!-- Footer -->
     <footer class="border-t border-blue-900 bg-slate-950 py-6 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center sm:text-left sm:flex items-center justify-between text-xs text-slate-400">
-            <p>Project-Based Learning (PBL) - D3 Teknik Mesin PNJ (Formosa A)</p>
-            <p class="mt-2 sm:mt-0 font-mono text-emerald-400">Firebase Asia-Southeast1 Connected</p>
+            <p>Enggo — English for Specific Purposes (ESP) | D3 Mechanical Engineering PNJ</p>
+            <p class="mt-2 sm:mt-0 font-mono text-emerald-400">Firebase Real-Time & Local Mastery Sync Active</p>
         </div>
     </footer>
 
@@ -417,287 +408,306 @@
         window.firebaseReady = true;
     </script>
 
-    <!-- Main App Logic & 250 Questions Bank -->
+    <!-- Main App Logic, 250 Questions Bank (English Explanations) & 25 ESP Vocabulary -->
     <script>
         const questionBank = {
             tenses: [
-                { q: "What is the general formula for Simple Present Tense?", options: ["S + V1 / V_s/es + O", "S + is/am/are + V_ing", "S + V2 + O", "S + will + V1"], correct: 0, exp: "Simple Present menggunakan V1 atau s/es." },
-                { q: "'I ... a book every day.' Choose the correct verb:", options: ["wrote", "write", "writing", "written"], correct: 1, exp: "Subjek 'I' memakai V1 'write'." },
-                { q: "'She ... a book every day.' Choose the correct verb:", options: ["write", "writing", "writes", "wrote"], correct: 2, exp: "Subjek tunggal (She) memakai 'writes'." },
-                { q: "What is the negative form of 'I write a book'?", options: ["I am not write a book", "I do not write a book", "I did not write a book", "I will not write a book"], correct: 1, exp: "Negatif Simple Present menggunakan 'do not'." },
-                { q: "Which of the following Simple Present sentences is incorrect?", options: ["He goes to school every day.", "They plays football on Sundays.", "We study English together.", "She likes ice cream."], correct: 1, exp: "Subjek 'They' memakai 'play'." },
-                { q: "What is the formula for Present Continuous Tense?", options: ["S + V1 + O", "S + is/am/are + V_ing", "S + was/were + V_ing", "S + has/have + V3"], correct: 1, exp: "Present Continuous memakai to be + V-ing." },
-                { q: "'We ... studying English now.'", options: ["am", "is", "are", "were"], correct: 2, exp: "Subjek 'We' memakai 'are'." },
-                { q: "Look at this sentence: 'She is read a magazine at the moment.'", options: ["is should be are", "read should be reading", "magazine should be books", "at the moment should be yesterday"], correct: 1, exp: "Harus menggunakan 'reading'." },
-                { q: "What is the Present Continuous form of 'cook' for 'He'?", options: ["cooking", "is cooking", "are cooking", "cooks"], correct: 1, exp: "He dipasangkan dengan 'is cooking'." },
-                { q: "Which sentence uses Present Continuous correctly?", options: ["I am watching TV right now.", "They is playing football now.", "She are sleeping at the moment.", "He clean his room now."], correct: 0, exp: "Struktur 'I am watching TV right now' benar." },
-                { q: "What is the basic formula of Simple Past Tense?", options: ["S + V1 + O", "S + V2 + O", "S + had + V3", "S + will + V1"], correct: 1, exp: "Simple Past memakai V2." },
-                { q: "What is the irregular verb form of 'go'?", options: ["goed - goed", "went - gone", "gone - went", "going - gone"], correct: 1, exp: "V2 'went' dan V3 'gone'." },
-                { q: "What is the irregular verb form of 'eat'?", options: ["ate - eaten", "eaten - ate", "eated - eated", "eating - eaten"], correct: 0, exp: "V2 'ate' dan V3 'eaten'." },
-                { q: "'She ... to Bali yesterday.'", options: ["go", "goes", "went", "gone"], correct: 2, exp: "Past tense menggunakan V2 'went'." },
-                { q: "Which of the following is a correct regular verb?", options: ["visit - visited", "visit - visiting", "go - went", "eat - ate"], correct: 0, exp: "'visit - visited' adalah regular verb." },
-                { q: "Which sentence is incorrect Simple Past?", options: ["I bought a new car yesterday.", "She didn't went to school this morning.", "They played football last week.", "He ate an apple an hour ago."], correct: 1, exp: "Setelah didn't harus V1 ('didn't go')." },
-                { q: "What is the formula for Past Continuous Tense?", options: ["S + was/were + V_ing", "S + is/am/are + V_ing", "S + has/have + V3", "S + had + V_ing"], correct: 0, exp: "Past Continuous memakai was/were + V-ing." },
-                { q: "'My mom ... baking a cake when I came.'", options: ["were", "was", "is", "are"], correct: 1, exp: "Subjek tunggal memakai 'was'." },
-                { q: "In 'My mom was baking while I was watching TV', the clause uses...", options: ["Past tense", "Past continuous", "Present continuous", "Simple present"], correct: 1, exp: "Keduanya menggunakan Past continuous." },
-                { q: "Correction for: 'They was sleeping when I arrived.'", options: ["They were sleeping when I arrived.", "They is sleeping when I arrived.", "They are sleeping when I arrived.", "They were sleep when I arrived."], correct: 0, exp: "They memakai 'were'." },
-                { q: "Which combined Past Continuous and Simple Past sentence is correct?", options: ["He was reading a book when the phone rang.", "He is reading a book when the phone ring.", "He read a book when the phone was ringing.", "He reads a book when the phone rang."], correct: 0, exp: "Aksi berlangsung (Past Continuous) disela (Simple Past)." },
-                { q: "What is the formula for Present Future Tense?", options: ["S + V2 + O", "S + will + V1", "S + has/have + V3", "S + was/were + V_ing"], correct: 1, exp: "Present Future memakai will + V1." },
-                { q: "'I will go to Korea next vacation.' indicates...", options: ["Past action", "Habit", "Less plan", "Past habit"], correct: 2, exp: "Menunjukkan keputusan spontan / less plan." },
-                { q: "'I am going to fly to Korea next vacation.' indicates...", options: ["Plan", "Past event", "Current activity", "Conditional"], correct: 0, exp: "Menyatakan rencana matang (plan)." },
-                { q: "What verb form follows 'will'?", options: ["V1", "V2", "V3", "V_ing"], correct: 0, exp: "Diikuti V1." },
-                { q: "Find incorrect Present Future:", options: ["She will goes to Jakarta tomorrow.", "I will buy a new phone next week.", "They are going to visit their grandparents.", "We will start the meeting soon."], correct: 0, exp: "Setelah will tidak boleh berakhiran -s." },
-                { q: "What is the formula for Present Perfect Tense?", options: ["S + has/have + V3", "S + had + V3", "S + is/am/are + V_ing", "S + V2 + O"], correct: 0, exp: "S + has/have + V3." },
-                { q: "'I ... eaten.' Choose auxiliary:", options: ["has", "have", "had", "was"], correct: 1, exp: "I memakai 'have'." },
-                { q: "'I have lived in Jakarta since I was born.' uses...", options: ["Present Perfect Tense", "Simple Past Tense", "Past Perfect Tense", "Present Continuous Tense"], correct: 0, exp: "Menggunakan Present Perfect." },
-                { q: "What is V3 of eat?", options: ["ate", "eating", "eaten", "eats"], correct: 2, exp: "V3 dari eat adalah 'eaten'." },
-                { q: "Find incorrect Present Perfect:", options: ["She has finished her homework.", "They have went to Bali.", "I have eaten breakfast.", "He has read that book."], correct: 1, exp: "Harusnya 'gone', bukan 'went'." },
-                { q: "What is the formula for Past Perfect Tense?", options: ["S + has/have + V3", "S + had + V3", "S + was/were + V_ing", "S + V2 + O"], correct: 1, exp: "S + had + V3." },
-                { q: "In 'the accident had happened when I crossed', which happened first?", options: ["I crossed the street", "The accident had happened", "Both happened at the same time", "Neither happened"], correct: 1, exp: "Past Perfect terjadi lebih dulu." },
-                { q: "In 'the accident had happened when I crossed', 'I crossed' uses...", options: ["Past tense", "Past perfect tense", "Present perfect tense", "Future tense"], correct: 0, exp: "Menggunakan Simple Past (V2)." },
-                { q: "Correction for: 'She had finish her work before boss came.'", options: ["She had finished her work before the boss came.", "She has finished her work before the boss came.", "She had finishing work before the boss came.", "She finished her work before the boss had came."], correct: 0, exp: "Setelah had harus V3 ('finished')." },
-                { q: "Which Past Perfect sentence is correct?", options: ["I had eaten lunch before they arrived.", "I have eaten lunch before they arrived.", "I had eat lunch before they arrived.", "I was eaten lunch before they arrived."], correct: 0, exp: "Sesuai aturan Past Perfect." },
-                { q: "What is the formula for Present Perfect Continuous?", options: ["S + has/have + been + V_ing", "S + had + been + V_ing", "S + is/am/are + been + V_ing", "S + will + have + V_ing"], correct: 0, exp: "S + has/have + been + V-ing." },
-                { q: "'I have been living in Jakarta since I was born.' indicates...", options: ["A completed past action", "An action that started in past and continues", "A future plan", "A daily habit"], correct: 1, exp: "Berlangsung hingga sekarang." },
-                { q: "'She ... been waiting for you for two hours.'", options: ["have", "has", "had", "was"], correct: 1, exp: "She memakai 'has'." },
-                { q: "Find incorrect Present Perfect Continuous:", options: ["They have been studying for three hours.", "He has been working here since 2020.", "I has been waiting for you.", "We have been playing football."], correct: 2, exp: "I memakai have, bukan has." },
-                { q: "Which pair of Tense and Formula is most accurate?", options: ["Simple Present -> S + V2", "Simple Past -> S + V1", "Present Continuous -> S + is/am/are + V_ing", "Present Perfect -> S + had + V3"], correct: 2, exp: "Present Continuous = to be + V-ing." },
-                { q: "Correct: 'He don't like coffee.'", options: ["He doesn't like coffee.", "He isn't like coffee.", "He didn't likes coffee.", "He not like coffee."], correct: 0, exp: "He memakai 'doesn't'." },
-                { q: "Change 'She goes to school' into Simple Past:", options: ["She went to school.", "She goed to school.", "She gone to school.", "She is going to school."], correct: 0, exp: "V2 dari go adalah went." },
-                { q: "What is V3 of visit?", options: ["visiting", "visits", "visited", "visit"], correct: 2, exp: "Visited." },
-                { q: "Which sentence expresses a past action?", options: ["I write a book every day.", "She went to Bali yesterday.", "We are studying English now.", "I will go to Korea."], correct: 1, exp: "Menggunakan went." },
-                { q: "What verb form follows 'had' in Past Perfect?", options: ["V1", "V2", "V3", "V_ing"], correct: 2, exp: "Diikuti V3." },
-                { q: "Which time signal for Present Continuous?", options: ["... yesterday", "... every day", "... now", "... next vacation"], correct: 2, exp: "... now." },
-                { q: "Which sentence is grammatically incorrect?", options: ["I have lived here for five years.", "She had left before I arrived.", "They was playing football yesterday.", "We are learning English now."], correct: 2, exp: "They memakai were." },
-                { q: "Which Present Future sentence has correct structure?", options: ["I will go to Bali next week.", "I will went to Bali next week.", "I will going to Bali next week.", "I will goes to Bali next week."], correct: 0, exp: "will + V1." },
-                { q: "Out of 16 total tenses, how many are commonly used?", options: ["4 tenses", "8 tenses", "12 tenses", "16 tenses"], correct: 1, exp: "8 tenses utama." }
+                { q: "What is the general formula for Simple Present Tense?", options: ["S + V1 / V_s/es + O", "S + is/am/are + V_ing", "S + V2 + O", "S + will + V1"], correct: 0, exp: "Simple Present uses the base verb (V1) or adds -s/-es for third-person singular subjects." },
+                { q: "'I ... a book every day.' Choose the correct verb:", options: ["wrote", "write", "writing", "written"], correct: 1, exp: "The first-person singular subject 'I' takes the base verb 'write' for habitual actions." },
+                { q: "'She ... a book every day.' Choose the correct verb:", options: ["write", "writing", "writes", "wrote"], correct: 2, exp: "Third-person singular subjects (She) require the -s suffix ('writes')." },
+                { q: "What is the negative form of 'I write a book'?", options: ["I am not write a book", "I do not write a book", "I did not write a book", "I will not write a book"], correct: 1, exp: "Negative Simple Present sentences with 'I' use the auxiliary 'do not' + V1." },
+                { q: "Which of the following Simple Present sentences is incorrect?", options: ["He goes to school every day.", "They plays football on Sundays.", "We study English together.", "She likes ice cream."], correct: 1, exp: "The plural subject 'They' takes the base verb 'play', not 'plays'." },
+                { q: "What is the formula for Present Continuous Tense?", options: ["S + V1 + O", "S + is/am/are + V_ing", "S + was/were + V_ing", "S + has/have + V3"], correct: 1, exp: "Present Continuous is formed using 'is/am/are' + present participle (V-ing)." },
+                { q: "'We ... studying English now.'", options: ["am", "is", "are", "were"], correct: 2, exp: "The plural subject 'We' pairs with the auxiliary 'are'." },
+                { q: "Look at this sentence: 'She is read a magazine at the moment.' How should it be corrected?", options: ["is should be are", "read should be reading", "magazine should be books", "at the moment should be yesterday"], correct: 1, exp: "In Present Continuous, the main verb must take the -ing form ('reading')." },
+                { q: "What is the Present Continuous form of 'cook' for the subject 'He'?", options: ["cooking", "is cooking", "are cooking", "cooks"], correct: 1, exp: "The singular subject 'He' requires 'is' + V-ing ('is cooking')." },
+                { q: "Which sentence uses the Present Continuous Tense correctly?", options: ["I am watching TV right now.", "They is playing football now.", "She are sleeping at the moment.", "He clean his room now."], correct: 0, exp: "'I am watching TV right now' follows proper Present Continuous structure." },
+                { q: "What is the basic formula of Simple Past Tense?", options: ["S + V1 + O", "S + V2 + O", "S + had + V3", "S + will + V1"], correct: 1, exp: "Simple Past Tense uses the past simple verb form (V2)." },
+                { q: "What are the V2 and V3 forms of the irregular verb 'go'?", options: ["goed - goed", "went - gone", "gone - went", "going - gone"], correct: 1, exp: "The irregular forms of 'go' are V2 'went' and V3 'gone'." },
+                { q: "What are the V2 and V3 forms of the irregular verb 'eat'?", options: ["ate - eaten", "eaten - ate", "eated - eated", "eating - eaten"], correct: 0, exp: "The irregular forms of 'eat' are V2 'ate' and V3 'eaten'." },
+                { q: "'She ... to Bali yesterday.'", options: ["go", "goes", "went", "gone"], correct: 2, exp: "The time marker 'yesterday' indicates Simple Past, requiring V2 'went'." },
+                { q: "Which of the following is a correct regular verb pair?", options: ["visit - visited", "visit - visiting", "go - went", "eat - ate"], correct: 0, exp: "'visit - visited' follows standard regular past tense -ed formation." },
+                { q: "Which Simple Past sentence is grammatically incorrect?", options: ["I bought a new car yesterday.", "She didn't went to school this morning.", "They played football last week.", "He ate an apple an hour ago."], correct: 1, exp: "After 'didn't', the main verb must revert to its base form V1 ('didn't go')." },
+                { q: "What is the formula for Past Continuous Tense?", options: ["S + was/were + V_ing", "S + is/am/are + V_ing", "S + has/have + V3", "S + had + V_ing"], correct: 0, exp: "Past Continuous uses 'was/were' + V-ing." },
+                { q: "'My mom ... baking a cake when I came.'", options: ["were", "was", "is", "are"], correct: 1, exp: "The singular subject 'My mom' takes 'was'." },
+                { q: "In 'My mom was baking a cake while I was watching TV', the clause 'I was watching TV' acts as...", options: ["Past tense", "Past continuous", "Present continuous", "Simple present"], correct: 1, exp: "It describes a parallel ongoing action in the past (Past Continuous)." },
+                { q: "How do you correct: 'They was sleeping when I arrived.'?", options: ["They were sleeping when I arrived.", "They is sleeping when I arrived.", "They are sleeping when I arrived.", "They were sleep when I arrived."], correct: 0, exp: "The plural subject 'They' requires 'were'." },
+                { q: "Which combined Past Continuous and Simple Past sentence is correct?", options: ["He was reading a book when the phone rang.", "He is reading a book when the phone ring.", "He read a book when the phone was ringing.", "He reads a book when the phone rang."], correct: 0, exp: "The ongoing background action uses Past Continuous, while the interrupting action uses Simple Past." },
+                { q: "What is the formula for Present Future Tense?", options: ["S + V2 + O", "S + will + V1", "S + has/have + V3", "S + was/were + V_ing"], correct: 1, exp: "Present Future uses the modal 'will' + base verb (V1)." },
+                { q: "'I will go to Korea next vacation.' This expression usually indicates...", options: ["Past action", "Habit", "Spontaneous decision / less fixed plan", "Past habit"], correct: 2, exp: "'Will' indicates a spontaneous decision or less rigid plan." },
+                { q: "'I am going to fly to Korea next vacation.' This expression indicates...", options: ["Prior established plan", "Past event", "Current activity", "Conditional"], correct: 0, exp: "'Be going to' expresses a pre-arranged plan or intention." },
+                { q: "What verb form follows the modal 'will' in Present Future?", options: ["V1", "V2", "V3", "V_ing"], correct: 0, exp: "Modal auxiliaries like 'will' are always followed by the bare infinitive (V1)." },
+                { q: "Identify the incorrect Present Future sentence:", options: ["She will goes to Jakarta tomorrow.", "I will buy a new phone next week.", "They are going to visit their grandparents.", "We will start the meeting soon."], correct: 0, exp: "Verbs following 'will' never take -s/-es ('will go')." },
+                { q: "What is the formula for Present Perfect Tense?", options: ["S + has/have + V3", "S + had + V3", "S + is/am/are + V_ing", "S + V2 + O"], correct: 0, exp: "Present Perfect is formed using 'has/have' + past participle (V3)." },
+                { q: "'I ... eaten.' Choose the correct auxiliary verb:", options: ["has", "have", "had", "was"], correct: 1, exp: "The subject 'I' takes the auxiliary 'have'." },
+                { q: "'I have lived in Jakarta since I was born.' This sentence uses...", options: ["Present Perfect Tense", "Simple Past Tense", "Past Perfect Tense", "Present Continuous Tense"], correct: 0, exp: "'Have + V3 + since' is a classic Present Perfect structure." },
+                { q: "What is the V3 form of 'eat' used in Present Perfect?", options: ["ate", "eating", "eaten", "eats"], correct: 2, exp: "The past participle (V3) of 'eat' is 'eaten'." },
+                { q: "Identify the incorrect Present Perfect sentence:", options: ["She has finished her homework.", "They have went to Bali.", "I have eaten breakfast.", "He has read that book."], correct: 1, exp: "After 'have/has', the past participle V3 'gone' must be used instead of 'went'." },
+                { q: "What is the formula for Past Perfect Tense?", options: ["S + has/have + V3", "S + had + V3", "S + was/were + V_ing", "S + V2 + O"], correct: 1, exp: "Past Perfect uses 'had' + past participle (V3)." },
+                { q: "In 'The accident had happened when I crossed the street', which action occurred first?", options: ["I crossed the street", "The accident had happened", "Both happened simultaneously", "Neither happened"], correct: 1, exp: "Past Perfect ('had happened') denotes the earlier of two past events." },
+                { q: "In 'The accident had happened when I crossed the street', the clause 'I crossed the street' uses...", options: ["Simple Past tense", "Past Perfect tense", "Present Perfect tense", "Future tense"], correct: 0, exp: "'Crossed' is V2, indicating Simple Past Tense." },
+                { q: "Correct this sentence: 'She had finish her work before the boss came.'", options: ["She had finished her work before the boss came.", "She has finished her work before the boss came.", "She had finishing work before the boss came.", "She finished her work before the boss had came."], correct: 0, exp: "The auxiliary 'had' must be followed by V3 ('finished')." },
+                { q: "Which Past Perfect Tense sentence is correct?", options: ["I had eaten lunch before they arrived.", "I have eaten lunch before they arrived.", "I had eat lunch before they arrived.", "I was eaten lunch before they arrived."], correct: 0, exp: "'Had + eaten' (V3) properly establishes sequence before 'arrived'." },
+                { q: "What is the formula for Present Perfect Continuous Tense?", options: ["S + has/have + been + V_ing", "S + had + been + V_ing", "S + is/am/are + been + V_ing", "S + will + have + V_ing"], correct: 0, exp: "Present Perfect Continuous uses 'has/have + been + V-ing'." },
+                { q: "'I have been living in Jakarta since I was born.' This indicates...", options: ["A completed past action", "An action that started in the past and continues into the present", "A future plan", "A daily habit"], correct: 1, exp: "It emphasizes ongoing duration from the past up to the present moment." },
+                { q: "'She ... been waiting for you for two hours.' Choose the correct auxiliary:", options: ["have", "has", "had", "was"], correct: 1, exp: "Third-person singular 'She' uses 'has'." },
+                { q: "Identify the incorrect Present Perfect Continuous sentence:", options: ["They have been studying for three hours.", "He has been working here since 2020.", "I has been waiting for you.", "We have been playing football."], correct: 2, exp: "The subject 'I' requires 'have', not 'has'." },
+                { q: "Which Tense and Formula pair is accurate?", options: ["Simple Present -> S + V2", "Simple Past -> S + V1", "Present Continuous -> S + is/am/are + V_ing", "Present Perfect -> S + had + V3"], correct: 2, exp: "Present Continuous uses 'is/am/are + V-ing'." },
+                { q: "Correct the sentence: 'He don't like coffee.'", options: ["He doesn't like coffee.", "He isn't like coffee.", "He didn't likes coffee.", "He not like coffee."], correct: 0, exp: "Third-person singular 'He' takes 'doesn't'." },
+                { q: "Convert 'She goes to school' into Simple Past Tense:", options: ["She went to school.", "She goed to school.", "She gone to school.", "She is going to school."], correct: 0, exp: "The past simple (V2) of 'go' is 'went'." },
+                { q: "What is the V3 form of the regular verb 'visit'?", options: ["visiting", "visits", "visited", "visit"], correct: 2, exp: "'Visited' is both the V2 and V3 form of 'visit'." },
+                { q: "Which sentence expresses a completed past action?", options: ["I write a book every day.", "She went to Bali yesterday.", "We are studying English now.", "I will go to Korea."], correct: 1, exp: "Uses V2 'went' with past time adverb 'yesterday'." },
+                { q: "What verb form is required after 'had' in Past Perfect Tense?", options: ["V1", "V2", "V3", "V_ing"], correct: 2, exp: "Past Perfect always requires the past participle (V3)." },
+                { q: "Which time signal typically pairs with Present Continuous?", options: ["... yesterday", "... every day", "... now", "... next vacation"], correct: 2, exp: "'Now' indicates an action happening at the moment of speaking." },
+                { q: "Which sentence is grammatically incorrect?", options: ["I have lived here for five years.", "She had left before I arrived.", "They was playing football yesterday.", "We are learning English now."], correct: 2, exp: "Plural subject 'They' requires 'were', not 'was'." },
+                { q: "Which Present Future sentence has proper syntax?", options: ["I will go to Bali next week.", "I will went to Bali next week.", "I will going to Bali next week.", "I will goes to Bali next week."], correct: 0, exp: "'Will' must be followed by bare infinitive 'go'." },
+                { q: "Out of 16 total tenses in English grammar, how many are core everyday/technical tenses?", options: ["4 tenses", "8 tenses", "12 tenses", "16 tenses"], correct: 1, exp: "8 core tenses form the foundation of standard technical and everyday communication." }
             ],
             shapes: [
-                { q: "How many kinds of dimensional shapes are mentioned?", options: ["2", "3", "4", "5"], correct: 1, exp: "1D, 2D, dan 3D." },
-                { q: "One-dimensional shapes have how many measurements?", options: ["One (length/width)", "Two (length and width)", "Three (length, width, and height)", "Four"], correct: 0, exp: "Satu ukuran (panjang/lebar)." },
-                { q: "Two-dimensional shapes are also called:", options: ["Solid shapes", "Plane shapes", "Line shapes", "Volume shapes"], correct: 1, exp: "Plane shapes." },
-                { q: "Three-dimensional shapes have which measurements?", options: ["Length only", "Length and width", "Length, width, and height", "Area only"], correct: 2, exp: "Panjang, lebar, dan tinggi." },
-                { q: "Three-dimensional shapes are also known as:", options: ["Plane shapes", "Rectilinear shapes", "Solid shapes", "Curvilinear shapes"], correct: 2, exp: "Solid shapes." },
-                { q: "What does 'dimension' mean in engineering?", options: ["Senses such as sight and sound", "Measurement", "Movie effects", "Color"], correct: 1, exp: "Measurement (pengukuran)." },
-                { q: "Which is an example of a one-dimensional shape?", options: ["Square", "Diagonal line", "Cylinder", "Triangle"], correct: 1, exp: "Diagonal line." },
-                { q: "Two-dimensional shapes produce:", options: ["Volume", "Area and circumference", "Only height", "Faces only"], correct: 1, exp: "Area dan keliling." },
-                { q: "Three-dimensional shapes produce:", options: ["Area only", "Circumference only", "Volume", "Length only"], correct: 2, exp: "Volume." },
-                { q: "How many faces does a cylinder have?", options: ["1", "2", "3", "6"], correct: 2, exp: "3 sisi." },
-                { q: "A square has:", options: ["Three equal sides", "Four equal sides and four angles", "Two equal sides", "No equal sides"], correct: 1, exp: "4 sisi sama panjang dan 4 sudut." },
-                { q: "In a rectangle, the opposite sides are:", options: ["Unequal and not parallel", "Equal and parallel", "Curved", "All different"], correct: 1, exp: "Sisi berhadapan sejajar dan sama." },
-                { q: "A triangle has how many sides?", options: ["2", "3", "4", "5"], correct: 1, exp: "3 sisi." },
-                { q: "A circle has:", options: ["Four sides", "Three sides", "One side", "No sides"], correct: 2, exp: "1 sisi melengkung." },
-                { q: "A polygon is a shape which has:", options: ["Exactly 3 sides", "More than 4 sides/angles", "Only curved sides", "Exactly 1 side"], correct: 1, exp: "Lebih dari 4 sisi/sudut." },
-                { q: "Rectilinear shapes have:", options: ["Curved sides", "Straight sides", "No sides", "Only one side"], correct: 1, exp: "Sisi lurus." },
-                { q: "Which of the following is a rectilinear shape?", options: ["Circle", "Oval", "Square", "Semicircle"], correct: 2, exp: "Square." },
-                { q: "Curvilinear shapes have:", options: ["Straight sides", "Curved sides", "Only right angles", "Parallel sides only"], correct: 1, exp: "Sisi melengkung." },
-                { q: "Which of the following is a curvilinear shape?", options: ["Triangle", "Rectangle", "Circle", "Rhombus"], correct: 2, exp: "Circle." },
-                { q: "Examples of rectilinear shapes include:", options: ["Circle, semicircle, oval", "Square, rectangle, triangle, rhombus, parallelogram, trapezium", "Sphere and cone", "Cylinder and tube"], correct: 1, exp: "Persegi, persegi panjang, segitiga, dll." },
-                { q: "Equilateral triangles have:", options: ["All angles equal to 60° and all sides equal", "No equal sides", "One right angle", "Two equal sides only"], correct: 0, exp: "Semua sisi sama dan sudut 60°." },
-                { q: "Isosceles triangles have:", options: ["All sides unequal", "Two angles equal and two sides of equal length", "All angles 90°", "No lines of symmetry"], correct: 1, exp: "2 sisi dan 2 sudut sama." },
-                { q: "Scalene triangles have:", options: ["All sides equal", "Two sides equal", "No angles equal and no sides of equal length", "One right angle only"], correct: 2, exp: "Tidak ada sisi sama panjang." },
-                { q: "Right triangles have:", options: ["All angles acute", "One right angle (90°)", "One obtuse angle", "All angles equal to 60°"], correct: 1, exp: "Satu sudut siku-siku." },
-                { q: "Obtuse triangles have:", options: ["All angles less than 90°", "One obtuse angle (greater than 90°)", "One right angle", "All angles equal"], correct: 1, exp: "Satu sudut tumpul." },
-                { q: "Acute triangles have:", options: ["One angle greater than 90°", "All angles acute (less than 90°)", "One angle of 90°", "No equal sides"], correct: 1, exp: "Semua sudut lancip." },
-                { q: "All equilateral triangles have how many lines of symmetry?", options: ["1", "2", "3", "0"], correct: 2, exp: "3 simetri lipat." },
-                { q: "A triangle does not have:", options: ["Sides", "Angles", "Parallel sides", "Vertices"], correct: 2, exp: "Tidak punya sisi sejajar." },
-                { q: "Notes mention three kinds of triangles:", options: ["Isosceles, equilateral, and right triangle", "Only scalene and obtuse", "Only acute and right", "Square, rectangle, and circle"], correct: 0, exp: "Sama kaki, sama sisi, siku-siku." },
-                { q: "Which triangle has all angles equal to 60°?", options: ["Scalene", "Right", "Equilateral", "Obtuse"], correct: 2, exp: "Equilateral." },
-                { q: "A right angle measures:", options: ["Less than 90 degrees", "90 degrees", "More than 90 but less than 180 degrees", "More than 180 degrees"], correct: 1, exp: "90 derajat." },
-                { q: "An obtuse angle is:", options: ["Less than 90 degrees", "Exactly 90 degrees", "Greater than 90 and less than 180 degrees", "Greater than 180 degrees"], correct: 2, exp: "Antara 90 dan 180 derajat." },
-                { q: "An acute angle is:", options: ["Greater than 90 degrees", "Exactly 90 degrees", "Less than 90 degrees", "Greater than 180 degrees"], correct: 2, exp: "Kurang dari 90 derajat." },
-                { q: "A reflex angle is:", options: ["Less than 90 degrees", "Exactly 90 degrees", "Between 90 and 180 degrees", "More than 180 and less than 360 degrees"], correct: 3, exp: "Antara 180 dan 360 derajat." },
-                { q: "Square E has how many angles?", options: ["2", "3", "4", "5"], correct: 2, exp: "4 sudut." },
-                { q: "The angles of a square are:", options: ["Acute angles", "Obtuse angles", "Right angles", "Reflex angles"], correct: 2, exp: "Right angles (siku-siku)." },
-                { q: "Angle A in a square is:", options: ["An acute angle", "A right angle (90 degrees)", "An obtuse angle", "A reflex angle"], correct: 1, exp: "Right angle." },
-                { q: "According to material, a trapezoid always has:", options: ["Only acute angles", "A reflex angle and sometimes one right angle", "All right angles", "No angles"], correct: 1, exp: "Sudut refleks." },
-                { q: "The material states that a trapezoid never has:", options: ["A right angle", "An obtuse angle", "Parallel sides", "Four sides"], correct: 1, exp: "Tidak pernah punya sudut tumpul." },
-                { q: "Polygons are related to:", options: ["Only circles", "Geometric properties and shapes with multiple sides", "Only three-dimensional objects", "Only lines"], correct: 1, exp: "Sifat geometris bersisi banyak." },
-                { q: "The noun form for a shape with three sides is:", options: ["Rectangular", "Triangular", "A triangle", "Circular"], correct: 2, exp: "A triangle." },
-                { q: "The adjective form for a rectangle is:", options: ["Square", "Rectangular", "Circular", "Spherical"], correct: 1, exp: "Rectangular." },
-                { q: "'A coin is circular in shape' uses 'circular' as:", options: ["A noun", "An adjective", "A verb", "An adverb"], correct: 1, exp: "Adjective." },
-                { q: "'A coin is shaped like a circle' uses 'circle' as:", options: ["An adjective", "A noun", "A preposition", "A conjunction"], correct: 1, exp: "Noun." },
-                { q: "The adjective form for a sphere is:", options: ["Conical", "Cylindrical", "Spherical", "Triangular"], correct: 2, exp: "Spherical." },
-                { q: "A square is described as:", options: ["A one-dimensional shape with curved sides", "A two-dimensional rectilinear shape with 4 equal sides and 4 right angles", "A three-dimensional solid with volume only", "A curvilinear shape"], correct: 1, exp: "2D rectilinear dengan 4 sisi sama & 4 sudut siku." },
-                { q: "A rectangle is a:", options: ["Curvilinear shape with unequal opposite sides", "Two-dimensional rectilinear shape where only the opposite sides are equal and parallel", "One-dimensional line", "Three-dimensional cube"], correct: 1, exp: "2D rectilinear dengan sisi berhadapan sejajar." },
-                { q: "An equilateral triangle is a:", options: ["Three-dimensional shape", "Two-dimensional rectilinear shape with 3 equal sides and 3 acute angles", "Curvilinear shape", "Shape with no straight sides"], correct: 1, exp: "2D rectilinear dengan 3 sisi sama & 3 sudut lancip." },
-                { q: "Three-dimensional shapes include examples such as:", options: ["Square, rectangle, triangle", "Cone, cylinder, prism, sphere, hemisphere, tube", "Only lines", "Only circles"], correct: 1, exp: "Cone, cylinder, prism, sphere." },
-                { q: "'What shape is the wheel?' can be answered as:", options: ["The wheel is shaped like a square", "The wheel is shaped like a circle / circular in shape", "The wheel is shaped like a triangle", "The wheel is shaped like a cube"], correct: 1, exp: "Shaped like a circle / circular in shape." }
+                { q: "How many dimensional categories of shapes are classified in engineering geometry?", options: ["2", "3", "4", "5"], correct: 1, exp: "Shapes are categorized into 3 dimensions: 1D, 2D, and 3D." },
+                { q: "One-dimensional (1D) shapes possess how many measurements?", options: ["One (length/width)", "Two (length and width)", "Three (length, width, and height)", "Four"], correct: 0, exp: "1D shapes such as lines only have a single measurement (length)." },
+                { q: "Two-dimensional (2D) shapes are also referred to as:", options: ["Solid shapes", "Plane shapes", "Line shapes", "Volume shapes"], correct: 1, exp: "2D shapes lie flat on a plane and are called plane shapes." },
+                { q: "Three-dimensional (3D) shapes possess which measurements?", options: ["Length only", "Length and width", "Length, width, and height", "Area only"], correct: 2, exp: "3D objects occupy space with length, width, and height (depth)." },
+                { q: "Three-dimensional shapes are also known as:", options: ["Plane shapes", "Rectilinear shapes", "Solid shapes", "Curvilinear shapes"], correct: 2, exp: "3D geometric forms are referred to as solid shapes." },
+                { q: "What does 'dimension' primarily refer to in engineering drawings?", options: ["Senses such as sight and sound", "Measurement", "Movie effects", "Color"], correct: 1, exp: "In engineering, dimension refers to exact physical measurement." },
+                { q: "Which of the following is a one-dimensional shape?", options: ["Square", "Diagonal line", "Cylinder", "Triangle"], correct: 1, exp: "A diagonal line only has length, making it 1D." },
+                { q: "Two-dimensional shapes allow us to calculate:", options: ["Volume", "Area and circumference/perimeter", "Only height", "Faces only"], correct: 1, exp: "2D shapes yield surface area and perimeter/circumference." },
+                { q: "Three-dimensional shapes allow us to calculate:", options: ["Area only", "Circumference only", "Volume", "Length only"], correct: 2, exp: "3D solid bodies contain internal volume." },
+                { q: "How many faces does a standard closed cylinder have?", options: ["1", "2", "3", "6"], correct: 2, exp: "A closed cylinder has 3 faces: two circular bases and one curved lateral surface." },
+                { q: "A square is defined as having:", options: ["Three equal sides", "Four equal sides and four right angles", "Two equal sides", "No equal sides"], correct: 1, exp: "A square has 4 congruent sides and 4 internal 90° angles." },
+                { q: "In a rectangle, the opposite sides are:", options: ["Unequal and not parallel", "Equal and parallel", "Curved", "All different"], correct: 1, exp: "Opposite sides of a rectangle are equal in length and parallel." },
+                { q: "A triangle consists of how many sides?", options: ["2", "3", "4", "5"], correct: 1, exp: "A triangle is a three-sided polygon." },
+                { q: "A circle has:", options: ["Four sides", "Three sides", "One continuous curved side", "No sides"], correct: 2, exp: "A circle is bounded by one continuous curved line equidistant from the center." },
+                { q: "A polygon is generally defined as a closed plane shape with:", options: ["Exactly 3 sides", "Multiple straight sides/angles (typically >4 in basic classification)", "Only curved sides", "Exactly 1 side"], correct: 1, exp: "Polygons are multi-sided rectilinear figures." },
+                { q: "Rectilinear shapes are characterized by:", options: ["Curved sides", "Straight sides", "No sides", "Only one side"], correct: 1, exp: "Rectilinear geometry consists strictly of straight line segments." },
+                { q: "Which of the following is a rectilinear shape?", options: ["Circle", "Oval", "Square", "Semicircle"], correct: 2, exp: "A square is bounded by straight lines, making it rectilinear." },
+                { q: "Curvilinear shapes are characterized by:", options: ["Straight sides", "Curved sides", "Only right angles", "Parallel sides only"], correct: 1, exp: "Curvilinear shapes are bounded by curved lines." },
+                { q: "Which of the following is a curvilinear shape?", options: ["Triangle", "Rectangle", "Circle", "Rhombus"], correct: 2, exp: "A circle has a continuous curved boundary." },
+                { q: "Examples of rectilinear shapes include:", options: ["Circle, semicircle, oval", "Square, rectangle, triangle, rhombus, parallelogram, trapezium", "Sphere and cone", "Cylinder and tube"], correct: 1, exp: "All listed polygons have straight edges." },
+                { q: "Equilateral triangles have:", options: ["All angles equal to 60° and all sides equal", "No equal sides", "One right angle", "Two equal sides only"], correct: 0, exp: "Equilateral triangles have three equal sides and three 60° angles." },
+                { q: "Isosceles triangles have:", options: ["All sides unequal", "Two equal angles and two sides of equal length", "All angles 90°", "No lines of symmetry"], correct: 1, exp: "Isosceles triangles feature two equal sides and two equal base angles." },
+                { q: "Scalene triangles have:", options: ["All sides equal", "Two sides equal", "No equal angles and no sides of equal length", "One right angle only"], correct: 2, exp: "All three sides and angles of a scalene triangle are different." },
+                { q: "Right triangles have:", options: ["All angles acute", "One right angle (90°)", "One obtuse angle", "All angles equal to 60°"], correct: 1, exp: "A right triangle contains one 90° internal angle." },
+                { q: "Obtuse triangles have:", options: ["All angles less than 90°", "One obtuse angle (greater than 90°)", "One right angle", "All angles equal"], correct: 1, exp: "An obtuse triangle contains one angle measuring between 90° and 180°." },
+                { q: "Acute triangles have:", options: ["One angle greater than 90°", "All angles acute (less than 90°)", "One angle of 90°", "No equal sides"], correct: 1, exp: "All three internal angles in an acute triangle are under 90°." },
+                { q: "How many lines of symmetry does an equilateral triangle have?", options: ["1", "2", "3", "0"], correct: 2, exp: "An equilateral triangle has 3 axes of symmetry." },
+                { q: "A triangle never has:", options: ["Sides", "Angles", "Parallel sides", "Vertices"], correct: 2, exp: "Because a triangle only has three sides, no two sides can be parallel." },
+                { q: "Three primary triangle classifications are:", options: ["Isosceles, equilateral, and right triangle", "Only scalene and obtuse", "Only acute and right", "Square, rectangle, and circle"], correct: 0, exp: "Isosceles, equilateral, and right triangles are fundamental classifications." },
+                { q: "Which triangle always has internal angles of 60°?", options: ["Scalene", "Right", "Equilateral", "Obtuse"], correct: 2, exp: "180° divided equally by 3 equals 60° per angle in an equilateral triangle." },
+                { q: "A right angle measures:", options: ["Less than 90 degrees", "Exactly 90 degrees", "More than 90 but less than 180 degrees", "More than 180 degrees"], correct: 1, exp: "A right angle is exactly 90°." },
+                { q: "An obtuse angle measures:", options: ["Less than 90 degrees", "Exactly 90 degrees", "Greater than 90 and less than 180 degrees", "Greater than 180 degrees"], correct: 2, exp: "Obtuse angles fall strictly between 90° and 180°." },
+                { q: "An acute angle measures:", options: ["Greater than 90 degrees", "Exactly 90 degrees", "Less than 90 degrees", "Greater than 180 degrees"], correct: 2, exp: "Acute angles are smaller than 90°." },
+                { q: "A reflex angle measures:", options: ["Less than 90 degrees", "Exactly 90 degrees", "Between 90 and 180 degrees", "More than 180 and less than 360 degrees"], correct: 3, exp: "Reflex angles exceed 180° up to 360°." },
+                { q: "How many internal angles does a square have?", options: ["2", "3", "4", "5"], correct: 2, exp: "A square has 4 corners (angles)." },
+                { q: "The internal angles of a square are all:", options: ["Acute angles", "Obtuse angles", "Right angles", "Reflex angles"], correct: 2, exp: "All four angles of a square are 90° right angles." },
+                { q: "Each corner angle in a square is:", options: ["An acute angle", "A right angle (90 degrees)", "An obtuse angle", "A reflex angle"], correct: 1, exp: "Every corner of a square is a 90° right angle." },
+                { q: "In geometric classification notes, an exterior angle around a vertex can form:", options: ["Only acute angles", "A reflex angle", "All right angles", "No angles"], correct: 1, exp: "The exterior sweep around a polygon vertex is a reflex angle (>180°)." },
+                { q: "A right trapezoid always has:", options: ["Four acute angles", "Two right angles", "No parallel sides", "Five sides"], correct: 1, exp: "A right trapezoid has two adjacent 90° angles." },
+                { q: "Polygons are geometric shapes characterized by:", options: ["Only circles", "Multiple straight sides and vertices", "Only three-dimensional objects", "Only lines"], correct: 1, exp: "Polygons are closed 2D figures with multiple straight sides." },
+                { q: "The noun form for a three-sided shape is:", options: ["Rectangular", "Triangular", "A triangle", "Circular"], correct: 2, exp: "'Triangle' is the noun; 'triangular' is the adjective." },
+                { q: "The adjective form corresponding to 'rectangle' is:", options: ["Square", "Rectangular", "Circular", "Spherical"], correct: 1, exp: "'Rectangular' describes an object shaped like a rectangle." },
+                { q: "In 'A coin is circular in shape', the word 'circular' functions as:", options: ["A noun", "An adjective", "A verb", "An adverb"], correct: 1, exp: "'Circular' modifies the noun 'coin', acting as an adjective." },
+                { q: "In 'A coin is shaped like a circle', the word 'circle' functions as:", options: ["An adjective", "A noun", "A preposition", "A conjunction"], correct: 1, exp: "Preceded by the article 'a', 'circle' is a noun." },
+                { q: "The adjective form corresponding to 'sphere' is:", options: ["Conical", "Cylindrical", "Spherical", "Triangular"], correct: 2, exp: "'Spherical' is the adjective form of 'sphere'." },
+                { q: "How is a square formally described in technical English?", options: ["A 1D shape with curved sides", "A 2D rectilinear shape with 4 equal sides and 4 right angles", "A 3D solid with volume only", "A curvilinear shape"], correct: 1, exp: "2D rectilinear figure with 4 equal edges and 4 right angles." },
+                { q: "How is a rectangle formally described?", options: ["Curvilinear shape", "A 2D rectilinear shape whose opposite sides are equal and parallel", "1D line", "3D cube"], correct: 1, exp: "Opposite sides are equal and parallel with four 90° angles." },
+                { q: "How is an equilateral triangle formally described?", options: ["3D shape", "A 2D rectilinear shape with 3 equal sides and 3 acute angles", "Curvilinear shape", "Shape without straight sides"], correct: 1, exp: "3 equal straight sides and 3 acute 60° angles." },
+                { q: "Examples of three-dimensional (3D) engineering solids include:", options: ["Square, rectangle, triangle", "Cone, cylinder, prism, sphere, hemisphere, tube", "Only lines", "Only circles"], correct: 1, exp: "Cones, cylinders, prisms, and spheres are standard 3D solids." },
+                { q: "'What shape is the wheel?' is best answered in technical English as:", options: ["The wheel is square in shape.", "The wheel is shaped like a circle / circular in shape.", "The wheel is triangular in shape.", "The wheel is cubic in shape."], correct: 1, exp: "'Circular in shape' or 'shaped like a circle' is accurate." }
             ],
             numbers: [
-                { q: "The word form of 15th is...", options: ["Fiftieth", "Fifteenth", "Five-tenth", "Fiveth"], correct: 1, exp: "Fifteenth." },
-                { q: "The cardinal number for 'ninety-eight' is...", options: ["89", "98", "908", "980"], correct: 1, exp: "98." },
-                { q: "The date October 21st is read as...", options: ["Twenty-one October", "Twenty-first October", "Twoth-first October", "Two-first October"], correct: 1, exp: "Twenty-first October." },
-                { q: "Which ordinal number is written incorrectly?", options: ["1st", "2nd", "3rd", "4st"], correct: 3, exp: "4st salah, harusnya 4th." },
-                { q: "The word form of 32nd is...", options: ["Thirty-second", "Three-second", "Thirty-twoth", "Thirtieth-second"], correct: 0, exp: "Thirty-second." },
-                { q: "The result of 'twenty-five plus fifteen' is...", options: ["30", "40", "50", "45"], correct: 1, exp: "40." },
-                { q: "February is the 2nd month. In English:", options: ["Two month", "Twoth month", "The second month", "The secondary month"], correct: 2, exp: "The second month." },
-                { q: "The number 100th is read as...", options: ["One hundredth", "One hundreds", "First hundred", "Hundredth first"], correct: 0, exp: "One hundredth." },
-                { q: "The cardinal number for 'four hundred and fifty-six' is...", options: ["465", "456", "546", "654"], correct: 1, exp: "456." },
-                { q: "The 3rd floor is read as...", options: ["3rd - Third", "3th - Thirth", "3st - Thirst", "3nd - Second"], correct: 0, exp: "Third." },
-                { q: "My brother is celebrating his ... birthday (11th).", options: ["eleven", "eleventh", "elevent", "oneth"], correct: 1, exp: "Eleventh." },
-                { q: "Indonesia declared independence on August ... (17th).", options: ["seventeen", "seventh", "seventeenth", "seventy"], correct: 2, exp: "Seventeenth." },
-                { q: "There are ... days in a standard week (7).", options: ["seven", "seventh", "seventieth", "seventeen"], correct: 0, exp: "Seven." },
-                { q: "She finished in ... place (3rd).", options: ["three", "third", "threeth", "thirty"], correct: 1, exp: "Third." },
-                { q: "Please open your book to page ... (50).", options: ["fifty", "fiftieth", "five-tenth", "fiveth"], correct: 0, exp: "Fifty." },
-                { q: "December is the ... month (12th).", options: ["twelveth", "twelfth", "twelve", "twentieth"], correct: 1, exp: "Twelfth." },
-                { q: "I live on the ... floor (9th).", options: ["nine", "nineth", "ninth", "ninety"], correct: 2, exp: "Ninth." },
-                { q: "He bought ... apples (12).", options: ["twelfth", "twelve", "twenty", "twelveth"], correct: 1, exp: "Twelve." },
-                { q: "Today is the ... of April (1st).", options: ["one", "first", "once", "oneth"], correct: 1, exp: "First." },
-                { q: "My grandmother is in her ... (80s).", options: ["eighty", "eightieths", "eighties", "eightieth"], correct: 2, exp: "Eighties." },
-                { q: "Which cardinal and ordinal pair is correct?", options: ["4 - Fourth", "12 - Twelveth", "20 - Twentith", "5 - Fiveth"], correct: 0, exp: "4 - Fourth." },
-                { q: "The number 2,500 as cardinal is...", options: ["Two thousand five hundred", "Two thousands five hundred", "Two hundred and fifty", "Twenty five hundredth"], correct: 0, exp: "Two thousand five hundred." },
-                { q: "The ordinal number right before twentieth is...", options: ["Eighteenth", "Nineteenth", "Twenty-first", "Twenty"], correct: 1, exp: "Nineteenth." },
-                { q: "The ordinal form of 81 is...", options: ["Eighty-one", "Eighty-first", "Eightieth-first", "Eight-first"], correct: 1, exp: "Eighty-first." },
-                { q: "She is the ... person to arrive (20th).", options: ["twenty", "twentieth", "twentyth", "twentith"], correct: 1, exp: "Twentieth." },
-                { q: "Days in January (Cardinal):", options: ["Twenty-eight", "Twenty-nine", "Thirty", "Thirty-one"], correct: 3, exp: "Thirty-one." },
-                { q: "If today is 30th, tomorrow is ...", options: ["Thirty-first", "Thirtieth-first", "Thirty-one", "Thirth-first"], correct: 0, exp: "Thirty-first." },
-                { q: "Word form of 1,000,000:", options: ["One million", "One billion", "One thousand", "One trillion"], correct: 0, exp: "One million." },
-                { q: "Which date format is most accurate?", options: ["October 5st", "October 5th", "October 5rd", "October 5nd"], correct: 1, exp: "October 5th." },
-                { q: "'First', 'Second', 'Third' belong to...", options: ["Cardinal numbers", "Ordinal numbers", "Fraction numbers", "Roman numbers"], correct: 1, exp: "Ordinal numbers." },
-                { q: "The ordinal number 5th is read as...", options: ["Fiveth", "Fifth", "Fiftieth", "Five"], correct: 1, exp: "Fifth." },
-                { q: "Fortieth represents...", options: ["14th", "4th", "40th", "44th"], correct: 2, exp: "40th." },
-                { q: "There are ... pencils (8).", options: ["eighth", "eight", "eighty", "eighter"], correct: 1, exp: "Eight." },
-                { q: "The ordinal sequence after thirty-third is...", options: ["Thirty-fourth", "Thirty-two", "Thirty-fifth", "Thirty-thirdth"], correct: 0, exp: "Thirty-fourth." },
-                { q: "Word form of 77:", options: ["Seventy-seventh", "Seven-seven", "Seventy-seven", "Seventeenth"], correct: 2, exp: "Seventy-seven." },
-                { q: "Ordinal form of 101st:", options: ["One hundred and one", "One hundred and first", "One hundredth and one", "One hundred and oneth"], correct: 1, exp: "One hundred and first." },
-                { q: "Word form of 99th:", options: ["Ninety-nine", "Ninety-ninth", "Nineth-nine", "Nineteen-ninth"], correct: 1, exp: "Ninety-ninth." },
-                { q: "I need ... eggs (6).", options: ["sixth", "six", "sixtieth", "sixteen"], correct: 1, exp: "Six." },
-                { q: "Cardinal number for 'five hundred':", options: ["50", "500", "5,000", "50,000"], correct: 1, exp: "500." },
-                { q: "Which is not an ordinal number?", options: ["Tenth", "Twenty-two", "Sixtieth", "Second"], correct: 1, exp: "Twenty-two." },
-                { q: "'He ran five kilometers.' Five is a...", options: ["Ordinal", "Cardinal", "Fraction", "Decimal"], correct: 1, exp: "Cardinal." },
-                { q: "'Today is my twentieth birthday.' Twentieth is a...", options: ["Ordinal", "Cardinal", "Multiplicative", "Quantity"], correct: 0, exp: "Ordinal." },
-                { q: "Word form for 3,450:", options: ["Three thousand four hundred and fifty", "Three hundred four thousand and fifty", "Thirty-four hundred and fifty", "Three thousand forty and fifty"], correct: 0, exp: "Three thousand four hundred and fifty." },
-                { q: "Correct ordinal writing for 23rd:", options: ["Twenty-three", "Twenty-third", "Twentith-three", "Twenty-thirther"], correct: 1, exp: "Twenty-third." },
-                { q: "Which expresses a quantity?", options: ["1st floor", "3rd place", "5 books", "10th anniversary"], correct: 2, exp: "5 books." },
-                { q: "60th is read as...", options: ["Sixteenth", "Sixtieth", "Sixty", "Six-tenth"], correct: 1, exp: "Sixtieth." },
-                { q: "Correct ordinal form of 8:", options: ["Eightth", "Eighth", "Eightieth", "Eighter"], correct: 1, exp: "Eighth." },
-                { q: "This is the ... step (4th).", options: ["four", "fourth", "fourteen", "fortieth"], correct: 1, exp: "Fourth." },
-                { q: "Cardinal number for 'thirteen':", options: ["3", "13", "30", "300"], correct: 1, exp: "13." },
-                { q: "Suffix for ordinal number 22:", options: ["st", "nd", "rd", "th"], correct: 1, exp: "nd." }
+                { q: "What is the written word form of the ordinal number 15th?", options: ["Fiftieth", "Fifteenth", "Five-tenth", "Fiveth"], correct: 1, exp: "15th is spelled 'fifteenth'." },
+                { q: "How is the cardinal number 'ninety-eight' written in digits?", options: ["89", "98", "908", "980"], correct: 1, exp: "Ninety-eight corresponds to 98." },
+                { q: "How is the date 'October 21st' properly read aloud?", options: ["Twenty-one October", "October twenty-first", "Twoth-first October", "Two-first October"], correct: 1, exp: "Dates use ordinal numbers ('twenty-first')." },
+                { q: "Which ordinal abbreviation is written incorrectly?", options: ["1st", "2nd", "3rd", "4st"], correct: 3, exp: "4 takes the -th suffix (4th), not 4st." },
+                { q: "What is the written word form of 32nd?", options: ["Thirty-second", "Three-second", "Thirty-twoth", "Thirtieth-second"], correct: 0, exp: "32nd is written 'thirty-second'." },
+                { q: "What is the sum of 'twenty-five plus fifteen' as a cardinal digit?", options: ["30", "40", "50", "45"], correct: 1, exp: "25 + 15 = 40." },
+                { q: "February is the 2nd month of the year. In English, this is phrased as:", options: ["Two month", "Twoth month", "The second month", "The secondary month"], correct: 2, exp: "Sequential order uses the ordinal 'second'." },
+                { q: "How is the ordinal number 100th read?", options: ["One hundredth", "One hundreds", "First hundred", "Hundredth first"], correct: 0, exp: "100th is pronounced 'one hundredth'." },
+                { q: "What is the digit form of 'four hundred and fifty-six'?", options: ["465", "456", "546", "654"], correct: 1, exp: "Four hundred and fifty-six = 456." },
+                { q: "How is the 3rd floor abbreviated and read?", options: ["3rd - Third", "3th - Thirth", "3st - Thirst", "3nd - Second"], correct: 0, exp: "3rd is read 'third'." },
+                { q: "My brother is celebrating his ... birthday today. (11th)", options: ["eleven", "eleventh", "elevent", "oneth"], correct: 1, exp: "Birthday sequence requires the ordinal 'eleventh'." },
+                { q: "Indonesia declared its independence on August ..., 1945. (17th)", options: ["seventeen", "seventh", "seventeenth", "seventy"], correct: 2, exp: "Calendar dates require the ordinal 'seventeenth'." },
+                { q: "There are ... days in a standard week. (7)", options: ["seven", "seventh", "seventieth", "seventeen"], correct: 0, exp: "Quantity is expressed using the cardinal number 'seven'." },
+                { q: "She finished in ... place in the competition. (3rd)", options: ["three", "third", "threeth", "thirty"], correct: 1, exp: "Ranking position uses the ordinal 'third'." },
+                { q: "Please open the technical manual to page .... (50)", options: ["fifty", "fiftieth", "five-tenth", "fiveth"], correct: 0, exp: "Page numbers use cardinal numbers ('page fifty')." },
+                { q: "December is the ... month of the year. (12th)", options: ["twelveth", "twelfth", "twelve", "twentieth"], correct: 1, exp: "The correct spelling for 12th is 'twelfth' (f replaces ve)." },
+                { q: "The laboratory is on the ... floor of this building. (9th)", options: ["nine", "nineth", "ninth", "ninety"], correct: 2, exp: "9th drops the 'e' and is spelled 'ninth'." },
+                { q: "The technician ordered ... bolts from inventory. (12)", options: ["twelfth", "twelve", "twenty", "twelveth"], correct: 1, exp: "Item count requires the cardinal number 'twelve'." },
+                { q: "Today is the ... of April. (1st)", options: ["one", "first", "once", "oneth"], correct: 1, exp: "The opening day of a month is the 'first'." },
+                { q: "The senior engineer is in his .... (80s)", options: ["eighty", "eightieths", "eighties", "eightieth"], correct: 2, exp: "Age decades are written as 'eighties'." },
+                { q: "Which cardinal and ordinal pair is spelled properly?", options: ["4 - Fourth", "12 - Twelveth", "20 - Twentith", "5 - Fiveth"], correct: 0, exp: "'4 - Fourth' is spelled accurately." },
+                { q: "How is 2,500 written in words as a cardinal number?", options: ["Two thousand five hundred", "Two thousands five hundred", "Two hundred and fifty", "Twenty five hundredth"], correct: 0, exp: "'Thousand' and 'hundred' remain singular when preceded by a specific number." },
+                { q: "Which ordinal number comes immediately before 'twentieth'?", options: ["Eighteenth", "Nineteenth", "Twenty-first", "Twenty"], correct: 1, exp: "19th ('nineteenth') precedes 20th ('twentieth')." },
+                { q: "What is the ordinal word form of 81?", options: ["Eighty-one", "Eighty-first", "Eightieth-first", "Eight-first"], correct: 1, exp: "Only the last digit takes the ordinal form: 'eighty-first'." },
+                { q: "'She is the ... person to arrive at the workshop.' (20th)", options: ["twenty", "twentieth", "twentyth", "twentith"], correct: 1, exp: "20th changes -y to -ie + th: 'twentieth'." },
+                { q: "How many days are there in January? (Cardinal)", options: ["Twenty-eight", "Twenty-nine", "Thirty", "Thirty-one"], correct: 3, exp: "January has 31 ('thirty-one') days." },
+                { q: "If today is the 30th, tomorrow is the ... (Ordinal)", options: ["Thirty-first", "Thirtieth-first", "Thirty-one", "Thirth-first"], correct: 0, exp: "The day after the 30th is the 'thirty-first'." },
+                { q: "What is the word form of 1,000,000?", options: ["One million", "One billion", "One thousand", "One trillion"], correct: 0, exp: "1,000,000 is 'one million'." },
+                { q: "Which English date notation is formatted correctly?", options: ["October 5st", "October 5th", "October 5rd", "October 5nd"], correct: 1, exp: "5 takes -th ('October 5th')." },
+                { q: "'First', 'Second', and 'Third' belong to which numerical category?", options: ["Cardinal numbers", "Ordinal numbers", "Fraction numbers", "Roman numbers"], correct: 1, exp: "They denote rank or sequence (ordinal numbers)." },
+                { q: "How is the ordinal number 5th spelled?", options: ["Fiveth", "Fifth", "Fiftieth", "Five"], correct: 1, exp: "5th is spelled 'fifth'." },
+                { q: "The ordinal word 'fortieth' corresponds to which number?", options: ["14th", "4th", "40th", "44th"], correct: 2, exp: "Fortieth represents 40th." },
+                { q: "'There are ... calipers in the toolbox.' (8)", options: ["eighth", "eight", "eighty", "eighter"], correct: 1, exp: "Countable quantity uses cardinal 'eight'." },
+                { q: "What ordinal number follows 'thirty-third'?", options: ["Thirty-fourth", "Thirty-two", "Thirty-fifth", "Thirty-thirdth"], correct: 0, exp: "34th ('thirty-fourth') follows 33rd." },
+                { q: "What is the cardinal word form of 77?", options: ["Seventy-seventh", "Seven-seven", "Seventy-seven", "Seventeenth"], correct: 2, exp: "77 is hyphenated as 'seventy-seven'." },
+                { q: "How is 101st written in words?", options: ["One hundred and one", "One hundred and first", "One hundredth and one", "One hundred and oneth"], correct: 1, exp: "101st is read 'one hundred and first'." },
+                { q: "What is the ordinal word form of 99th?", options: ["Ninety-nine", "Ninety-ninth", "Nineth-nine", "Nineteen-ninth"], correct: 1, exp: "99th is written 'ninety-ninth'." },
+                { q: "'The assembly requires ... M8 bolts.' (6)", options: ["sixth", "six", "sixtieth", "sixteen"], correct: 1, exp: "Quantity uses cardinal 'six'." },
+                { q: "What is the digit form of 'five hundred'?", options: ["50", "500", "5,000", "50,000"], correct: 1, exp: "Five hundred equals 500." },
+                { q: "Which of the following is NOT an ordinal number?", options: ["Tenth", "Twenty-two", "Sixtieth", "Second"], correct: 1, exp: "'Twenty-two' is a cardinal number." },
+                { q: "In 'The prototype traveled five kilometers', the word 'five' is a...", options: ["Ordinal number", "Cardinal number", "Fraction", "Decimal"], correct: 1, exp: "It measures quantity/distance, making it a cardinal number." },
+                { q: "In 'This is the twentieth test run', the word 'twentieth' is a...", options: ["Ordinal number", "Cardinal number", "Multiplicative number", "Quantity number"], correct: 0, exp: "It specifies sequential order (ordinal)." },
+                { q: "How is 3,450 written in words?", options: ["Three thousand four hundred and fifty", "Three hundred four thousand and fifty", "Thirty-four hundred and fifty", "Three thousand forty and fifty"], correct: 0, exp: "3,450 is 'three thousand four hundred and fifty'." },
+                { q: "What is the proper ordinal spelling for 23rd?", options: ["Twenty-three", "Twenty-third", "Twentith-three", "Twenty-thirther"], correct: 1, exp: "23rd is spelled 'twenty-third'." },
+                { q: "Which phrase expresses a cardinal quantity?", options: ["1st floor", "3rd place", "5 micrometers", "10th trial"], correct: 2, exp: "'5 micrometers' expresses quantity." },
+                { q: "How is 60th spelled?", options: ["Sixteenth", "Sixtieth", "Sixty", "Six-tenth"], correct: 1, exp: "60th is spelled 'sixtieth'." },
+                { q: "What is the proper ordinal spelling for 8th?", options: ["Eightth", "Eighth", "Eightieth", "Eighter"], correct: 1, exp: "8 + th drops one 't' to form 'eighth'." },
+                { q: "'This is the ... step of the machining procedure.' (4th)", options: ["four", "fourth", "fourteen", "fortieth"], correct: 1, exp: "Step sequence requires ordinal 'fourth'." },
+                { q: "What digit corresponds to the cardinal word 'thirteen'?", options: ["3", "13", "30", "300"], correct: 1, exp: "Thirteen = 13." },
+                { q: "What ordinal suffix belongs to the number 22?", options: ["st", "nd", "rd", "th"], correct: 1, exp: "Numbers ending in 2 (except 12) take -nd (22nd)." }
             ],
             comm: [
-                { q: "What is the definition of a 'text' according to the material?", options: ["Any collection of images without written meaning", "Any written account of a communicative event", "Merely a line of words without sentence structure", "A collection of sounds without spoken language meaning"], correct: 1, exp: "Catatan tertulis dari peristiwa komunikatif." },
-                { q: "A communicative event may use spoken language in the form of...", options: ["A purchasing transaction", "A sermon, a friendly discussion, a poem, an advertisement, a wall poster, and a novel", "Official academic texts only", "Company financial records"], correct: 1, exp: "Khotbah, diskusi, puisi, iklan lisan, dll." },
-                { q: "A text is made up of...", options: ["A single isolated letter", "Multiple sentences that work together to create a meaningful whole and a clear message", "Visual images without supporting text", "Random mathematical symbols"], correct: 1, exp: "Beberapa kalimat yang saling bekerja sama membentuk makna." },
-                { q: "According to Mario Klarer, a text is likened to what?", options: ["A fabric made up of individual threads", "A collection of bricks arranged without cement", "An abstract painting without a pattern", "Street noise"], correct: 0, exp: "Kain jalinan benang." },
-                { q: "What makes a text meaningful and coherent?", options: ["The use of attractive paper colors", "Words and phrases that are put together", "A very large number of pages", "The exclusive use of foreign languages"], correct: 1, exp: "Kata dan frasa yang dirangkai padu." },
-                { q: "Bringing together language, producer, and context is called...", options: ["Discourse", "Phonetics", "Morphology", "Syntax"], correct: 0, exp: "Discourse (Wacana)." },
-                { q: "Based on Range of Genre diagrams, two basic text types are...", options: ["Fiction and Non-fiction", "Literary and Factual", "Formal and Informal", "Classical and Modern"], correct: 1, exp: "Literary dan Factual." },
-                { q: "Which belongs to literary text forms?", options: ["Recount, Procedure, Report", "Dramatic, Poetry, Narrative", "Explanation, Discussion, Exposition", "Information, Response, Report"], correct: 1, exp: "Drama, Poetry, Narrative." },
-                { q: "Which is categorized as a literary text?", options: ["Narrative, Poetry, Drama", "Recount, Explanation, Discussion", "Report, Exposition, Procedure", "Information, Response, Discussion"], correct: 0, exp: "Narrative, Poetry, Drama." },
-                { q: "Which belongs to factual text category?", options: ["Narrative", "Poetry", "Recount", "Drama"], correct: 2, exp: "Recount." },
-                { q: "Examples of factual texts:", options: ["Narrative, Poetry, Drama", "Recount, Explanation, Discussion, Information, Report, Exposition, Procedure, Response", "Poetry and Drama only", "Novels, Poems, and Short Stories"], correct: 1, exp: "Recount, Explanation, Report, dll." },
-                { q: "Every text type has a...", options: ["Different purpose", "Exact same word count", "Constant writer", "Similar page color rule"], correct: 0, exp: "Different purpose." },
-                { q: "How does each text type use language?", options: ["Every text type uses language in a similar manner", "Using completely incomprehensible language", "Using secret codes", "Without using language elements"], correct: 0, exp: "Sesuai kelompok tujuannya." },
-                { q: "What are the different opinions regarding presentation?", options: ["Everyone has the exact same opinion", "Presentation is a process done by someone for only one reason", "Presentation is a process done by some people for many reasons", "Presentation has no purpose at all"], correct: 2, exp: "Dilakukan dengan banyak alasan dan tujuan." },
-                { q: "Common problem in presentations with interesting material:", options: ["Their material is too short", "The way of presenting is not interesting", "The room is too cold", "The audience is too small"], correct: 1, exp: "Cara penyampaian kurang menarik." },
-                { q: "Poor presentation practices are characterized by, except...", options: ["Using too many unnecessary PowerPoint animations", "Reading rote without eye-contact with the audience", "Interacting actively and maintaining eye contact with the audience", "Being monotonous and rigid"], correct: 2, exp: "Interaktif dan kontak mata adalah hal yang BAGUS." },
-                { q: "Characteristics of effective presentation:", options: ["Able to communicate well with the audience and interlude with humor", "Reading text continuously without looking at audience", "Avoiding eye contact entirely", "Ignoring audience questions"], correct: 0, exp: "Komunikasi baik diselingi humor." },
-                { q: "According to Grez & Valcke (2010), presentation is...", options: ["Speaking to oneself in front of a mirror", "The communication that occurs between a presenter and a group of listeners in a professional situation for a specific purpose", "Writing long documents", "Reading textbooks quietly"], correct: 1, exp: "Komunikasi profesional untuk tujuan spesifik." },
-                { q: "Aspects involved in presentation:", options: ["The presenter, the audience, the problem or material presented, and the techniques or media used", "Only presenter and computer", "Only place and time", "Only animation media"], correct: 0, exp: "Presenter, audiens, materi, media." },
-                { q: "According to Kolomazníková (2011), the first step is to...", options: ["Decide on complex animations", "Define the purpose of your presentation", "Buy new clothes", "Memorize the book"], correct: 1, exp: "Define the purpose." },
-                { q: "Why each presentation type requires organization technique?", options: ["To assure they are understood and remembered by the audience", "To make duration longer", "So presenter doesn't need to practice", "To make audience bored"], correct: 0, exp: "Agar dipahami dan diingat audiens." },
-                { q: "Characteristics of informative presentation:", options: ["Long and winding", "Brief and to the point", "Containing only entertainment", "Discussing fiction"], correct: 1, exp: "Brief and to the point." },
-                { q: "First thing to organize regarding 'Time' structure:", options: ["Setting slide colors", "Managing duration of each activity (intro, material, Q&A)", "Setting seating position", "Determining dress code"], correct: 1, exp: "Mengatur durasi sesi." },
-                { q: "Cue words in time-based structured presentation:", options: ["'Big, bigger, biggest'", "'First', 'second', 'third', etc.", "'Here, there, everywhere'", "'Good, better, best'"], correct: 1, exp: "'First', 'second', 'third'." },
-                { q: "Function of transition words like 'first', 'second':", options: ["To confuse audience", "To prioritize which material will be described first", "To speed up presentation", "To count audience"], correct: 1, exp: "Memprioritaskan urutan materi." },
-                { q: "Why place organization is important:", options: ["Because it can influence audiences' response and understanding", "Because it determines ticket prices", "Because it determines slide count", "Because it determines speaker duration"], correct: 0, exp: "Mempengaruhi pemahaman audiens." },
-                { q: "What happens if audience feels uncomfortable with room?", options: ["They focus more", "It can influence their response or understanding", "They become speakers", "No effect"], correct: 1, exp: "Mempengaruhi pemahaman." },
-                { q: "Coherent text means:", options: ["A text made up of words and phrases that work together to make a meaningful and coherent piece of writing", "A text written in foreign language", "A text with no relationship", "A text of one word"], correct: 0, exp: "Bermakna dan padu." },
-                { q: "Which is not an example of spoken language for text?", options: ["A sermon", "A friendly discussion", "A poem", "A purely written purchasing transaction without spoken elements"], correct: 3, exp: "Pembelian murni tertulis." },
-                { q: "Role of sentences within a text:", options: ["Working together to create a meaningful whole and clear message", "Standing alone", "Making it difficult", "Obscuring info"], correct: 0, exp: "Bekerja sama menciptakan makna." },
-                { q: "Relationship between language, producer, and context:", options: ["They exist separately", "They are all brought together in discourse", "They are unrelated", "Found only in literature"], correct: 1, exp: "Discourse." },
-                { q: "Literature and factual writings are classified as...", options: ["Two basic types of texts", "Only permitted forms", "Categories without purpose", "Parts of animation"], correct: 0, exp: "Dua tipe dasar teks." },
-                { q: "Each category of text type has...", options: ["A different purpose", "The exact same purpose", "Uniform page lengths", "Writers from same institution"], correct: 0, exp: "Different purpose." },
-                { q: "Factual writing category in academic context:", options: ["Poetry", "Drama", "Report", "Narrative"], correct: 2, exp: "Report." },
-                { q: "Where common flaw lies in presentation:", options: ["Material is too easy", "The way of presenting is not interesting", "Room is too big", "Too much written text"], correct: 1, exp: "Penyampaian tidak menarik." },
-                { q: "Why reading rotely without eye contact is less effective:", options: ["Makes audience lose engagement due to lack of eye contact", "Makes duration faster", "Saves energy", "Requested by audience"], correct: 0, exp: "Hilang ikatan dengan audiens." },
-                { q: "How to overcome audience boredom:", options: ["Speaking softer", "Interluding with humor occasionally", "Turning off lights", "Adding more text"], correct: 1, exp: "Humor ringan." },
-                { q: "Professional presentation definition (Grez & Valcke, 2010):", options: ["Communication between presenter and listeners in a professional situation for a specific purpose using planned techniques and media", "Reading books alone", "Casual discussion at cafe", "Watching internet videos"], correct: 0, exp: "Komunikasi terencana di situasi profesional." },
-                { q: "Expert cited for first step defining purpose:", options: ["Mario Klarer", "Kolomazníková (2011)", "Grez & Valcke (2010)", "Proborini (2013)"], correct: 1, exp: "Kolomazníková (2011)." },
-                { q: "Main benefit of time-based presentation structure:", options: ["Manage duration from intro, delivery, to Q&A", "End event without Q&A", "Let audience leave faster", "No need for intro"], correct: 0, exp: "Mengatur durasi kegiatan." },
-                { q: "Example of activity segment needing managed duration:", options: ["Introduction, presenting material, Q&A session", "Lunch break", "Travel time", "Budget proposal"], correct: 0, exp: "Intro, materi, Q&A." },
-                { q: "Physical environment aspect on page 57:", options: ["Room temperature", "Place", "Wall color", "Number of windows"], correct: 1, exp: "Place." },
-                { q: "Direct impact of uncomfortable venue:", options: ["Audience understands easily", "Influence response and understanding", "Presenter is enthusiastic", "Duration is shorter"], correct: 0, exp: "Mempengaruhi pemahaman audiens." },
-                { q: "Broad definition of a text:", options: ["Only recorded bird sounds", "Any written account of a communicative event, using oral or written language", "Digital images", "Military passwords"], correct: 1, exp: "Catatan tertulis peristiwa komunikasi." },
-                { q: "Similarity between text structure and fabric (Mario Klarer):", options: ["Both made of small components working together to make meaningful whole", "Both made of plastic", "No pattern", "Tear easily"], correct: 0, exp: "Komponen kecil bekerja sama." },
-                { q: "Main purpose of organizing presentation material:", options: ["So they are understood and remembered by audience", "Make presenter look rigid", "Make material complicated", "Ensure audience doesn't listen"], correct: 0, exp: "Dipahami dan diingat audiens." },
-                { q: "Main characteristic of informative presentation:", options: ["Long, winding", "Brief and to the point", "Ferdinand fairy tales", "Musical performance"], correct: 1, exp: "Brief and to the point." },
-                { q: "Literary text group based on Figure 3.2:", options: ["Narrative, Poetry, Drama", "Recount, Report, Procedure", "Explanation, Discussion", "Information, Response"], correct: 0, exp: "Narrative, Poetry, Drama." },
-                { q: "Factual texts category in Figure 3.2:", options: ["Literary", "Factual", "Narrative", "Poetic"], correct: 1, exp: "Factual." },
-                { q: "Why professional presentation uses planned techniques and media:", options: ["To assure purpose is achieved and audience understands well", "To make it expensive", "So presenter doesn't speak", "To confuse audience"], correct: 0, exp: "Tujuan tercapai dan pesan dipahami." }
+                { q: "How is a 'text' defined in communication theory?", options: ["Any collection of images without meaning", "Any written or spoken account of a communicative event", "Merely random words without grammar", "A collection of sounds without meaning"], correct: 1, exp: "A text is any cohesive record of a communicative event." },
+                { q: "A communicative event using spoken language may take the form of...", options: ["A silent transaction", "A lecture, technical discussion, presentation, or speech", "Raw numerical spreadsheets only", "Machine blueprints without labels"], correct: 1, exp: "Spoken texts include lectures, discussions, and oral presentations." },
+                { q: "A cohesive text is composed of...", options: ["A single isolated letter", "Multiple sentences working together to convey a clear, unified message", "Visual images without captions", "Random mathematical symbols"], correct: 1, exp: "Sentences interconnect to form coherent meaning." },
+                { q: "According to Mario Klarer, a text is metaphorically likened to...", options: ["A woven fabric made up of individual threads", "Loose bricks stacked without mortar", "An abstract splash of paint", "Unfiltered background noise"], correct: 0, exp: "Klarer compares words/phrases in a text to threads woven into fabric." },
+                { q: "What makes a technical text meaningful and coherent?", options: ["Bright paper colors", "Words and phrases systematically structured together", "Excessive page count", "Using obscure jargon unnecessarily"], correct: 1, exp: "Logical arrangement of words and phrases creates coherence." },
+                { q: "Bringing together language, its producers, and its situational context is called...", options: ["Discourse", "Phonetics", "Morphology", "Syntax"], correct: 0, exp: "Discourse encompasses language in active social/professional context." },
+                { q: "In genre classification, the two fundamental text categories are...", options: ["Fiction and Non-fiction", "Literary and Factual", "Formal and Informal", "Classical and Modern"], correct: 1, exp: "Genres divide broadly into Literary and Factual texts." },
+                { q: "Which three forms belong to Literary texts?", options: ["Recount, Procedure, Report", "Drama, Poetry, Narrative", "Explanation, Discussion, Exposition", "Information, Response, Report"], correct: 1, exp: "Drama, Poetry, and Narrative comprise literary genres." },
+                { q: "Which group represents Literary genres?", options: ["Narrative, Poetry, Drama", "Recount, Explanation, Discussion", "Report, Exposition, Procedure", "Information, Response, Discussion"], correct: 0, exp: "Narrative, Poetry, and Drama are literary forms." },
+                { q: "Which of the following belongs to the Factual text category?", options: ["Narrative", "Poetry", "Recount", "Drama"], correct: 2, exp: "Recounts document factual sequences of events." },
+                { q: "Examples of Factual texts in academic and technical settings include:", options: ["Narrative, Poetry, Drama", "Recount, Explanation, Discussion, Information Report, Exposition, Procedure", "Poetry and Drama only", "Novels and Short Stories"], correct: 1, exp: "Technical writing relies on factual genres like Procedures, Reports, and Explanations." },
+                { q: "Every distinct text genre serves a...", options: ["Specific communicative purpose", "Fixed identical word count", "Single author", "Uniform page color"], correct: 0, exp: "Different genres (e.g., Procedure vs. Report) have distinct purposes." },
+                { q: "How do texts within the same genre utilize language?", options: ["They follow consistent structural and grammatical conventions", "They avoid grammatical rules", "They use random codes", "They omit technical terms"], correct: 0, exp: "Each genre follows recognizable linguistic patterns." },
+                { q: "Why do professionals deliver presentations?", options: ["For a single identical reason", "For diverse purposes such as informing, persuading, or reporting findings", "Without any objective", "Only for entertainment"], correct: 1, exp: "Presentations serve varied professional objectives." },
+                { q: "What common flaw occurs even when a presenter has strong technical data?", options: ["The data is too accurate", "The delivery style is monotonous and unengaging", "The room is too quiet", "The slides have clear diagrams"], correct: 1, exp: "Poor delivery undermines strong technical content." },
+                { q: "All of the following are poor presentation habits EXCEPT...", options: ["Overloading slides with distracting animations", "Reading verbatim from notes without eye contact", "Actively engaging the audience and maintaining eye contact", "Speaking in a flat, monotonous tone"], correct: 2, exp: "Maintaining eye contact and engagement is a best practice." },
+                { q: "Which trait characterizes an effective technical presentation?", options: ["Clear audience rapport, structured pacing, and appropriate light humor", "Reading slides word-for-word without looking up", "Avoiding all eye contact", "Skipping audience Q&A"], correct: 0, exp: "Strong communication and audience engagement ensure retention." },
+                { q: "According to Grez & Valcke (2010), a presentation is defined as...", options: ["Speaking alone in front of a mirror", "Communication between a presenter and an audience in a professional context for a specific purpose", "Silently typing a document", "Reading a textbook quietly"], correct: 1, exp: "It is purposeful professional communication with an audience." },
+                { q: "Which four elements are involved in every presentation process?", options: ["The presenter, the audience, the subject matter, and the delivery media/techniques", "Only the presenter and laptop", "Only the room and clock", "Only slide animations"], correct: 0, exp: "Presenter, audience, content, and media form the core components." },
+                { q: "According to Kolomazníková (2011), what is the very first step in preparing a presentation?", options: ["Choosing complex slide transitions", "Defining the clear purpose of the presentation", "Buying formal attire", "Memorizing every word"], correct: 1, exp: "Defining the objective guides structure and content selection." },
+                { q: "Why does each presentation type require structured organization?", options: ["So key ideas are easily understood and retained by the audience", "To make the talk unnecessarily long", "To eliminate preparation", "To confuse listeners"], correct: 0, exp: "Clear structure maximizes audience comprehension and recall." },
+                { q: "What is the primary hallmark of an informative technical presentation?", options: ["Vague and overly complex", "Concise, clear, and to the point", "Purely fictional storytelling", "Filled with unrelated jokes"], correct: 1, exp: "Informative talks prioritize clarity and directness." },
+                { q: "What must a presenter manage when organizing the 'Time' dimension?", options: ["Slide background colors", "Allocating duration across introduction, main body, and Q&A", "Chair arrangement", "Audience attire"], correct: 1, exp: "Time management balances intro, core content, and Q&A." },
+                { q: "Which transition cues signal chronological or sequential structure?", options: ["'Big, bigger, biggest'", "'First', 'second', 'third', 'finally'", "'Here, there, everywhere'", "'Good, better, best'"], correct: 1, exp: "Ordinal sequence markers guide listeners through steps." },
+                { q: "What is the purpose of using signposting words like 'first' and 'second'?", options: ["To confuse the audience", "To prioritize and clearly sequence topics for listeners", "To rush the conclusion", "To count attendees"], correct: 1, exp: "Signposting clarifies topic hierarchy and progression." },
+                { q: "Why does physical venue ('Place') organization matter in presentations?", options: ["Acoustics, visibility, and comfort directly affect audience comprehension", "It sets ticket prices", "It determines slide count", "It changes the speaker's topic"], correct: 0, exp: "Environmental comfort impacts listener focus and reception." },
+                { q: "What happens if the presentation room is uncomfortable or poorly arranged?", options: ["Listeners focus better", "It negatively affects audience engagement and understanding", "Attendees take over speaking", "It has zero impact"], correct: 1, exp: "Physical distractions impair information retention." },
+                { q: "What does a 'coherent text' mean in technical communication?", options: ["Sentences and phrases logically linked to form a unified whole", "Text written in an unknown code", "Disconnected bullet points", "A single isolated word"], correct: 0, exp: "Coherence means logical flow and unified meaning." },
+                { q: "Which of the following is NOT an example of spoken communication?", options: ["A technical briefing", "A team discussion", "An oral pitch", "A purely written invoice without speech"], correct: 3, exp: "A written invoice is purely written text." },
+                { q: "How do individual sentences function within a well-written report?", options: ["They build upon one another to deliver a clear message", "They stand completely unrelated", "They obscure data", "They repeat identical words"], correct: 0, exp: "Each sentence contributes to the overarching argument or explanation." },
+                { q: "Language, speakers, and situational context converge in...", options: ["Isolation", "Discourse", "Random noise", "Unrelated fragments"], correct: 1, exp: "Discourse is the active intersection of text, speaker, and context." },
+                { q: "Literary and Factual represent...", options: ["The two macro-categories of text genres", "Identical writing styles", "Purposeless categories", "Animation styles"], correct: 0, exp: "They are the two foundational genre classifications." },
+                { q: "Every text genre is shaped by its...", options: ["Distinct social and communicative purpose", "Identical word length", "Same author", "Font size"], correct: 0, exp: "Purpose dictates structure and vocabulary." },
+                { q: "Which genre is standard for documenting engineering lab results?", options: ["Poetry", "Drama", "Technical Report", "Fictional Narrative"], correct: 2, exp: "Technical Reports present empirical findings objectively." },
+                { q: "When strong research fails to impress an audience, the cause is usually...", options: ["Excessive accuracy", "Ineffective presentation delivery", "Too many clear visuals", "Concise explanations"], correct: 1, exp: "Delivery technique bridges data and audience understanding." },
+                { q: "Why is reading directly off slides without eye contact ineffective?", options: ["It breaks interpersonal connection and loses audience attention", "It speeds up comprehension", "It improves vocal projection", "Audiences prefer it"], correct: 0, exp: "Eye contact builds trust and keeps listeners engaged." },
+                { q: "How can a speaker re-energize a fatigued audience?", options: ["Whispering quietly", "Incorporating relevant anecdotes or light humor", "Turning off all lights", "Reading dense paragraphs"], correct: 1, exp: "Well-timed engagement resets audience attention spans." },
+                { q: "How do Grez & Valcke (2010) characterize a professional presentation?", options: ["Purposeful communication between presenter and listeners using planned media and techniques", "Reading silently alone", "Unstructured casual chat", "Watching videos without discussion"], correct: 0, exp: "It combines clear purpose, audience awareness, and planned media." },
+                { q: "Which scholar emphasized defining presentation purpose as Step 1?", options: ["Mario Klarer", "Kolomazníková (2011)", "Grez & Valcke (2010)", "Proborini (2013)"], correct: 1, exp: "Kolomazníková (2011) highlights defining purpose first." },
+                { q: "What is the key advantage of time-structured presentation planning?", options: ["Ensuring balanced pacing across intro, body, and Q&A", "Eliminating the Q&A session", "Skipping the introduction", "Rushing the conclusion"], correct: 0, exp: "Structured timing prevents running out of time before key conclusions." },
+                { q: "Which three segments require explicit time allocation in a presentation?", options: ["Introduction, Main Body, and Q&A Session", "Lunch break, commute, and setup", "Printing, binding, and filing", "Budgeting and hiring"], correct: 0, exp: "Intro, Body, and Q&A form the core presentation timeline." },
+                { q: "Besides 'Time', which environmental factor is critical in presentation planning?", options: ["Wall paint color", "Place (venue layout & acoustics)", "Window count", "Ceiling height only"], correct: 1, exp: "Place/venue setup directly affects visibility and audio clarity." },
+                { q: "Poor seating or acoustics in a presentation venue will likely...", options: ["Improve test scores", "Hinder audience focus and comprehension", "Shorten the slides", "Increase speaker volume automatically"], correct: 1, exp: "Environmental barriers reduce communication effectiveness." },
+                { q: "What is the broadest accurate definition of a 'text'?", options: ["Any recorded spoken or written communicative event", "Only printed hardcover books", "Images without captions", "Numeric passwords"], correct: 0, exp: "Any coherent communicative artifact constitutes a text." },
+                { q: "Mario Klarer's fabric analogy illustrates that...", options: ["Small linguistic units weave together to create unified meaning", "Texts are made of synthetic fibers", "Writing has no structure", "Sentences tear easily"], correct: 0, exp: "Words and clauses interlock like woven threads." },
+                { q: "Why do engineers organize technical talks into logical sections?", options: ["To ensure complex data is understood and remembered", "To sound overly rigid", "To confuse non-specialists", "To avoid questions"], correct: 0, exp: "Logical scaffolding aids cognitive processing." },
+                { q: "An informative presentation should always be...", options: ["Long and meandering", "Brief, structured, and to the point", "Fictional", "Purely musical"], correct: 1, exp: "Brevity and precision respect the audience's time." },
+                { q: "Which trio represents Literary genres?", options: ["Narrative, Poetry, Drama", "Recount, Report, Procedure", "Explanation, Discussion", "Information, Response"], correct: 0, exp: "Narrative, Poetry, and Drama are literary." },
+                { q: "Procedures, Explanations, and Reports belong to which macro-genre?", options: ["Literary", "Factual", "Poetic", "Dramatic"], correct: 1, exp: "They convey factual, real-world information." },
+                { q: "Why should presenters use planned visual media and structured techniques?", options: ["To reinforce key messages and achieve the communicative goal", "To increase budget costs", "To avoid speaking", "To distract listeners"], correct: 0, exp: "Visual aids clarify complex technical concepts." }
             ],
             tools: [
-                { q: "What is the primary function of a caliper?", options: ["To tighten bolts", "To measure internal and external diameters with high precision", "To cut metal sheets", "To smooth surfaces"], correct: 1, exp: "Mengukur diameter dalam/luar secara presisi." },
-                { q: "Which tool drives slotted screws?", options: ["Pliers", "Chisel", "Screwdriver", "Hammer"], correct: 2, exp: "Screwdriver (obeng)." },
-                { q: "Tool to cut internal threads inside a hole:", options: ["Die", "Tap", "Reamer", "Broach"], correct: 1, exp: "Tap." },
-                { q: "What is a micrometer used for?", options: ["Measuring very small distances or thicknesses with high accuracy", "Checking engine oil temperature", "Measuring electrical current", "Testing steel hardness"], correct: 0, exp: "Ketebalan/jarak sangat kecil dengan akurasi tinggi." },
-                { q: "Hand tool for gripping, bending, or cutting wires:", options: ["Hacksaw", "Pliers", "Center punch", "File"], correct: 1, exp: "Pliers (tang)." },
-                { q: "Hammer used for shaping metal and riveting:", options: ["Ball-peen hammer", "Rubber mallet", "Sledgehammer", "Claw hammer"], correct: 0, exp: "Ball-peen hammer." },
-                { q: "Instrument to check horizontal level:", options: ["Steel rule", "Spirit level", "Feeler gauge", "Torque wrench"], correct: 1, exp: "Spirit level (waterpass)." },
-                { q: "Main purpose of a feeler gauge:", options: ["Measure exact depth", "Measure small clearances or gaps between parts", "Check belt tension", "Measure RPM"], correct: 1, exp: "Mengukur celah renggang kecil." },
-                { q: "Tool to tighten bolt to specific manufacturer tension:", options: ["Adjustable wrench", "Combination spanner", "Torque wrench", "Pipe wrench"], correct: 2, exp: "Torque wrench (kunci momen)." },
-                { q: "Cutting tool for manual metal bars/pipes cutting:", options: ["Wood saw", "Hacksaw", "Utility knife", "Tin snips"], correct: 1, exp: "Hacksaw (gergaji besi)." },
-                { q: "Function of a center punch before drilling:", options: ["Cool down drill bit", "Make a small indentation so drill doesn't slip", "Measure hole depth", "Clean metal chips"], correct: 1, exp: "Membuat titik penanda." },
-                { q: "Instrument to measure voltage, current, resistance:", options: ["Tachometer", "Multimeter", "Dynamometer", "Barometer"], correct: 1, exp: "Multimeter." },
-                { q: "Tool to remove burrs and smooth surfaces:", options: ["File", "Chisel", "Scraper", "Pliers"], correct: 0, exp: "File (kikir)." },
-                { q: "Purpose of tin snips in workshop:", options: ["Cutting thick steel plates", "Cutting thin sheet metal", "Cutting electrical cables", "Removing rusted bolts"], correct: 1, exp: "Memotong pelat logam tipis." },
-                { q: "Measuring tool with graduated metal strip:", options: ["Micrometer", "Steel rule", "Vernier height gauge", "Dial indicator"], correct: 1, exp: "Steel rule (penggaris baja)." },
-                { q: "Tool to hold workpiece securely on workbench:", options: ["Vise (Bench Vise)", "Clamp", "Anvil", "Jig"], correct: 0, exp: "Vise (ragum)." },
-                { q: "Tool for cutting external threads on rods:", options: ["Tap", "Die", "Tap wrench", "Reamer"], correct: 1, exp: "Die (sneai)." },
-                { q: "Function of a tachometer:", options: ["Measure fluid pressure", "Measure rotational speed (RPM)", "Measure temperature", "Measure roughness"], correct: 1, exp: "Mengukur RPM." },
-                { q: "Instrument with dial face and plunger:", options: ["Dial Indicator", "Pressure gauge", "Thermocouple", "Spirit level"], correct: 0, exp: "Dial indicator." },
-                { q: "Hex key (Allen wrench) is used for:", options: ["Turning fasteners with hexagonal socket head", "Adjusting spark plug gaps", "Cutting hexagonal bars", "Measuring angles"], correct: 0, exp: "Memutar baut soket segi enam (kunci L)." },
-                { q: "Tool used to drive nails or break materials:", options: ["Mallet", "Hammer", "Punch", "Chisel"], correct: 1, exp: "Hammer." },
-                { q: "Purpose of a bench grinder:", options: ["Weld metal", "Sharpen cutting tools, shape metal, remove burrs", "Forge metal", "Bore holes"], correct: 1, exp: "Mengasah alat potong dan meratakan logam." },
-                { q: "Hand tool with adjustable jaws for nuts/bolts:", options: ["Pipe wrench", "Adjustable wrench", "Combination pliers", "Locking pliers"], correct: 1, exp: "Adjustable wrench (kunci inggris)." },
-                { q: "Scribe is used for:", options: ["Drawing fine lines or scratching guidelines on metal", "Measuring hardness", "Lubricating parts", "Tightening screws"], correct: 0, exp: "Menggores garis panduan." },
-                { q: "Device to measure compressed air pressure:", options: ["Barometer", "Pressure gauge", "Flow meter", "Manometer"], correct: 1, exp: "Pressure gauge." },
-                { q: "Primary use of a cold chisel:", options: ["Cutting wood", "Cutting and chipping cold metals", "Engraving glass", "Tightening joints"], correct: 1, exp: "Memahat logam dingin." },
-                { q: "Tool to enlarge/finish drilled hole precisely:", options: ["Drill bit", "Reamer", "Counterbore", "Tap"], correct: 1, exp: "Reamer." },
-                { q: "Try square is used for:", options: ["Checking or laying out 90-degree right angles", "Measuring circumference", "Testing electrical continuity", "Checking flatness"], correct: 0, exp: "Memeriksa sudut 90 derajat." },
-                { q: "Specialized plier with locking mechanism:", options: ["Slip-joint pliers", "Needle-nose pliers", "Locking pliers (Vise-Grip)", "Side-cutting pliers"], correct: 2, exp: "Locking pliers (tang buaya)." },
-                { q: "Purpose of a surface plate:", options: ["Provide extremely flat reference plane for inspection and layout", "Weld heavy sheets", "Absorb vibrations", "Cut sheet metal"], correct: 0, exp: "Landasan rata referensi." },
-                { q: "Tool to securely hold drill bits:", options: ["Collet", "Drill chuck", "Lathe jaw", "Vise"], correct: 1, exp: "Drill chuck (cekam bor)." },
-                { q: "Main function of bearing puller:", options: ["Press new bearings", "Safely remove tightly fitted gears or bearings from shafts", "Lubricate bearings", "Measure clearance"], correct: 1, exp: "Melepas bearing atau roda gigi dari poros." },
-                { q: "Instrument to measure surface roughness:", options: ["Surface profilometer", "Hardness tester", "Ultrasonic gauge", "Stroboscope"], correct: 0, exp: "Surface profilometer." },
-                { q: "Pin punch is used for:", options: ["Making center marks", "Driving out pins, rivets, or keys from shafts", "Punching leather", "Measuring depth"], correct: 1, exp: "Mendorong keluar pin atau pasak." },
-                { q: "Tool for cutting threads inside pre-drilled hole:", options: ["Die", "Tap", "Lathe tool", "Milling cutter"], correct: 1, exp: "Tap." },
-                { q: "Function of a combination square:", options: ["Measuring only 45-degree angles", "Measuring length, checking 90° and 45° angles, and leveling", "Calculating gear ratios", "Measuring resistance"], correct: 1, exp: "Mengukur panjang, sudut 45/90 derajat, dan level." },
-                { q: "Instrument using laser beams to align shafts:", options: ["Laser alignment tool", "Optical comparator", "Spirit level", "Plumb bob"], correct: 0, exp: "Laser alignment." },
-                { q: "Purpose of a soldering iron:", options: ["Melting heavy steel", "Melting solder to join electronic components or wires", "Cutting plastic", "Removing rust"], correct: 1, exp: "Menyolder komponen elektronik." },
-                { q: "Tool to grip and turn pipes securely:", options: ["Combination spanner", "Pipe wrench", "Allen wrench", "Adjustable wrench"], correct: 1, exp: "Pipe wrench (kunci pipa)." },
-                { q: "Function of telescoping gauge with micrometer:", options: ["Measuring internal diameter of holes or cylinders", "Measuring external diameters", "Measuring height", "Measuring beam length"], correct: 0, exp: "Mengukur diameter dalam lubang." },
-                { q: "Tool to protect hands from hot/sharp parts:", options: ["Safety goggles", "Work gloves", "Earplugs", "Steel-toe boots"], correct: 1, exp: "Work gloves (sarung tangan)." },
-                { q: "Main characteristic of dead-blow hammer:", options: ["Bounces back strongly", "Filled with shot or sand to prevent rebound and deliver solid blow", "Made of hardened steel", "Produces loud sound"], correct: 1, exp: "Diisi pasir/butiran agar tidak memantul." },
-                { q: "Instrument to determine material hardness:", options: ["Hardness tester", "Tensile testing machine", "Impact tester", "Strain gauge"], correct: 0, exp: "Hardness tester." },
-                { q: "Purpose of wire brush in maintenance:", options: ["Clean rust, scale, old paint, and dirt off metal", "Apply grease", "Polish mirrors", "Test conductivity"], correct: 0, exp: "Membersihkan karat dan kotoran." },
-                { q: "Tool to clamp metal pieces together temporarily:", options: ["C-clamp", "Bench vise", "Pliers", "Wire stripper"], correct: 0, exp: "C-clamp." },
-                { q: "Scraper is used for:", options: ["Removing old gasket material and scraping high spots off mating surfaces", "Scraping paint off car bodies", "Cutting metal", "Cleaning oil lines"], correct: 0, exp: "Membersihkan sisa gasket/paking." },
-                { q: "Measuring tool for hole depth:", options: ["Depth micrometer / Vernier caliper with depth rod", "Outside micrometer", "Feeler gauge", "Dial indicator"], correct: 0, exp: "Depth micrometer / jangka sorong." },
-                { q: "Purpose of metal file card:", options: ["Clean metal chips and debris trapped within file teeth", "Sharpen files", "Measure TPI", "Store files"], correct: 0, exp: "Membersihkan geram pada kikir." },
-                { q: "Instrument to measure sheet metal thickness from one side:", options: ["Ultrasonic thickness gauge", "Vernier caliper", "Steel rule", "Outside micrometer"], correct: 0, exp: "Ultrasonic thickness gauge." },
-                { q: "Primary function of a puller:", options: ["Push pins", "Apply pulling force to remove components pressed onto shafts", "Pull wires", "Stretch belts"], correct: 1, exp: "Menarik komponen dari poros." }
+                { q: "What is the primary function of a vernier caliper in mechanical engineering?", options: ["Tightening hexagonal bolts", "Measuring internal, external, and depth dimensions with high precision", "Cutting sheet metal", "Smoothing rough surfaces"], correct: 1, exp: "Calipers accurately measure outside diameters, inside diameters, and depths." },
+                { q: "Which hand tool is designed to drive slotted screws via rotational torque?", options: ["Pliers", "Chisel", "Flat-head screwdriver", "Hammer"], correct: 2, exp: "A flat-head (slotted) screwdriver engages single-slot screw heads." },
+                { q: "Which cutting tool is used to cut internal threads inside a drilled hole?", options: ["Die", "Tap", "Reamer", "Broach"], correct: 1, exp: "A tap cuts internal female threads inside a pre-drilled hole." },
+                { q: "What is an outside micrometer primarily used for?", options: ["Measuring very small thicknesses or diameters with 0.01 mm accuracy", "Checking engine oil temperature", "Measuring electrical current", "Testing steel hardness"], correct: 0, exp: "Micrometers provide ultra-precise linear measurements." },
+                { q: "Which hand tool is designed for gripping, bending, and cutting wires?", options: ["Hacksaw", "Combination pliers", "Center punch", "File"], correct: 1, exp: "Combination pliers grip flat/round stock and shear wire." },
+                { q: "Which hammer is standard for metalworking, peening rivets, and striking punches?", options: ["Ball-peen hammer", "Rubber mallet", "Sledgehammer", "Claw hammer"], correct: 0, exp: "Ball-peen hammers are hardened for metal fabrication and riveting." },
+                { q: "Which instrument checks whether a machine bed is perfectly horizontal?", options: ["Steel rule", "Spirit level (machinist's level)", "Feeler gauge", "Torque wrench"], correct: 1, exp: "A spirit level uses a liquid bubble vial to verify horizontal alignment." },
+                { q: "What is the main purpose of a feeler gauge?", options: ["Measuring deep blind holes", "Measuring narrow clearances or gaps between mating parts", "Checking belt tension", "Measuring shaft RPM"], correct: 1, exp: "Feeler gauges consist of calibrated blades to measure tight gaps (e.g., valve lash)." },
+                { q: "To tighten a fastener to an exact manufacturer-specified rotational tension, use a:", options: ["Adjustable wrench", "Combination spanner", "Torque wrench", "Pipe wrench"], correct: 2, exp: "A torque wrench prevents over-tightening or under-tightening critical bolts." },
+                { q: "Which manual cutting tool is used to saw steel rods and pipes in a workshop?", options: ["Wood saw", "Hacksaw", "Utility knife", "Tin snips"], correct: 1, exp: "A hacksaw uses a fine-toothed tensioned blade for cutting metal." },
+                { q: "Why is a center punch used before drilling a hole in metal?", options: ["To cool the drill bit", "To create a dimple that prevents the drill bit from wandering", "To measure hole depth", "To remove burrs"], correct: 1, exp: "Center punching seats the drill tip accurately on the layout mark." },
+                { q: "Which diagnostic instrument measures voltage, current, and electrical resistance?", options: ["Tachometer", "Multimeter", "Dynamometer", "Barometer"], correct: 1, exp: "A multimeter combines voltmeter, ammeter, and ohmmeter functions." },
+                { q: "Which hand tool removes burrs and smooths metal surfaces through abrasion?", options: ["Bastard/smooth file", "Cold chisel", "Scraper", "Pliers"], correct: 0, exp: "Files use hardened cutting teeth to abrade and finish metal edges." },
+                { q: "What are aviation snips (tin snips) used for in sheet metal work?", options: ["Cutting thick steel plate", "Cutting thin sheet metal cleanly", "Cutting heavy cables", "Removing rusted nuts"], correct: 1, exp: "Tin snips shear thin-gauge sheet metal without distortion." },
+                { q: "Which basic measuring tool consists of a graduated stainless steel strip?", options: ["Micrometer", "Steel rule", "Height gauge", "Dial indicator"], correct: 1, exp: "A steel rule provides direct linear scale measurements." },
+                { q: "What device clamps a workpiece rigidly to a workbench during filing or sawing?", options: ["Bench vise", "C-clamp", "Anvil", "Jig"], correct: 0, exp: "A bench vise secures workpieces firmly during manual machining." },
+                { q: "Which threading tool cuts external male threads onto a cylindrical rod?", options: ["Tap", "Die", "Tap wrench", "Reamer"], correct: 1, exp: "A threading die cuts external threads on rods or bolts." },
+                { q: "What does a tachometer measure?", options: ["Fluid pressure", "Rotational speed (RPM) of a shaft or motor", "Ambient temperature", "Surface roughness"], correct: 1, exp: "Tachometers measure revolutions per minute (RPM)." },
+                { q: "Which precision gauge uses a plunger and dial face to measure runout or alignment?", options: ["Dial indicator", "Pressure gauge", "Thermocouple", "Spirit level"], correct: 0, exp: "Dial indicators detect minute deflections and shaft runout." },
+                { q: "What is a hex key (Allen wrench) designed to turn?", options: ["Fasteners with internal hexagonal socket heads", "Spark plugs", "Hexagonal bars", "Pipe fittings"], correct: 0, exp: "Hex keys fit recessed hexagonal socket cap screws." },
+                { q: "Which striking tool delivers heavy impact force to drive chisels or punches?", options: ["Mallet", "Machinist's hammer", "Scribe", "File"], correct: 1, exp: "Hardened steel hammers deliver direct mechanical impact." },
+                { q: "What is the primary workshop function of a bench grinder?", options: ["Welding steel plates", "Sharpening HSS tool bits, drill bits, and deburring", "Heat-treating alloys", "Boring cylinders"], correct: 1, exp: "Bench grinders use abrasive wheels to sharpen cutting tools." },
+                { q: "Which wrench features a movable jaw to fit various nut sizes?", options: ["Pipe wrench", "Adjustable wrench (Crescent wrench)", "Box-end spanner", "Torque wrench"], correct: 1, exp: "An adjustable wrench uses a worm screw to resize its jaw opening." },
+                { q: "What is a machinist's scribe used for during layout?", options: ["Scratching fine layout lines onto metal surfaces", "Measuring Rockwell hardness", "Applying cutting fluid", "Tightening set screws"], correct: 0, exp: "A hardened steel scribe marks crisp reference lines on metal." },
+                { q: "Which gauge measures hydraulic or pneumatic system pressure?", options: ["Barometer", "Bourdon tube pressure gauge", "Flow meter", "Hygrometer"], correct: 1, exp: "Pressure gauges display fluid pressure in bar, psi, or kPa." },
+                { q: "What is a cold chisel designed to do?", options: ["Carve soft wood", "Shear or chip cold metal, rivets, and rusted nuts", "Engrave glass", "Tighten bearings"], correct: 1, exp: "Cold chisels have tempered bevels for cutting unheated metal." },
+                { q: "Which rotary tool finishes a pre-drilled hole to an exact diameter and smooth finish?", options: ["Twist drill", "Reamer", "Counterbore", "Tap"], correct: 1, exp: "Reamers remove minimal material to achieve tight hole tolerances." },
+                { q: "What is an engineer's try square used to verify?", options: ["Exact 90° right angles and flatness", "Circular diameters", "Electrical continuity", "Thread pitch"], correct: 0, exp: "Try squares check 90° perpendicularity between adjacent faces." },
+                { q: "Which pliers lock onto a workpiece using an over-center toggle mechanism?", options: ["Slip-joint pliers", "Needle-nose pliers", "Locking pliers (Vise-Grip)", "Diagonal cutters"], correct: 2, exp: "Locking pliers clamp tightly without continuous hand pressure." },
+                { q: "What is a granite surface plate used for in quality inspection?", options: ["Providing an ultra-flat reference datum plane for precision measurement", "Welding heavy frames", "Hammering sheet metal", "Laser cutting"], correct: 0, exp: "Surface plates serve as the zero-datum plane for height gauges." },
+                { q: "Which component holds straight-shank drill bits on a drill press?", options: ["Collet", "Keyed/keyless drill chuck", "Lathe chuck", "Vise"], correct: 1, exp: "A three-jaw drill chuck centers and clamps drill bits." },
+                { q: "What is the function of a mechanical gear/bearing puller?", options: ["Pressing bearings into housings", "Safely extracting press-fit bearings, gears, or pulleys from shafts", "Lubricating races", "Measuring axial play"], correct: 1, exp: "Pullers apply even axial force to remove interference-fit parts." },
+                { q: "Which instrument quantifies surface finish roughness (Ra)?", options: ["Surface profilometer", "Hardness tester", "Ultrasonic gauge", "Stroboscope"], correct: 0, exp: "A profilometer traces microscopic peaks and valleys on machined surfaces." },
+                { q: "What is a parallel pin punch used for?", options: ["Starting drill holes", "Driving out cylindrical roll pins, dowel pins, or rivets", "Punching gaskets", "Measuring depth"], correct: 1, exp: "Pin punches have flat tips and straight shanks to push pins out of bores." },
+                { q: "Which tool cuts internal screw threads in a blind or through hole?", options: ["Die", "Hand tap", "End mill", "Knurling tool"], correct: 1, exp: "Hand taps (taper, plug, bottoming) cut internal threads." },
+                { q: "What capabilities does a combination square offer?", options: ["Measuring 45° angles only", "Measuring length, verifying 90° and 45° angles, and checking level", "Calculating gear ratios", "Testing voltage"], correct: 1, exp: "A combination square integrates a ruler, 90°/45° head, and spirit level." },
+                { q: "Which modern tool uses laser beams to align coupled motor and pump shafts?", options: ["Laser shaft alignment system", "Optical comparator", "Spirit level", "Plumb bob"], correct: 0, exp: "Laser alignment eliminates angular and parallel misalignment accurately." },
+                { q: "What is a soldering iron used for?", options: ["Fusion welding structural steel", "Melting filler solder to join electrical wires and PCB components", "Cutting PVC pipe", "Removing mill scale"], correct: 1, exp: "Soldering joins conductive metals at low temperatures without melting base parts." },
+                { q: "Which wrench uses serrated jaws that bite tighter when turning round pipes?", options: ["Combination spanner", "Pipe wrench (Stillson wrench)", "Hex key", "Box wrench"], correct: 1, exp: "Pipe wrenches grip cylindrical pipes securely under torque." },
+                { q: "How is a telescoping gauge used?", options: ["Transferring internal bore diameters to an outside micrometer", "Measuring shaft lengths", "Checking thread pitch", "Measuring gear backlash"], correct: 0, exp: "Telescoping gauges expand inside a bore and are then measured with a micrometer." },
+                { q: "Which PPE protects hands from sharp burrs and hot workpieces?", options: ["Safety goggles", "Heat/cut-resistant work gloves", "Ear defenders", "Respirator"], correct: 1, exp: "Work gloves protect hands during material handling (never worn near rotating spindles)." },
+                { q: "How does a dead-blow hammer prevent rebound upon impact?", options: ["It uses a soft sponge head", "Its hollow head is filled with steel shot or sand to absorb bounce", "It is magnetized", "It is made of solid cast iron"], correct: 1, exp: "Internal shot shifts forward on impact, deadening recoil." },
+                { q: "Which machine measures material resistance to indentation (Rockwell/Brinell)?", options: ["Hardness tester", "Universal tensile tester", "Charpy impact tester", "Strain gauge"], correct: 0, exp: "Hardness testers press an indenter under a known load to determine hardness." },
+                { q: "What is a wire brush used for in mechanical maintenance?", options: ["Removing rust, weld slag, and loose scale from metal surfaces", "Applying bearing grease", "Polishing optical lenses", "Checking electrical continuity"], correct: 0, exp: "Steel wire brushes clean oxidation and slag before and after welding." },
+                { q: "Which portable clamp temporarily holds parts together during welding or assembly?", options: ["C-clamp", "Bench vise", "Needle-nose pliers", "Wire stripper"], correct: 0, exp: "C-clamps secure workpieces together on fabrication tables." },
+                { q: "What is a gasket scraper used for during engine overhaul?", options: ["Removing old baked-on gasket residue without gouging mating flanges", "Stripping exterior paint", "Cutting sheet metal", "Cleaning fuel injectors"], correct: 0, exp: "Scrapers clean flat sealing surfaces prior to installing new gaskets." },
+                { q: "Which instrument measures the exact depth of blind holes or steps?", options: ["Depth micrometer / caliper depth rod", "Outside micrometer", "Feeler gauge", "Thread pitch gauge"], correct: 0, exp: "Depth micrometers measure recesses and step heights with 0.01 mm precision." },
+                { q: "What is a file card used for?", options: ["Cleaning metal chips (pinning) clogged between file teeth", "Sharpening drill bits", "Measuring file length", "Oiling lathe ways"], correct: 0, exp: "A file card has short wire bristles to clear trapped metal filings." },
+                { q: "Which gauge measures wall thickness when only one side of a pipe or tank is accessible?", options: ["Ultrasonic thickness gauge", "Vernier caliper", "Steel rule", "Outside micrometer"], correct: 0, exp: "Ultrasonic gauges measure sound wave transit time through metal walls." },
+                { q: "What is the primary mechanical action of a bearing puller?", options: ["Pushing pins inward", "Applying controlled tensile pulling force to extract shaft-mounted components", "Stretching V-belts", "Crimping terminals"], correct: 1, exp: "Pullers convert screw torque into axial extraction force." }
             ]
         };
 
-        const topicNames = {
-            tenses: "Tenses (Simple, Continuous, Perfect, Future)",
-            shapes: "Shapes and Angles in Engineering",
-            numbers: "Cardinal & Ordinal Numbers",
-            comm: "Communication Skills & Presentation",
-            tools: "Tools & Instruments in Workshop"
+        const topicMeta = {
+            tenses: { title: "1. Technical Tenses", desc: "Simple, Continuous, Past, Perfect, & Future Tense", icon: "fa-clock-rotate-left", color: "blue" },
+            shapes: { title: "2. Shapes & Angles", desc: "1D/2D/3D Geometry, Rectilinear & Engineering Angles", icon: "fa-shapes", color: "yellow" },
+            numbers: { title: "3. Numbers in Reports", desc: "Cardinal & Ordinal Numbers in Technical Documentation", icon: "fa-arrow-down-1-9", color: "blue" },
+            comm: { title: "4. Communication Skills", desc: "Text Genres, Discourse & Technical Presentations", icon: "fa-comments", color: "yellow" },
+            tools: { title: "5. Tools & Instruments", desc: "Precision Measurement & Workshop Equipment", icon: "fa-screwdriver-wrench", color: "blue" }
         };
 
+        // 25 EXPANDED ESP VOCABULARY ITEMS WITH PART OF SPEECH & EXAMPLE SENTENCES
         const vocabData = [
-            { general: "broken", esp: "fractured / fatigued", context: "Analisis kegagalan komponen akibat beban berulang." },
-            { general: "hot", esp: "thermal elevation / high temperature", context: "Termodinamika & evaluasi mesin termal." },
-            { general: "big force", esp: "excessive mechanical load / stress", context: "Uji tarik & analisis kekuatan bahan." },
-            { general: "bend", esp: "deflect / deform", context: "Pengujian defleksi batang atau balok penopang." },
-            { general: "rubbing", esp: "friction / tribological wear", context: "Sistem pelumasan & gesekan bantalan (bearing)." },
-            { general: "tighten", esp: "apply torque", context: "Pengencangan baut dengan nilai spesifik (momen)." },
-            { general: "liquid moving fast", esp: "high-velocity fluid flow", context: "Dinamika fluida dalam pipa." }
+            { general: "broken", esp: "fractured / fatigued", pos: "Adjective", example: "The drive shaft became <b>fractured</b> after enduring 10,000 cyclic load reversals." },
+            { general: "hot", esp: "thermally elevated", pos: "Adverb + Adj", example: "Lubricant viscosity drops rapidly when the gearbox operates in a <b>thermally elevated</b> state." },
+            { general: "big force", esp: "excessive load", pos: "Noun", example: "Applying an <b>excessive load</b> beyond the yield point causes permanent plastic deformation." },
+            { general: "bend", esp: "deflect", pos: "Verb", example: "A simply supported steel beam will <b>deflect</b> downward when weight is placed at its midpoint." },
+            { general: "rubbing", esp: "friction", pos: "Noun", example: "Ball bearings are installed to minimize rotational <b>friction</b> between the axle and housing." },
+            { general: "tighten", esp: "torque", pos: "Verb", example: "Technicians must <b>torque</b> the cylinder head bolts to 85 Nm in a crisscross sequence." },
+            { general: "fast flow", esp: "high-velocity", pos: "Adjective", example: "Cavitation frequently occurs inside <b>high-velocity</b> hydraulic fluid lines." },
+            { general: "smoothly", esp: "uniformly", pos: "Adverb", example: "The CNC lathe feeds the cutting tool <b>uniformly</b> across the aluminum workpiece." },
+            { general: "rust", esp: "oxidation / corrosion", pos: "Noun", example: "Applying a zinc primer protects carbon steel frames from atmospheric <b>corrosion</b>." },
+            { general: "shake", esp: "oscillate / vibrate", pos: "Verb", example: "An unbalanced rotor will <b>oscillate</b> violently at critical rotational speeds." },
+            { general: "accurate", esp: "precise", pos: "Adjective", example: "An outside micrometer provides more <b>precise</b> thickness readings than a standard steel rule." },
+            { general: "carefully", esp: "meticulously", pos: "Adverb", example: "Each weld seam was <b>meticulously</b> inspected using ultrasonic testing." },
+            { general: "wear out", esp: "abrade / degrade", pos: "Verb", example: "Brake pads gradually <b>abrade</b> as they convert kinetic energy into thermal energy." },
+            { general: "stiff", esp: "rigid", pos: "Adjective", example: "Cast iron is selected for lathe beds because its <b>rigid</b> structure dampens vibrations." },
+            { general: "gap", esp: "clearance", pos: "Noun", example: "Use a feeler gauge to verify the spark plug electrode <b>clearance</b>." },
+            { general: "slowly", esp: "gradually", pos: "Adverb", example: "The furnace temperature was <b>gradually</b> increased to prevent thermal shock." },
+            { general: "join", esp: "fabricate / weld", pos: "Verb", example: "Students learn to <b>weld</b> low-carbon steel plates using SMAW electrodes." },
+            { general: "flat", esp: "planar", pos: "Adjective", example: "A granite surface plate guarantees a perfectly <b>planar</b> reference datum." },
+            { general: "twisting force", esp: "torsion", pos: "Noun", example: "Transmission axles must be engineered to resist high <b>torsion</b> during acceleration." },
+            { general: "evenly", esp: "symmetrically", pos: "Adverb", example: "Clamping pressure must be distributed <b>symmetrically</b> around the flange." },
+            { general: "shrink", esp: "contract", pos: "Verb", example: "Metals <b>contract</b> slightly when cooled rapidly after heat treatment." },
+            { general: "brittle", esp: "friable / non-ductile", pos: "Adjective", example: "High-carbon quenched steel becomes <b>non-ductile</b> if tempering is omitted." },
+            { general: "leak", esp: "seepage", pos: "Noun", example: "Worn O-rings resulted in hydraulic oil <b>seepage</b> around the piston rod." },
+            { general: "constantly", esp: "continuously", pos: "Adverb", example: "Coolant is pumped <b>continuously</b> over the drill bit to dissipate heat." },
+            { general: "measure", esp: "calibrate", pos: "Verb", example: "Engineers must <b>calibrate</b> pressure gauges annually against a known standard." }
         ];
 
         let currentUser = "";
@@ -705,6 +715,7 @@
         let currentQuestions = [];
         let currentIndex = 0;
         let currentScore = 0;
+        let sessionCorrectCount = 0;
         let selectedOption = null;
         let currentRoomCode = null;
         let isHost = false;
@@ -714,15 +725,84 @@
             return str.replace(/[.#$\[\]\/]/g, "_");
         }
 
+        // MASTERY & PROFICIENCY STORAGE (Persisted per User in LocalStorage)
+        function getUserProgress() {
+            const key = `enggo_progress_${sanitizeKey(currentUser)}`;
+            return JSON.parse(localStorage.getItem(key)) || {
+                tenses: { bestPct: 0, attempts: 0 },
+                shapes: { bestPct: 0, attempts: 0 },
+                numbers: { bestPct: 0, attempts: 0 },
+                comm: { bestPct: 0, attempts: 0 },
+                tools: { bestPct: 0, attempts: 0 }
+            };
+        }
+
+        function saveTopicProgress(topicKey, correctCount, totalQ) {
+            const key = `enggo_progress_${sanitizeKey(currentUser)}`;
+            const prog = getUserProgress();
+            const pct = Math.round((correctCount / totalQ) * 100);
+            if (!prog[topicKey]) prog[topicKey] = { bestPct: 0, attempts: 0 };
+            prog[topicKey].attempts += 1;
+            if (pct > prog[topicKey].bestPct) {
+                prog[topicKey].bestPct = pct;
+            }
+            localStorage.setItem(key, JSON.stringify(prog));
+        }
+
+        function renderTopicCards() {
+            const prog = getUserProgress();
+            const container = document.getElementById('topicCardsContainer');
+            let totalPct = 0;
+
+            container.innerHTML = Object.keys(topicMeta).map(key => {
+                const meta = topicMeta[key];
+                const p = prog[key] || { bestPct: 0, attempts: 0 };
+                totalPct += p.bestPct;
+                const rating = (p.bestPct / 10).toFixed(1);
+                const iconBg = meta.color === 'yellow' ? 'bg-yellow-400 text-slate-950' : 'bg-blue-600 text-yellow-400';
+
+                return `
+                    <div onclick="selectTopic('${key}')" class="cursor-pointer bg-slate-900 hover:bg-blue-950/80 border-2 border-blue-600/50 hover:border-yellow-400 p-5 rounded-2xl shadow-lg transition-all group flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="w-10 h-10 rounded-xl ${iconBg} flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                                    <i class="fa-solid ${meta.icon}"></i>
+                                </div>
+                                <span class="text-[10px] font-mono bg-slate-950 text-yellow-300 px-2.5 py-1 rounded-lg border border-yellow-400/30 font-bold">
+                                    Rating: ${rating}/10
+                                </span>
+                            </div>
+                            <h4 class="text-base font-bold text-white group-hover:text-yellow-400">${meta.title}</h4>
+                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">${meta.desc}</p>
+                        </div>
+
+                        <!-- Mastery Capacity Bar -->
+                        <div class="pt-2 border-t border-slate-800/80 space-y-1.5">
+                            <div class="flex justify-between text-[11px] font-mono">
+                                <span class="text-sky-300">Chapter Mastery</span>
+                                <span class="font-bold text-yellow-400">${p.bestPct}% (${p.attempts}x)</span>
+                            </div>
+                            <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
+                                <div class="bg-gradient-to-r from-blue-500 to-yellow-400 h-2 rounded-full transition-all duration-500" style="width: ${p.bestPct}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const overallRating = ((totalPct / 5) / 10).toFixed(1);
+            document.getElementById('overallProficiencyRating').innerText = `${overallRating} / 10`;
+        }
+
         function startApp() {
             const name = document.getElementById('studentNameInput').value.trim();
             if(!name) {
-                alert("Mohon masukkan nama mahasiswa terlebih dahulu!");
+                alert("Please enter your student name first!");
                 return;
             }
             currentUser = name;
-            document.getElementById('greetingUser').innerText = `Halo, ${currentUser}!`;
-            document.getElementById('quizUserTitle').innerText = `Praktikan: ${currentUser}`;
+            document.getElementById('greetingUser').innerText = `Welcome back, ${currentUser}!`;
+            document.getElementById('quizUserTitle').innerText = `Student: ${currentUser}`;
             showTopicMenu();
         }
 
@@ -749,22 +829,24 @@
             document.getElementById('content-quiz').classList.add('hidden');
             document.getElementById('resultScreen').classList.add('hidden');
             document.getElementById('content-vocab').classList.add('hidden');
+            document.getElementById('content-review').classList.add('hidden');
             document.getElementById('content-leaderboard').classList.add('hidden');
 
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('text-yellow-400', 'bg-blue-900', 'border'));
             document.getElementById('nav-topics').classList.add('text-yellow-400', 'bg-blue-900', 'border');
+            renderTopicCards();
         }
 
         // HOST & JOIN ROOM FUNCTIONS
         function createRoomModal() {
             if (!window.firebaseReady) {
-                alert("Menghubungkan ke server Firebase... Mohon tunggu 2 detik.");
+                alert("Connecting to Firebase server... Please wait 2 seconds.");
                 return;
             }
             const btn = document.getElementById('createRoomBtn');
             const selectedTopic = document.getElementById('hostTopicSelect').value;
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Membuat Ruangan...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating Room...';
 
             const roomCode = Math.floor(1000 + Math.random() * 9000).toString();
             const safeUser = sanitizeKey(currentUser);
@@ -786,18 +868,18 @@
             }).catch((error) => {
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fa-solid fa-plus-circle"></i> Host New Room';
-                alert("Error Firebase: " + error.message);
+                alert("Firebase Connection Error: " + error.message);
             });
         }
 
         function joinRoom() {
             if (!window.firebaseReady) {
-                alert("Menghubungkan ke server Firebase... Mohon tunggu 2 detik.");
+                alert("Connecting to Firebase server... Please wait 2 seconds.");
                 return;
             }
             const code = document.getElementById('roomCodeInput').value.trim();
             if(!code || code.length < 4) {
-                alert("Masukkan 4 digit kode ruangan dengan benar!");
+                alert("Please enter a valid 4-digit Room PIN!");
                 return;
             }
 
@@ -810,7 +892,7 @@
                 if (snapshot.exists()) {
                     const roomData = snapshot.val();
                     if (roomData.status === 'started') {
-                        alert("Pertempuran di ruangan ini sudah dimulai!");
+                        alert("The quiz session in this room has already started!");
                         btn.disabled = false;
                         btn.innerText = 'Join';
                         return;
@@ -826,14 +908,14 @@
                         enterRoomLobby(code, false, roomData.topic || 'tenses');
                     });
                 } else {
-                    alert("Kode ruangan '" + code + "' tidak ditemukan!");
+                    alert("Room PIN '" + code + "' not found!");
                     btn.disabled = false;
                     btn.innerText = 'Join';
                 }
             }).catch((error) => {
                 btn.disabled = false;
                 btn.innerText = 'Join';
-                alert("Error koneksi: " + error.message);
+                alert("Connection Error: " + error.message);
             });
         }
 
@@ -841,7 +923,7 @@
             document.getElementById('topicScreen').classList.add('hidden');
             document.getElementById('roomLobbyScreen').classList.remove('hidden');
             document.getElementById('displayRoomCode').innerText = code;
-            document.getElementById('displayLobbyTopic').innerText = `Subbab Dipilih: ${topicNames[topicKey]}`;
+            document.getElementById('displayLobbyTopic').innerText = `Selected Chapter: ${topicMeta[topicKey].title}`;
 
             if(hosting) {
                 document.getElementById('hostControls').classList.remove('hidden');
@@ -915,12 +997,14 @@
 
             currentIndex = 0;
             currentScore = 0;
+            sessionCorrectCount = 0;
 
             document.getElementById('topicScreen').classList.add('hidden');
             document.getElementById('roomLobbyScreen').classList.add('hidden');
             document.getElementById('resultScreen').classList.add('hidden');
             document.getElementById('content-quiz').classList.remove('hidden');
-            document.getElementById('activeTopicBadge').innerText = isMultiplayer ? `Live Room #${currentRoomCode} (${topicNames[topicKey]})` : `Subbab: ${topicNames[topicKey]}`;
+            document.getElementById('activeTopicBadge').innerText = isMultiplayer ? `Live Room #${currentRoomCode} | ${topicMeta[topicKey].title}` : topicMeta[topicKey].title;
+            document.getElementById('modeIndicator').innerText = isMultiplayer ? "Speed Bonus Active" : "10 Pts / Question";
             document.getElementById('liveScore').innerText = '0';
             document.getElementById('nextBtn').classList.remove('hidden');
 
@@ -935,7 +1019,7 @@
 
         function renderQuestion() {
             const q = currentQuestions[currentIndex];
-            document.getElementById('questionTracker').innerText = `Soal ${currentIndex + 1} dari 10`;
+            document.getElementById('questionTracker').innerText = `Question ${currentIndex + 1} of 10`;
             questionStartTime = Date.now();
 
             const container = document.getElementById('quizContainer');
@@ -954,6 +1038,19 @@
 
             document.getElementById('nextBtn').disabled = true;
             selectedOption = null;
+        }
+
+        function logMistake(questionObj, chosenIdx) {
+            let errors = JSON.parse(localStorage.getItem('enggoErrorLog')) || [];
+            errors.unshift({
+                topic: topicMeta[currentTopic].title,
+                q: questionObj.q,
+                chosen: questionObj.options[chosenIdx],
+                correct: questionObj.options[questionObj.correct],
+                exp: questionObj.exp
+            });
+            if (errors.length > 30) errors.pop();
+            localStorage.setItem('enggoErrorLog', JSON.stringify(errors));
         }
 
         function selectOption(index) {
@@ -976,6 +1073,7 @@
 
             let pointsEarned = 10;
             if (isCorrect) {
+                sessionCorrectCount++;
                 if (currentRoomCode) {
                     const speedBonus = Math.max(0, Math.round(10 - (timeTakenSec * 0.5)));
                     pointsEarned = 10 + speedBonus;
@@ -989,16 +1087,18 @@
                     const scoreRef = window.fbRef(window.fbDB, `rooms/${currentRoomCode}/participants/${safeUser}`);
                     window.fbUpdate(scoreRef, { score: currentScore });
                 }
+            } else {
+                logMistake(q, index);
             }
 
             const expBox = document.getElementById('explanationBox');
             expBox.classList.remove('hidden');
             if (isCorrect) {
                 expBox.className = 'mt-6 p-4 rounded-xl border border-emerald-500/50 bg-emerald-950/30 text-emerald-300 text-xs font-mono';
-                expBox.innerHTML = `<strong><i class="fa-solid fa-circle-check"></i> Jawaban Benar! (+${pointsEarned} Poin)</strong><br>${q.exp}`;
+                expBox.innerHTML = `<strong><i class="fa-solid fa-circle-check"></i> Correct Answer! (+${pointsEarned} Pts)</strong><br>${q.exp}`;
             } else {
                 expBox.className = 'mt-6 p-4 rounded-xl border border-red-500/50 bg-red-950/30 text-red-300 text-xs font-mono';
-                expBox.innerHTML = `<strong><i class="fa-solid fa-circle-xmark"></i> Jawaban Kurang Tepat.</strong><br>${q.exp}`;
+                expBox.innerHTML = `<strong><i class="fa-solid fa-circle-xmark"></i> Incorrect Answer (Saved to Error Review)</strong><br>${q.exp}`;
             }
 
             document.getElementById('nextBtn').disabled = false;
@@ -1009,6 +1109,7 @@
                 currentIndex++;
                 renderQuestion();
             } else {
+                saveTopicProgress(currentTopic, sessionCorrectCount, 10);
                 if (!currentRoomCode) saveToLeaderboard();
                 showSummary();
             }
@@ -1024,38 +1125,56 @@
                 document.getElementById('multiplayerPodiumBox').classList.add('hidden');
             }
 
+            const accuracyPct = Math.round((sessionCorrectCount / 10) * 100);
+            const ratingScore = (sessionCorrectCount).toFixed(1);
+
             const summaryBanner = document.getElementById('scoreSummaryBanner');
             summaryBanner.innerHTML = `
                 <div class="w-20 h-20 rounded-full bg-yellow-400/20 text-yellow-400 flex items-center justify-center mx-auto text-3xl border-2 border-yellow-400 shadow-xl shadow-yellow-400/20">
                     <i class="fa-solid fa-award"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold text-white">Modul Selesai, ${currentUser}!</h3>
-                <p class="text-xs text-slate-300 font-mono">Skor Anda untuk subbab <b>${topicNames[currentTopic]}</b> telah terekam.</p>
-                <div class="inline-block bg-slate-950 px-8 py-4 rounded-2xl border-2 border-yellow-400">
-                    <span class="text-xs text-slate-400 font-mono uppercase block">Total Perolehan Skor</span>
-                    <span class="text-4xl font-extrabold text-yellow-400 font-mono">${currentScore} Poin</span>
+                <h3 class="text-2xl font-extrabold text-white">Module Completed, ${currentUser}!</h3>
+                <p class="text-xs text-slate-300 font-mono">Chapter: <b>${topicMeta[currentTopic].title}</b></p>
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <div class="bg-slate-950 px-6 py-4 rounded-2xl border-2 border-yellow-400">
+                        <span class="text-[10px] text-slate-400 font-mono uppercase block">Total Score</span>
+                        <span class="text-3xl font-extrabold text-yellow-400 font-mono">${currentScore} Pts</span>
+                    </div>
+                    <div class="bg-slate-950 px-6 py-4 rounded-2xl border border-sky-400/50">
+                        <span class="text-[10px] text-slate-400 font-mono uppercase block">Chapter Mastery</span>
+                        <span class="text-3xl font-extrabold text-sky-300 font-mono">${accuracyPct}%</span>
+                    </div>
+                    <div class="bg-slate-950 px-6 py-4 rounded-2xl border border-emerald-400/50">
+                        <span class="text-[10px] text-slate-400 font-mono uppercase block">Proficiency Rating</span>
+                        <span class="text-3xl font-extrabold text-emerald-400 font-mono">${ratingScore}/10</span>
+                    </div>
                 </div>
                 <div class="pt-4 flex justify-center gap-3">
                     <button onclick="showTopicMenu()" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 text-xs font-bold px-6 py-3 rounded-xl transition-all shadow-lg">
-                        Kembali ke Menu Utama <i class="fa-solid fa-arrow-right"></i>
+                        Back to Modules & Dashboard <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             `;
         }
 
         function saveToLeaderboard() {
-            let lb = JSON.parse(localStorage.getItem('mechLeaderboard250')) || [];
-            lb.push({ name: currentUser, topic: topicNames[currentTopic], score: currentScore });
+            let lb = JSON.parse(localStorage.getItem('enggoLeaderboardV4')) || [];
+            lb.push({
+                name: currentUser,
+                topic: topicMeta[currentTopic].title,
+                rating: `${sessionCorrectCount}.0 / 10`,
+                score: currentScore
+            });
             lb.sort((a, b) => b.score - a.score);
-            localStorage.setItem('mechLeaderboard250', JSON.stringify(lb));
+            localStorage.setItem('enggoLeaderboardV4', JSON.stringify(lb));
         }
 
         function renderLeaderboard() {
-            let lb = JSON.parse(localStorage.getItem('mechLeaderboard250')) || [];
+            let lb = JSON.parse(localStorage.getItem('enggoLeaderboardV4')) || [];
             const tbody = document.getElementById('leaderboardTableBody');
 
             if(lb.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-slate-500 italic">Belum ada skor tersimpan.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-500 italic">No recorded scores yet. Complete a chapter module to appear on the leaderboard!</td></tr>`;
                 return;
             }
 
@@ -1064,36 +1183,78 @@
                     <td class="p-3.5 text-center font-bold ${index === 0 ? 'text-yellow-400 text-base' : 'text-slate-400'}">#${index + 1}</td>
                     <td class="p-3.5 text-white font-bold">${item.name}</td>
                     <td class="p-3.5 text-sky-300 text-xs">${item.topic}</td>
-                    <td class="p-3.5 text-right font-extrabold text-yellow-400">${item.score} Poin</td>
+                    <td class="p-3.5 text-center text-emerald-400 font-bold">${item.rating}</td>
+                    <td class="p-3.5 text-right font-extrabold text-yellow-400">${item.score} Pts</td>
                 </tr>
             `).join('');
         }
 
         function clearLeaderboard() {
-            if(confirm("Hapus catatan papan skor?")) {
-                localStorage.removeItem('mechLeaderboard250');
+            if(confirm("Clear all leaderboard records?")) {
+                localStorage.removeItem('enggoLeaderboardV4');
                 renderLeaderboard();
+            }
+        }
+
+        function renderErrorReview() {
+            let errors = JSON.parse(localStorage.getItem('enggoErrorLog')) || [];
+            const container = document.getElementById('errorReviewList');
+            if (errors.length === 0) {
+                container.innerHTML = `<p class="text-center text-slate-500 italic py-6 text-xs">No mistakes logged yet! Keep up the great accuracy.</p>`;
+                return;
+            }
+            container.innerHTML = errors.map(err => `
+                <div class="bg-slate-950 border border-rose-500/30 rounded-xl p-4 space-y-2 text-xs">
+                    <span class="text-[10px] font-mono bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded">${err.topic}</span>
+                    <p class="font-bold text-white">${err.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-[11px]">
+                        <div class="text-rose-400"><i class="fa-solid fa-xmark"></i> Your Answer: ${err.chosen}</div>
+                        <div class="text-emerald-400"><i class="fa-solid fa-check"></i> Correct Answer: ${err.correct}</div>
+                    </div>
+                    <p class="text-slate-400 italic pt-1 border-t border-slate-800/80">${err.exp}</p>
+                </div>
+            `).join('');
+        }
+
+        function clearErrorLog() {
+            if(confirm("Clear all logged mistakes?")) {
+                localStorage.removeItem('enggoErrorLog');
+                renderErrorReview();
             }
         }
 
         function renderVocab(data) {
             const tbody = document.getElementById('vocabTableBody');
-            tbody.innerHTML = data.map(item => `
-                <tr class="hover:bg-slate-900/60 transition-colors">
-                    <td class="p-3.5 text-red-400 font-bold">${item.general}</td>
-                    <td class="p-3.5 text-emerald-400 font-bold">${item.esp}</td>
-                    <td class="p-3.5 text-slate-300 font-sans text-xs">${item.context}</td>
-                </tr>
-            `).join('');
+            tbody.innerHTML = data.map(item => {
+                let badgeColor = "bg-blue-500/20 text-sky-300 border-sky-400/30";
+                if (item.pos.includes("Verb")) badgeColor = "bg-emerald-500/20 text-emerald-300 border-emerald-400/30";
+                if (item.pos.includes("Adjective")) badgeColor = "bg-yellow-500/20 text-yellow-300 border-yellow-400/30";
+                if (item.pos.includes("Adverb")) badgeColor = "bg-purple-500/20 text-purple-300 border-purple-400/30";
+
+                return `
+                    <tr class="hover:bg-slate-900/60 transition-colors">
+                        <td class="p-3.5 text-rose-400 font-mono font-bold">${item.general}</td>
+                        <td class="p-3.5 text-emerald-400 font-mono font-bold">${item.esp}</td>
+                        <td class="p-3.5">
+                            <span class="text-[10px] font-mono px-2.5 py-0.5 rounded-full border ${badgeColor} font-bold">${item.pos}</span>
+                        </td>
+                        <td class="p-3.5 text-slate-200 text-xs leading-relaxed">${item.example}</td>
+                    </tr>
+                `;
+            }).join('');
         }
 
         function filterVocab() {
             const query = document.getElementById('vocabSearch').value.toLowerCase();
-            const filtered = vocabData.filter(v => 
-                v.general.toLowerCase().includes(query) || 
-                v.esp.toLowerCase().includes(query) || 
-                v.context.toLowerCase().includes(query)
-            );
+            const posVal = document.getElementById('posFilter').value;
+
+            const filtered = vocabData.filter(v => {
+                const matchesText = v.general.toLowerCase().includes(query) ||
+                                    v.esp.toLowerCase().includes(query) ||
+                                    v.example.toLowerCase().includes(query);
+                const matchesPos = posVal === "ALL" || v.pos.includes(posVal);
+                return matchesText && matchesPos;
+            });
             renderVocab(filtered);
         }
 
@@ -1111,6 +1272,7 @@
             if(activeBtn) activeBtn.classList.add('text-yellow-400', 'bg-blue-900', 'border');
 
             if(tabId === 'leaderboard') renderLeaderboard();
+            if(tabId === 'review') renderErrorReview();
         }
 
         renderVocab(vocabData);
